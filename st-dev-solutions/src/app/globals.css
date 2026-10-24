@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.font-display-condensed {
+  font-family: var(--font-display), Impact, sans-serif;
+  transform: scaleY(1.08);
+}
+
+.font-sketch {
+  font-family: var(--font-sketch), cursive;
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono), monospace;
+}
