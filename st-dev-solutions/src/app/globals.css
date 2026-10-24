@@ -12,3 +12,19 @@
 .font-mono-tech {
   font-family: var(--font-mono), monospace;
 }
+
+/* Hide scrollbar for horizontal card strip on mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Use dvh for mobile full-height when supported */
+@supports (height: 100dvh) {
+  .min-h-\[100dvh\] {
+    min-height: 100dvh;
+  }
+}
