@@ -6,15 +6,15 @@ Search for these exact tags in this file (Ctrl+F / Cmd+F) and replace them with
 your real studio details:
 
 1. STUDIO CONTACT & LOCATION:
-   - [REPLACE_WHATSAPP_NUMBER] -> Currently set to "919876543210" (Use country code 91 + 10-digit number, no "+" or spaces)
-   - [REPLACE_PHONE_DISPLAY]   -> Currently "+91 98765 43210"
-   - [REPLACE_EMAIL]           -> Currently "hello@stdevsolutions.in"
-   - [REPLACE_ADDRESS]         -> Currently "Saheed Nagar, Bhubaneswar, Odisha 751007"
+   - [REPLACE_WHATSAPP_NUMBER] -> Currently set to "919337922291" (Use country code 91 + 10-digit number, no "+" or spaces)
+   - +91 93379 22291   -> Currently "+91 93379 22291"
+   - stdevsolutions@gmail.com           -> Currently "stdevsolutions@gmail.com"
+   - Saheed Nagar, Bhubaneswar, Odisha 751007         -> Currently "Saheed Nagar, Bhubaneswar, Odisha 751007"
 
 2. CO-FOUNDER / PARTNER DETAILS (Stop 4 · Trust & Team):
-   - [Partner Name Placeholder] -> Replace with your co-founder's name (e.g., Swapna)
-   - [Partner Role Placeholder] -> Currently "Design, layout & client care"
-   - [Tusar Role Placeholder]   -> Currently "Code, speed & Google setup"
+   - Founder: Swadhin Panigrahi (+91 93379 22291) · Co-Founder: Tusar
+   - Agency Team: Dedicated specialists for UI/UX, Dev, SEO & Copy
+   - Technical Architecture, Performance & Systems
 
 3. CASE STUDIES (Stop 3 · Work):
    - [Sweet Shop Name Placeholder]     -> e.g., "Kalinga Rasagola House, Cuttack"
@@ -1126,6 +1126,157 @@ your real studio details:
 
     .inline-live-container.is-active {
       display: block;
+    }
+
+    
+    /* Real Production Client Website Previews */
+    .real-preview-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      background: #111;
+      overflow: hidden;
+      display: block;
+    }
+
+    .real-preview-img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .real-preview-wrapper:hover .real-preview-img {
+      transform: scale(1.02);
+    }
+
+    .real-preview-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--lime);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 2px solid var(--lime);
+      box-shadow: 2px 2px 0 var(--ink);
+      z-index: 3;
+    }
+
+    .real-preview-badge .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 0 6px #25D366;
+      animation: pulse-dot 1.8s infinite;
+    }
+
+    .real-preview-overlay-btn {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink);
+      color: var(--panel);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 2px solid var(--ink);
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      z-index: 3;
+    }
+
+    .real-preview-overlay-btn:hover {
+      background: var(--lime);
+      color: var(--ink);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Founder Photographs in Tram Windows */
+    .founder-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    /* Multidisciplinary Agency Capabilities Box */
+    .agency-capabilities-box {
+      margin-top: 24px;
+      background: var(--bg);
+      border: 4px solid var(--ink);
+      padding: 18px 20px;
+      box-shadow: 4px 4px 0 var(--ink);
+      text-align: left;
+    }
+
+    .agency-cap-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 19px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .agency-specialists-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .spec-tag {
+      background: var(--panel);
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    .agency-cap-subtext {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
     }
 
     .inline-live-iframe {
@@ -3240,7 +3391,7 @@ your real studio details:
                   <strong style="font-family:'Archivo',sans-serif;font-size:20px;">[Shop Name Placeholder] · Since 1998</strong>
                 </div>
                 <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;">
-                  Open today: 8:00 AM – 9:30 PM · Call: [REPLACE_PHONE_DISPLAY]
+                  Open today: 8:00 AM – 9:30 PM · Call: +91 93379 22291
                 </div>
               </div>
             </div>
@@ -3352,38 +3503,16 @@ your real studio details:
                 <div class="inline-live-container">
                   <iframe class="inline-live-iframe" data-src="https://rs-fit-club.vercel.app/" title="RS Fit Club Live Preview" loading="lazy"></iframe>
                 </div>
-                <!-- Stylized Brand Illustration Mockup -->
-                <svg viewBox="0 0 640 340" width="100%" height="auto" role="img" aria-label="RS Fit Club preview">
-                  <rect width="640" height="340" fill="#111111" />
-                  <rect x="0" y="0" width="640" height="50" fill="#1C1C1E" />
-                  <circle cx="30" cy="25" r="7" fill="#FF3D8B" />
-                  <text x="48" y="30" fill="#F6F7F2" font-family="Archivo, sans-serif" font-weight="900" font-size="16">RS FIT CLUB</text>
-                  <rect x="500" y="12" width="115" height="26" rx="13" fill="#FF3D8B" />
-                  <text x="518" y="29" fill="#F6F7F2" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14">BOOK FREE TRIAL</text>
-                  <!-- Hero -->
-                  <text x="36" y="105" fill="#FF3D8B" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="20">SAMANTARAPUR, BHUBANESWAR</text>
-                  <text x="36" y="145" fill="#F6F7F2" font-family="Archivo, sans-serif" font-weight="900" font-size="34">Built Here. Not Borrowed.</text>
-                  <text x="36" y="172" fill="#CFD8CC" font-family="Hanken Grotesk, sans-serif" font-size="15">8 Elite Training Programmes · Transformation Coaches · Modern Equipment</text>
-                  <!-- 4 Programme Cards -->
-                  <rect x="36" y="195" width="130" height="75" rx="8" fill="#1E1E22" stroke="#2A1230" stroke-width="2" />
-                  <text x="48" y="225" fill="#FF3D8B" font-family="Archivo, sans-serif" font-weight="800" font-size="14">Weight Training</text>
-                  <text x="48" y="245" fill="#CFD8CC" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="13">Strength &amp; Hypertrophy</text>
-
-                  <rect x="180" y="195" width="130" height="75" rx="8" fill="#1E1E22" stroke="#2A1230" stroke-width="2" />
-                  <text x="192" y="225" fill="#E8F25C" font-family="Archivo, sans-serif" font-weight="800" font-size="14">Zumba &amp; Aerobics</text>
-                  <text x="192" y="245" fill="#CFD8CC" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="13">High Energy Cardio</text>
-
-                  <rect x="324" y="195" width="130" height="75" rx="8" fill="#1E1E22" stroke="#2A1230" stroke-width="2" />
-                  <text x="336" y="225" fill="#FF3D8B" font-family="Archivo, sans-serif" font-weight="800" font-size="14">Fat Loss Matrix</text>
-                  <text x="336" y="245" fill="#CFD8CC" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="13">Guided Nutrition</text>
-
-                  <rect x="468" y="195" width="136" height="75" rx="8" fill="#FF3D8B" />
-                  <text x="480" y="228" fill="#111111" font-family="Archivo, sans-serif" font-weight="900" font-size="15">Transformation</text>
-                  <text x="480" y="248" fill="#111111" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14">Drag slider on site →</text>
-                  <!-- Bottom Bar -->
-                  <rect x="0" y="295" width="640" height="45" fill="#18181A" />
-                  <text x="36" y="322" fill="#E8F25C" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="16">⚡ Click "Interact live here" above to test the actual website inside this card</text>
-                </svg>
+                <div class="real-preview-wrapper">
+                  <img src="images/preview-rsfitclub.png" alt="RS Fit Club Real Client Website Preview" class="real-preview-img" loading="lazy">
+                  <div class="real-preview-badge">
+                    <span class="badge-dot"></span>
+                    <span>Real Client Website</span>
+                  </div>
+                  <button type="button" class="real-preview-overlay-btn js-inline-toggle" data-project="0" data-url="https://rs-fit-club.vercel.app/">
+                    <span>▶ Click to Interact Live</span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -3467,35 +3596,16 @@ your real studio details:
                 <div class="inline-live-container">
                   <iframe class="inline-live-iframe" data-src="https://gym-taupe-chi.vercel.app/" title="IronForge Gym Live Preview" loading="lazy"></iframe>
                 </div>
-                <!-- Stylized Brand Illustration Mockup -->
-                <svg viewBox="0 0 640 340" width="100%" height="auto" role="img" aria-label="IronForge Gym preview">
-                  <rect width="640" height="340" fill="#0D1117" />
-                  <rect x="0" y="0" width="640" height="50" fill="#161B22" />
-                  <text x="32" y="31" fill="#E8F25C" font-family="Archivo, sans-serif" font-weight="900" font-size="18">IRONFORGE</text>
-                  <!-- Nav Ticker -->
-                  <rect x="180" y="12" width="280" height="26" rx="6" fill="#21262D" />
-                  <text x="192" y="29" fill="#CFD8CC" font-family="Barlow Condensed, sans-serif" font-size="13">⚡ Maria just finished 50 Kettlebell Swings</text>
-                  <rect x="490" y="12" width="125" height="26" rx="13" fill="#E8F25C" />
-                  <text x="506" y="29" fill="#0D1117" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14">BMI CALCULATOR</text>
-                  <!-- Hero -->
-                  <text x="36" y="110" fill="#E8F25C" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="20">STRENGTH &amp; CONDITIONING COMMUNITY</text>
-                  <text x="36" y="150" fill="#F6F7F2" font-family="Archivo, sans-serif" font-weight="900" font-size="32">More Than a Gym. Built on Iron.</text>
-                  <!-- Bento Grid Preview -->
-                  <rect x="36" y="180" width="180" height="95" rx="8" fill="#161B22" stroke="#2A1230" stroke-width="2" />
-                  <text x="50" y="215" fill="#E8F25C" font-family="Archivo, sans-serif" font-weight="800" font-size="15">Live Activity Ticker</text>
-                  <text x="50" y="235" fill="#CFD8CC" font-family="Hanken Grotesk, sans-serif" font-size="12">Community workout feed</text>
-
-                  <rect x="230" y="180" width="180" height="95" rx="8" fill="#E8F25C" />
-                  <text x="244" y="215" fill="#0D1117" font-family="Archivo, sans-serif" font-weight="900" font-size="15">Interactive BMI Tool</text>
-                  <text x="244" y="235" fill="#0D1117" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14">Calculate instantly in nav →</text>
-
-                  <rect x="424" y="180" width="180" height="95" rx="8" fill="#161B22" stroke="#2A1230" stroke-width="2" />
-                  <text x="438" y="215" fill="#F6F7F2" font-family="Archivo, sans-serif" font-weight="800" font-size="15">Bento Video Tour</text>
-                  <text x="438" y="235" fill="#CFD8CC" font-family="Hanken Grotesk, sans-serif" font-size="12">Explore the lifting floor</text>
-                  <!-- Bottom Bar -->
-                  <rect x="0" y="295" width="640" height="45" fill="#161B22" />
-                  <text x="36" y="322" fill="#E8F25C" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="16">⚡ Click "Interact live here" above to test the BMI calculator &amp; interactive site</text>
-                </svg>
+                <div class="real-preview-wrapper">
+                  <img src="images/preview-ironforge.png" alt="IronForge Gym Real Client Website Preview" class="real-preview-img" loading="lazy">
+                  <div class="real-preview-badge">
+                    <span class="badge-dot"></span>
+                    <span>Real Client Website</span>
+                  </div>
+                  <button type="button" class="real-preview-overlay-btn js-inline-toggle" data-project="1" data-url="https://gym-taupe-chi.vercel.app/">
+                    <span>▶ Click to Interact Live</span>
+                  </button>
+                </div>
               </div>
             </div>
           </article>
@@ -3523,42 +3633,16 @@ your real studio details:
                 <div class="inline-live-container">
                   <iframe class="inline-live-iframe" data-src="https://travel-agency-three-beta.vercel.app/" title="Wanderlust Travels Live Preview" loading="lazy"></iframe>
                 </div>
-                <!-- Stylized Brand Illustration Mockup -->
-                <svg viewBox="0 0 640 340" width="100%" height="auto" role="img" aria-label="Wanderlust Travels preview">
-                  <rect width="640" height="340" fill="#F6F7F2" />
-                  <rect x="0" y="0" width="640" height="50" fill="#2A1230" />
-                  <text x="32" y="31" fill="#F6F7F2" font-family="Archivo, sans-serif" font-weight="900" font-size="18">WANDERLUST TRAVELS</text>
-                  <!-- Destination Pills in Nav -->
-                  <rect x="220" y="14" width="60" height="22" rx="11" fill="#FF3D8B" />
-                  <text x="232" y="29" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13">KERALA</text>
-                  <rect x="290" y="14" width="50" height="22" rx="11" fill="#CFD8CC" />
-                  <text x="303" y="29" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13">BALI</text>
-                  <rect x="350" y="14" width="50" height="22" rx="11" fill="#CFD8CC" />
-                  <text x="365" y="29" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13">GOA</text>
-                  <rect x="490" y="12" width="125" height="26" rx="13" fill="#E8F25C" />
-                  <text x="506" y="29" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14">CUSTOM TOUR ↗</text>
-                  <!-- Hero -->
-                  <text x="36" y="105" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="20">CURATED DOMESTIC &amp; INTERNATIONAL TOURS</text>
-                  <text x="36" y="145" fill="#2A1230" font-family="Archivo, sans-serif" font-weight="900" font-size="32">Curated Journeys. Zero Hidden Fees.</text>
-                  <!-- Itinerary Package Cards -->
-                  <rect x="36" y="175" width="180" height="100" rx="8" fill="#CFD8CC" stroke="#2A1230" stroke-width="2" />
-                  <text x="50" y="205" fill="#2A1230" font-family="Archivo, sans-serif" font-weight="800" font-size="15">Mumbai Weekend</text>
-                  <text x="50" y="225" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15">3N/4D · Custom Itinerary</text>
-                  <text x="50" y="255" fill="#2A1230" font-family="Hanken Grotesk, sans-serif" font-size="12">Hotels + Sightseeing included</text>
-
-                  <rect x="230" y="175" width="180" height="100" rx="8" fill="#CFD8CC" stroke="#2A1230" stroke-width="2" />
-                  <text x="244" y="205" fill="#2A1230" font-family="Archivo, sans-serif" font-weight="800" font-size="15">Goa Beach Escape</text>
-                  <text x="244" y="225" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15">4N/5D · Couple &amp; Family</text>
-                  <text x="244" y="255" fill="#2A1230" font-family="Hanken Grotesk, sans-serif" font-size="12">Private transfers &amp; breakfast</text>
-
-                  <rect x="424" y="175" width="180" height="100" rx="8" fill="#FF3D8B" stroke="#2A1230" stroke-width="2" />
-                  <text x="438" y="205" fill="#2A1230" font-family="Archivo, sans-serif" font-weight="900" font-size="15">WhatsApp Booking</text>
-                  <text x="438" y="225" fill="#2A1230" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15">1-Click Custom Itinerary</text>
-                  <text x="438" y="255" fill="#2A1230" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="12">Plan directly with expert →</text>
-                  <!-- Bottom Bar -->
-                  <rect x="0" y="295" width="640" height="45" fill="#2A1230" />
-                  <text x="36" y="322" fill="#E8F25C" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="16">⚡ Click "Interact live here" above to test destinations &amp; full itineraries</text>
-                </svg>
+                <div class="real-preview-wrapper">
+                  <img src="images/preview-travel.png" alt="Wanderlust Travels Real Client Website Preview" class="real-preview-img" loading="lazy">
+                  <div class="real-preview-badge">
+                    <span class="badge-dot"></span>
+                    <span>Real Client Website</span>
+                  </div>
+                  <button type="button" class="real-preview-overlay-btn js-inline-toggle" data-project="2" data-url="https://travel-agency-three-beta.vercel.app/">
+                    <span>▶ Click to Interact Live</span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -3650,9 +3734,9 @@ your real studio details:
           <span class="station-dot"></span>
           <span>Stop 4 · Why shop &amp; business owners trust us</span>
         </div>
-        <h2 class="section-title" id="trust-heading">Built by two engineers you can actually call.</h2>
+        <h2 class="section-title" id="trust-heading">Built by a dedicated agency with leadership you can actually call.</h2>
         <p class="section-lead">
-          No agency middlemen, no confusing tech talk, and zero risk of paying for something you do not like.
+          Direct founder access, specialist team execution across design and engineering, and zero risk of paying for something you do not like.
         </p>
 
         <!-- Zero-Risk Guarantee Banner -->
@@ -3708,43 +3792,46 @@ your real studio details:
           </div>
 
           <div class="team-panel" id="team">
-            <h3>The two people building your site</h3>
-            <p>When you call ST Dev Solutions, you speak directly to the two of us who design and write the code.</p>
+            <h3>Leadership &amp; Dedicated Agency Specialists</h3>
+            <p>ST Dev Solutions is a full-service web agency in Bhubaneswar with dedicated team members across design, engineering, SEO, and copywriting — led directly by our founders.</p>
 
             <div class="tram-windows-grid">
-              <!-- Tusar Portrait in Oval Tram Window -->
+              <!-- Tusar Portrait in Oval Tram Window (1st Image) -->
               <div class="founder-card">
-                <div class="tram-oval" aria-hidden="true">
-                  <svg viewBox="0 0 140 180" width="140" height="180">
-                    <circle cx="70" cy="64" r="30" fill="#F6F7F2" stroke="#2A1230" stroke-width="5" />
-                    <path d="M40 56 C40 32, 100 32, 100 56" fill="#2A1230" />
-                    <circle cx="60" cy="64" r="3.5" fill="#2A1230" />
-                    <circle cx="80" cy="64" r="3.5" fill="#2A1230" />
-                    <path d="M60 76 Q70 83 80 76" fill="none" stroke="#2A1230" stroke-width="4" stroke-linecap="round" />
-                    <path d="M18 180 C18 124, 42 106, 70 106 C98 106, 122 124, 122 180 Z" fill="#FF3D8B" stroke="#2A1230" stroke-width="5" />
-                  </svg>
+                <div class="tram-oval" aria-label="Tusar - Co-Founder">
+                  <img src="images/tusar.jpg" alt="Tusar - Co-Founder" class="founder-photo">
                 </div>
                 <h4>Tusar</h4>
-                <span class="founder-role">Code, speed &amp; Google setup</span>
-                <p style="font-size:15px;margin:0;">Makes sure your website loads fast on mobile networks and ranks cleanly on Google Maps.</p>
+                <span class="founder-role">Co-Founder · Tech Architecture &amp; Performance</span>
+                <p style="font-size:15px;margin:0;">Leads our development team to ensure ultra-fast mobile loading, clean accessible code, and reliable server infrastructure.</p>
               </div>
 
-              <!-- Swapna Portrait in Oval Tram Window -->
+              <!-- Swadhin Panigrahi Portrait in Oval Tram Window (2nd Image) -->
               <div class="founder-card">
-                <div class="tram-oval" aria-hidden="true">
-                  <svg viewBox="0 0 140 180" width="140" height="180">
-                    <circle cx="70" cy="64" r="30" fill="#F6F7F2" stroke="#2A1230" stroke-width="5" />
-                    <path d="M36 62 C36 28, 104 28, 104 62" fill="#2A1230" />
-                    <circle cx="60" cy="64" r="3.5" fill="#2A1230" />
-                    <circle cx="80" cy="64" r="3.5" fill="#2A1230" />
-                    <path d="M60 76 Q70 83 80 76" fill="none" stroke="#2A1230" stroke-width="4" stroke-linecap="round" />
-                    <path d="M18 180 C18 124, 42 106, 70 106 C98 106, 122 124, 122 180 Z" fill="#E8F25C" stroke="#2A1230" stroke-width="5" />
-                  </svg>
+                <div class="tram-oval" aria-label="Swadhin Panigrahi - Founder">
+                  <img src="images/swadhin.jpg" alt="Swadhin Panigrahi - Founder" class="founder-photo">
                 </div>
-                <h4>Swapna</h4>
-                <span class="founder-role">Design, layout &amp; client care</span>
-                <p style="font-size:15px;margin:0;">Organises your photos, services, and content so customers understand your business in seconds.</p>
+                <h4>Swadhin Panigrahi</h4>
+                <span class="founder-role">Founder · Strategy &amp; Client Growth</span>
+                <p style="font-size:15px;margin:0;">Leads client strategy, brand positioning, and conversion architecture. Call directly: <strong>+91 93379 22291</strong>.</p>
               </div>
+            </div>
+
+            <!-- Multidisciplinary Agency Team Capability Strip -->
+            <div class="agency-capabilities-box">
+              <div class="agency-cap-header">
+                <span class="station-dot" style="background:var(--lime);width:10px;height:10px;"></span>
+                <span>ST Dev Solutions Agency Multidisciplinary Team</span>
+              </div>
+              <div class="agency-specialists-strip">
+                <span class="spec-tag">🎨 UI/UX &amp; Brand Designers</span>
+                <span class="spec-tag">⚡ Speed &amp; Frontend Engineers</span>
+                <span class="spec-tag">📍 Local SEO &amp; Google Maps Specialists</span>
+                <span class="spec-tag">✍️ Odia &amp; English Copywriters</span>
+                <span class="spec-tag">💬 WhatsApp Funnel Architects</span>
+                <span class="spec-tag">🛠️ Dedicated Maintenance &amp; Support</span>
+              </div>
+              <p class="agency-cap-subtext">Every client project is handled by dedicated specialists with different focused tasks under the personal oversight of Swadhin and Tusar.</p>
             </div>
           </div>
         </div>
@@ -3942,7 +4029,7 @@ your real studio details:
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer" id="faq-ans-2" role="region" aria-labelledby="faq-btn-2" hidden>
-              Because we only build websites for local businesses, we already know what works for clinics, sweet shops, salons, and cafés. After a 20-minute visit or phone call on Day 1, Tusar and Swapna build your actual mobile and desktop draft so you can test it on your phone within 72 hours.
+              Because we only build websites for local businesses, we already know what works for clinics, sweet shops, salons, and cafés. After a 20-minute visit or phone call on Day 1, our agency team led by Swadhin and Tusar builds your actual mobile and desktop draft so you can test it on your phone within 72 hours.
             </div>
           </div>
 
@@ -4001,9 +4088,9 @@ your real studio details:
             </div>
             <div class="bus-sign-pole" aria-hidden="true"></div>
             <div class="direct-contact-card">
-              <div><strong>Direct phone / WhatsApp:</strong> [REPLACE_PHONE_DISPLAY]</div>
-              <div><strong>Email:</strong> [REPLACE_EMAIL]</div>
-              <div><strong>Studio base:</strong> [REPLACE_ADDRESS]</div>
+              <div><strong>Direct phone / WhatsApp:</strong> +91 93379 22291</div>
+              <div><strong>Email:</strong> stdevsolutions@gmail.com</div>
+              <div><strong>Studio base:</strong> Saheed Nagar, Bhubaneswar, Odisha 751007</div>
             </div>
           </div>
 
@@ -4033,7 +4120,7 @@ your real studio details:
               </div>
               <div class="field-group">
                 <label for="owner-phone">Your phone number *</label>
-                <input type="tel" id="owner-phone" name="ownerPhone" placeholder="e.g. 98765 43210" required>
+                <input type="tel" id="owner-phone" name="ownerPhone" placeholder="e.g. 93379 22291" required>
               </div>
             </div>
 
@@ -4047,7 +4134,7 @@ your real studio details:
             </button>
 
             <div class="form-feedback" id="form-feedback" role="status" aria-live="polite">
-              Opening WhatsApp with your details... If WhatsApp did not open automatically, call or message us at <strong>[REPLACE_PHONE_DISPLAY]</strong>.
+              Opening WhatsApp with your details... If WhatsApp did not open automatically, call or message us at <strong>+91 93379 22291</strong>.
             </div>
           </form>
         </div>
@@ -4059,7 +4146,7 @@ your real studio details:
   <a
     class="floating-wa"
     id="floating-wa-btn"
-    href="https://wa.me/919876543210?text=Hi%20Tusar%20%26%20ST%20Dev%20Solutions%2C%20I%20would%20like%20a%20free%20website%20audit%20for%20my%20business."
+    href="https://wa.me/919337922291?text=Hi%20Swadhin%2C%20Tusar%20%26%20ST%20Dev%20Solutions%2C%20I%20would%20like%20to%20get%20a%20free%203-day%20draft%20for%20my%20business."
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Chat with ST Dev Solutions on WhatsApp"
@@ -4083,7 +4170,7 @@ your real studio details:
       <div class="footer-brand">
         <h3>ST Dev Solutions</h3>
         <p style="margin:0;color:var(--bg);max-width:48ch;font-size:18px;">
-          A two-person web studio in Bhubaneswar, Odisha building high-impact websites for local gyms, travel agencies, clinics, and businesses across Odisha.
+          A full-service web agency in Bhubaneswar, Odisha building high-impact websites for local gyms, travel agencies, clinics, and businesses across Odisha.
         </p>
         <div style="margin-top:16px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--lime);">Live Client Sites:</span>
@@ -4096,9 +4183,9 @@ your real studio details:
       </div>
 
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;">
-        <p style="margin:0 0 6px;"><strong>Address:</strong> [REPLACE_ADDRESS]</p>
-        <p style="margin:0 0 6px;"><strong>Email:</strong> [REPLACE_EMAIL] · <strong>Phone:</strong> [REPLACE_PHONE_DISPLAY]</p>
-        <p style="margin:0;color:var(--lime);">© 2026 ST Dev Solutions. Built by Tusar &amp; Swapna in Bhubaneswar.</p>
+        <p style="margin:0 0 6px;"><strong>Address:</strong> Saheed Nagar, Bhubaneswar, Odisha 751007</p>
+        <p style="margin:0 0 6px;"><strong>Email:</strong> stdevsolutions@gmail.com · <strong>Phone:</strong> +91 93379 22291</p>
+        <p style="margin:0;color:var(--lime);">© 2026 ST Dev Solutions Agency. Founded by Swadhin Panigrahi &amp; Tusar in Bhubaneswar.</p>
       </div>
     </div>
   </footer>
@@ -4111,7 +4198,7 @@ your real studio details:
       "use strict";
 
       /* Replace this constant with your real 12-digit WhatsApp number (91 + 10 digits) */
-      var STUDIO_WHATSAPP = "919876543210"; // [REPLACE_WHATSAPP_NUMBER]
+      var STUDIO_WHATSAPP = "919337922291"; // [REPLACE_WHATSAPP_NUMBER]
 
       var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -4307,12 +4394,19 @@ your real studio details:
           var container = card.querySelector(".inline-live-container");
           var iframe = card.querySelector(".inline-live-iframe");
           var loader = card.querySelector(".iframe-loader-bar");
+          var allCardToggles = card.querySelectorAll(".js-inline-toggle");
           if (!container || !iframe) return;
 
           var isActive = container.classList.contains("is-active");
           if (isActive) {
             container.classList.remove("is-active");
-            btn.innerHTML = "<span>▶ Interact live here</span>";
+            allCardToggles.forEach(function (b) {
+              if (b.classList.contains("real-preview-overlay-btn")) {
+                b.innerHTML = "<span>▶ Click to Interact Live</span>";
+              } else {
+                b.innerHTML = "<span>▶ Interact live</span>";
+              }
+            });
           } else {
             if (!iframe.src || iframe.src === "about:blank" || iframe.src === window.location.href) {
               if (loader) loader.style.display = "block";
@@ -4322,7 +4416,13 @@ your real studio details:
               };
             }
             container.classList.add("is-active");
-            btn.innerHTML = "<span>⏹ Exit live preview</span>";
+            allCardToggles.forEach(function (b) {
+              if (b.classList.contains("real-preview-overlay-btn")) {
+                b.innerHTML = "<span>⏹ Exit Live View</span>";
+              } else {
+                b.innerHTML = "<span>⏹ Exit live</span>";
+              }
+            });
           }
         });
       });
@@ -4487,7 +4587,7 @@ your real studio details:
         }
 
         if (fareWaLink) {
-          var waMessage = "Hi Tusar & ST Dev Solutions, I used your price estimator:\n" +
+          var waMessage = "Hi Swadhin, Tusar & ST Dev Solutions, I used your price estimator:\n" +
             "- Package: " + items.join(", ") + "\n" +
             "- Estimated range: " + rangeText + "\n" +
             "Can we discuss a 3-day draft for my business?";
@@ -4534,7 +4634,7 @@ your real studio details:
           var ownerPhone = document.getElementById("owner-phone").value.trim();
           var bizGoal = document.getElementById("biz-goal").value.trim();
 
-          var msg = "Hi Tusar & ST Dev Solutions,\n" +
+          var msg = "Hi Swadhin, Tusar & ST Dev Solutions,\n" +
             "I would like a free website audit & 3-day draft.\n\n" +
             "• Name: " + ownerName + "\n" +
             "• Business: " + shopName + " (" + bizType + ")\n" +
