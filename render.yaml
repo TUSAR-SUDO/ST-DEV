@@ -8,12 +8,10 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
       - key: MONGODB_URI
-        value: mongodb+srv://tusar:dmwU9yp5u4iYTT1w@cluster0.rd6yjeg.mongodb.net/ST-DEV-Solutions?retryWrites=true&w=majority
+        sync: false
       - key: STUDIO_PASSWORD
-        value: Stdevsolutions1523
+        sync: false
       - key: DEFAULT_UPI_ID
         value: swadhinpanigrahi44@okhdfcbank
       - key: FRONTEND_URL
