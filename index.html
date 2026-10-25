@@ -181,7 +181,32 @@ your real studio details:
         display: flex;
       }
       body {
-        padding-bottom: 68px;
+        padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+      }
+    }
+    @media (max-width: 600px) {
+      .station-nav-label {
+        display: none;
+      }
+      .sticky-station-bar {
+        padding: 6px 8px;
+      }
+      .station-pill {
+        padding: 4px 9px;
+        font-size: 12px;
+        gap: 4px;
+      }
+      .station-pill span {
+        padding: 1px 4px;
+        font-size: 9px;
+      }
+      .dock-btn {
+        padding: 10px 6px;
+        font-size: 12.5px;
+        gap: 6px;
+      }
+      .dock-icon {
+        font-size: 14px;
       }
     }
     .dock-btn {
@@ -3962,19 +3987,12 @@ your real studio details:
       }
 
       .wrap {
-        padding: 0 16px 0 32px;
+        padding: 0 16px;
       }
 
-      /* Clean Left-Side Route Spine */
+      /* Clean Left-Side Route Spine - Hidden on Mobile to prevent card overlap & asymmetry */
       body::before {
-        content: "";
-        position: fixed;
-        left: 10px;
-        top: 0;
-        bottom: 0;
-        width: 5px;
-        background: var(--ink);
-        z-index: 40;
+        display: none !important;
       }
 
       .route-connector,
@@ -3999,18 +4017,19 @@ your real studio details:
       /* Hero Section */
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
       }
 
       .hero-headline {
-        font-size: clamp(38px, 10vw, 68px);
-        margin-bottom: 20px;
-        line-height: 0.95;
+        font-size: clamp(36px, 9.5vw, 64px);
+        margin-bottom: 18px;
+        line-height: 0.98;
       }
 
       .hero-sub {
-        font-size: 18px;
-        margin-bottom: 24px;
+        font-size: 17px;
+        line-height: 1.5;
+        margin-bottom: 22px;
       }
 
       .hero-actions {
@@ -4024,15 +4043,42 @@ your real studio details:
         text-align: center;
         justify-content: center;
         width: 100%;
-        min-height: 52px;
+        min-height: 50px;
       }
 
+      /* Route Ticket Card */
       .route-ticket-card {
-        padding: 20px 16px;
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+
+      .ticket-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .ticket-route-meta {
+        font-size: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        width: 100%;
+      }
+
+      .ticket-route-meta span:nth-child(2) {
+        display: none;
+      }
+
+      .ticket-badge {
+        font-size: 14px;
+        padding: 3px 10px;
       }
 
       .ba-stage {
-        height: 290px;
+        height: 260px;
+        border-radius: 10px;
       }
 
       .ba-controls {
@@ -4040,10 +4086,16 @@ your real studio details:
       }
 
       .ba-btn {
-        font-size: 15px;
-        padding: 6px 10px;
+        font-size: 13.5px;
+        padding: 6px 8px;
         flex: 1;
         text-align: center;
+      }
+
+      .ticket-footer {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: left;
       }
 
       /* How We Work 4 Stations */
@@ -4053,23 +4105,24 @@ your real studio details:
       }
 
       .station-panel {
-        padding: 20px;
+        padding: 20px 16px;
+        border-radius: 14px;
       }
 
       /* Live Build Demo */
       .demo-section {
-        padding: 56px 0;
+        padding: 48px 0;
       }
 
       .demo-toolbar {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
-        padding: 12px 14px;
+        gap: 8px;
+        padding: 10px 12px;
       }
 
       .demo-url {
-        font-size: 14px;
+        font-size: 13px;
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -4078,31 +4131,31 @@ your real studio details:
 
       .demo-steps-bar {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        padding: 10px;
+        gap: 6px;
+        padding: 8px;
       }
 
       .demo-step-pill {
-        font-size: 14px;
+        font-size: 13px;
         padding: 6px 8px;
         text-align: center;
       }
 
       .demo-canvas {
-        min-height: 380px;
+        min-height: 350px;
       }
 
       /* Work Section */
       .work-section {
-        padding: 56px 0;
+        padding: 48px 0;
       }
 
       .work-quick-switcher {
         overflow-x: auto;
         white-space: nowrap;
-        padding: 8px 12px;
-        margin-bottom: 32px;
-        gap: 8px;
+        padding: 6px 8px;
+        margin-bottom: 24px;
+        gap: 6px;
         scrollbar-width: none;
         -webkit-overflow-scrolling: touch;
       }
@@ -4116,13 +4169,13 @@ your real studio details:
       }
 
       .work-switch-btn {
-        padding: 6px 14px;
-        font-size: 16px;
+        padding: 6px 12px;
+        font-size: 15px;
         flex-shrink: 0;
       }
 
       .case-study-row {
-        gap: 20px;
+        gap: 18px;
       }
 
       .case-study-row.case-1 .browser-window,
@@ -4138,32 +4191,46 @@ your real studio details:
       .browser-chrome {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
-        padding: 10px 14px;
+        gap: 8px;
+        padding: 10px 12px;
       }
 
       .browser-actions {
         width: 100%;
-        justify-content: flex-start;
+        display: flex;
+        flex-wrap: wrap;
         gap: 6px;
       }
 
       .chrome-btn {
-        font-size: 14px;
+        font-size: 13.5px;
         padding: 6px 10px;
-        min-height: 40px;
+        min-height: 38px;
+      }
+
+      .chrome-btn.chrome-btn-primary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        order: -1;
+      }
+
+      .chrome-btn:not(.chrome-btn-primary) {
+        flex: 1;
+        justify-content: center;
+        text-align: center;
       }
 
       .browser-body {
-        min-height: 300px;
+        min-height: 280px;
       }
 
       .case-details {
-        padding: 20px;
+        padding: 18px 16px;
       }
 
       .case-details h3 {
-        font-size: 26px;
+        font-size: 24px;
       }
 
       /* Station Inspector Modal on Mobile (Full Screen Native Experience) */
@@ -4180,8 +4247,8 @@ your real studio details:
       }
 
       .inspector-transit-bar {
-        padding: 10px 14px;
-        gap: 8px;
+        padding: 8px 12px;
+        gap: 6px;
       }
 
       .inspector-title {
@@ -4189,8 +4256,8 @@ your real studio details:
       }
 
       .inspector-station-pill {
-        font-size: 15px;
-        padding: 3px 10px;
+        font-size: 14px;
+        padding: 3px 8px;
       }
 
       .inspector-vp-group {
@@ -4198,13 +4265,13 @@ your real studio details:
       }
 
       .inspector-nav-btn {
-        padding: 4px 10px;
-        font-size: 14px;
+        padding: 4px 8px;
+        font-size: 13px;
       }
 
       .inspector-tab-btn {
-        padding: 4px 10px;
-        font-size: 14px;
+        padding: 4px 8px;
+        font-size: 13px;
       }
 
       .inspector-viewport-wrapper.is-desktop,
@@ -4216,19 +4283,57 @@ your real studio details:
       }
 
       .inspector-footer-strip {
-        padding: 8px 14px;
-        font-size: 14px;
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      /* Quotation & Billing Studio Modal on Mobile */
+      .quotation-studio-modal {
+        padding: 0;
+      }
+
+      .qs-dialog {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .qs-top-bar {
+        padding: 8px 10px;
+        gap: 6px;
+      }
+
+      .qs-brand-title {
+        font-size: 15px;
+      }
+
+      .qs-actions-strip {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .qs-action-btn {
+        font-size: 12px;
+        padding: 5px 8px;
+        flex: 1 1 auto;
+        text-align: center;
+        justify-content: center;
       }
 
       /* Trust & Team */
       .trust-section {
-        padding: 56px 0;
+        padding: 48px 0;
       }
 
       .promise-banner {
         grid-template-columns: 1fr;
-        padding: 24px 18px;
-        gap: 20px;
+        padding: 20px 16px;
+        gap: 16px;
       }
 
       .trust-badges-row {
@@ -4237,12 +4342,12 @@ your real studio details:
 
       .trust-split {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
       }
 
       .included-panel,
       .team-panel {
-        padding: 20px;
+        padding: 18px 16px;
       }
 
       .checklist-grid {
@@ -4261,7 +4366,7 @@ your real studio details:
 
       /* Price Estimator */
       .estimator-section {
-        padding: 56px 0;
+        padding: 48px 0;
       }
 
       .estimator-machine {
@@ -4271,56 +4376,56 @@ your real studio details:
       .estimator-controls {
         border-right: none;
         border-bottom: 5px dashed var(--ink);
-        padding: 20px 16px;
+        padding: 18px 14px;
       }
 
       .tier-options {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
       }
 
       .addon-options {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
       }
 
       .estimator-ticket-output {
-        padding: 20px 16px;
+        padding: 18px 14px;
       }
 
       .fare-amount {
-        font-size: clamp(38px, 12vw, 56px);
+        font-size: clamp(34px, 11vw, 50px);
       }
 
       /* FAQ Accordion */
       .faq-section {
-        padding: 56px 0;
+        padding: 48px 0;
       }
 
       .faq-trigger {
-        padding: 16px 18px;
-        font-size: 18px;
-        min-height: 54px;
+        padding: 14px 16px;
+        font-size: 17px;
+        min-height: 50px;
       }
 
       .faq-answer {
-        padding: 0 18px 18px;
-        font-size: 16px;
+        padding: 0 16px 16px;
+        font-size: 15px;
       }
 
       /* Contact Terminal */
       .contact-section {
-        padding: 56px 0;
+        padding: 48px 0;
       }
 
       .terminal-block {
         grid-template-columns: 1fr;
-        padding: 20px 16px;
-        gap: 24px;
+        padding: 18px 14px;
+        gap: 20px;
       }
 
       .bus-sign-bubble h2 {
-        font-size: 28px;
+        font-size: 26px;
       }
 
       .bus-sign-pole {
@@ -4334,36 +4439,31 @@ your real studio details:
       .field-group input,
       .field-group select,
       .field-group textarea {
-        font-size: 16px; /* Prevents auto zoom on iOS */
-        padding: 14px;
+        font-size: 16px; /* Prevents auto zoom on iOS Safari */
+        padding: 12px 14px;
         min-height: 48px;
       }
 
-      /* Floating WhatsApp Button on Mobile */
+      /* Hide redundant floating WhatsApp button on mobile because .mobile-action-dock is already pinned */
       .floating-wa {
-        bottom: 16px;
-        right: 14px;
-        padding: 10px 16px;
-        font-size: 17px;
-        z-index: 999;
-        box-shadow: 3px 3px 0 var(--ink);
+        display: none !important;
       }
 
       /* Footer */
       .site-footer {
-        padding: 48px 0 36px;
+        padding: 40px 0 calc(32px + env(safe-area-inset-bottom, 0px));
       }
 
       .footer-grid {
         flex-direction: column;
         align-items: flex-start;
-        gap: 24px;
+        gap: 20px;
       }
     }
 
     @media (max-width: 480px) {
       .wrap {
-        padding: 0 12px 0 24px;
+        padding: 0 12px;
       }
 
       .section-title {
@@ -4372,13 +4472,13 @@ your real studio details:
       }
 
       .hero-headline {
-        font-size: clamp(32px, 8.8vw, 48px);
+        font-size: clamp(30px, 8.5vw, 44px);
         line-height: 0.95;
       }
 
       .station-tag {
-        font-size: 14px;
-        padding: 4px 10px;
+        font-size: 13px;
+        padding: 4px 8px;
         white-space: normal;
         display: inline-flex;
         align-items: center;
@@ -4386,8 +4486,42 @@ your real studio details:
         max-width: 100%;
       }
 
+      .ba-stage {
+        height: 230px;
+      }
+
+      .ba-handle {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+      }
+
+      .demo-toolbar {
+        padding: 8px 10px;
+        gap: 6px;
+      }
+
+      .demo-url {
+        font-size: 12px;
+      }
+
       .demo-steps-bar {
         grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .demo-step-pill {
+        font-size: 13px;
+        padding: 6px;
+      }
+
+      .dock-btn {
+        font-size: 12px;
+        padding: 9px 4px;
+      }
+
+      .dock-icon {
+        font-size: 13px;
       }
     }
 

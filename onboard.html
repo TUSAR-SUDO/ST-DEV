@@ -656,6 +656,154 @@
       transform: translateY(0);
       opacity: 1;
     }
+
+    /* Mobile Responsiveness & Polish (360px - 768px) */
+    @media (max-width: 680px) {
+      body {
+        padding: 12px 10px calc(48px + env(safe-area-inset-bottom, 0px));
+      }
+
+      .top-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 10px;
+      }
+
+      .brand-wrap {
+        justify-content: flex-start;
+      }
+
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-text h1 {
+        font-size: 18px;
+      }
+
+      .nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .nav-btn {
+        justify-content: center;
+        text-align: center;
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+
+      .nav-btn.primary {
+        grid-column: 1 / -1;
+      }
+
+      .hero-banner {
+        padding: 20px 16px;
+        border-radius: 10px;
+      }
+
+      .hero-banner h2 {
+        font-size: 24px;
+        line-height: 1.15;
+      }
+
+      .hero-banner p {
+        font-size: 14px;
+      }
+
+      .progress-card {
+        top: 10px;
+        padding: 10px 14px;
+        gap: 10px;
+      }
+
+      .progress-title {
+        font-size: 14px;
+      }
+
+      .progress-bar-wrap {
+        min-width: 140px;
+        max-width: 100%;
+      }
+
+      .station-block {
+        padding: 18px 14px;
+        margin-bottom: 18px;
+        border-radius: 10px;
+      }
+
+      .station-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .station-title-wrap h3 {
+        font-size: 18px;
+      }
+
+      .service-table-wrap {
+        border: none;
+        background: transparent;
+      }
+
+      .service-table, 
+      .service-table tbody, 
+      .service-table tr, 
+      .service-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .service-table thead {
+        display: none;
+      }
+
+      .service-table tr {
+        background: #fff;
+        border: 2px solid var(--ink);
+        border-radius: 8px;
+        margin-bottom: 12px;
+        padding: 10px;
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+
+      .service-table td {
+        padding: 4px 0;
+        border-bottom: none;
+      }
+
+      .service-table td:last-child {
+        text-align: right !important;
+        margin-top: 6px;
+      }
+
+      .service-table input {
+        font-size: 15px;
+        padding: 8px 10px;
+      }
+
+      .btn-row-del {
+        padding: 6px 14px;
+        font-size: 13px;
+        display: inline-block;
+      }
+
+      .dropzone {
+        padding: 24px 14px;
+      }
+
+      .btn-submit-intake {
+        font-size: 17px;
+        padding: 14px 20px;
+      }
+    }
   </style>
 </head>
 <body>
