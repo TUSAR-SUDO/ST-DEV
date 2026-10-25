@@ -3,6 +3,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/api/:match*",
+      "destination": "https://st-dev-backend.onrender.com/api/:match*"
+    },
+    {
       "source": "/onboard",
       "destination": "/onboard.html"
     },

@@ -7695,6 +7695,8 @@ your real studio details:
 
       // ==========================================
       // PAYMENT LEDGER & BACKEND API INTEGRATION
+      var ST_API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? "" : "https://st-dev-backend.onrender.com";
+
       // ==========================================
       var ledgerModal = document.getElementById("qs-ledger-modal");
       var btnOpenLedger = document.getElementById("qs-ledger-btn");
@@ -7741,7 +7743,7 @@ your real studio details:
           var inv = getActiveInvoiceData();
           btnSaveInvoiceDb.textContent = "⏳ Saving...";
 
-          fetch("/api/invoices", {
+          fetch(ST_API_BASE + "/api/invoices", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inv)
@@ -7790,7 +7792,7 @@ your real studio details:
         var tbody = document.getElementById("ledger-table-body");
         if (!tbody) return;
 
-        fetch("/api/ledger")
+        fetch(ST_API_BASE + "/api/ledger")
           .then(function (res) { return res.json(); })
           .then(function (data) {
             if (data.success) {
@@ -7872,7 +7874,7 @@ your real studio details:
         var txn = prompt("Enter payment UTR / reference for invoice " + invId + " (optional):", "UPI/VERIFIED");
         if (txn === null) return;
 
-        fetch("/api/invoices/" + encodeURIComponent(invId) + "/verify-payment", {
+        fetch(ST_API_BASE + "/api/invoices/" + encodeURIComponent(invId) + "/verify-payment", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ password: "Stdevsolutions1523", txnRef: txn, verifiedBy: "Swadhin Panigrahi" })

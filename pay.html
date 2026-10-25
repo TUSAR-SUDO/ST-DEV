@@ -736,6 +736,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      var ST_API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? "" : "https://st-dev-backend.onrender.com";
       // Parse Query Params
       var params = new URLSearchParams(window.location.search);
       var queryId = params.get("id") || params.get("inv") || "INV-STDS-2026-001";
@@ -759,7 +760,7 @@
       };
 
       // Try fetching from Backend API
-      fetch("/api/invoices/" + encodeURIComponent(queryId))
+      fetch(ST_API_BASE + "/api/invoices/" + encodeURIComponent(queryId))
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data.success && data.invoice) {
@@ -845,7 +846,7 @@
         btnSubmitUtr.disabled = true;
         btnSubmitUtr.textContent = "Submitting...";
 
-        fetch("/api/invoices/" + encodeURIComponent(currentInvoice.id) + "/submit-utr", {
+        fetch(ST_API_BASE + "/api/invoices/" + encodeURIComponent(currentInvoice.id) + "/submit-utr", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ txnRef: utrVal, clientPhone: currentInvoice.clientPhone })
@@ -877,7 +878,7 @@
         if (pass === "Stdevsolutions1523") {
           var txn = prompt("Enter payment UTR or reference (optional):", currentInvoice.txnRef || "UPI/VERIFIED");
           
-          fetch("/api/invoices/" + encodeURIComponent(currentInvoice.id) + "/verify-payment", {
+          fetch(ST_API_BASE + "/api/invoices/" + encodeURIComponent(currentInvoice.id) + "/verify-payment", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ password: pass, txnRef: txn, verifiedBy: "Swadhin Panigrahi" })

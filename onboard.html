@@ -969,6 +969,7 @@
   <script>
     // Live Checklist Tracker & Dynamic Service Table Logic
     document.addEventListener("DOMContentLoaded", function () {
+      var ST_API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? "" : "https://st-dev-backend.onrender.com";
       var form = document.getElementById("onboard-form");
       var trackInputs = document.querySelectorAll(".track-input");
       var progressFill = document.getElementById("progress-fill");
@@ -1170,7 +1171,7 @@
         formData.append("services", JSON.stringify(getServicesArray()));
         formData.append("checklistProgress", progressPercent.textContent.replace("%", ""));
 
-        fetch("/api/onboard", {
+        fetch(ST_API_BASE + "/api/onboard", {
           method: "POST",
           body: formData
         })
