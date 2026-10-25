@@ -2217,21 +2217,186 @@ your real studio details:
     }
 
     /* ==========================================================================
-       11. RESPONSIVE MOBILE LAYOUT (Vertical Left-Side Route Line on Phone)
+       10. ROUTE READING PROGRESS & MOBILE TRANSIT DRAWER
+       ========================================================================== */
+    .route-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 6px;
+      background: var(--pink);
+      border-bottom: 2px solid var(--ink);
+      z-index: 999999;
+      width: 0%;
+      transition: width 120ms linear;
+      pointer-events: none;
+    }
+
+    /* Mobile Transit Menu Button & Drawer */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      background: var(--lime);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      border-radius: 999px;
+      padding: 6px 16px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
+      touch-action: manipulation;
+    }
+
+    .mobile-menu-btn:active {
+      transform: translateY(2px);
+      box-shadow: none;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--ink);
+      color: var(--panel);
+      z-index: 99998;
+      display: none;
+      flex-direction: column;
+      padding: 24px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-drawer.is-open {
+      display: flex;
+    }
+
+    .mobile-drawer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid rgba(246, 247, 242, 0.2);
+    }
+
+    .mobile-drawer-title {
+      font-family: "Archivo", sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      color: var(--lime);
+    }
+
+    .mobile-drawer-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--pink);
+      border: 2px solid var(--panel);
+      color: var(--ink);
+      font-size: 22px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mobile-stations-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-stations-list a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--panel);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      transition: background var(--dur-luxury) var(--ease-luxury);
+    }
+
+    .mobile-stations-list a:active,
+    .mobile-stations-list a:hover {
+      background: rgba(246, 247, 242, 0.1);
+      border-color: var(--lime);
+      color: var(--lime);
+    }
+
+    .mobile-station-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* Tactile Micro-Interactions on Interactive Elements */
+    .btn:active,
+    .btn-secondary:active,
+    .work-switch-btn:active,
+    .chrome-btn:active,
+    .ba-btn:active,
+    .demo-toggle-btn:active,
+    .demo-step-pill:active,
+    .tier-label:active,
+    .addon-label:active,
+    .faq-trigger:active {
+      transform: translateY(2px) scale(0.985);
+    }
+
+    /* Scroll-reveal smooth transitions */
+    .station-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease-luxury), transform 700ms var(--ease-luxury);
+    }
+
+    .station-reveal.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       11. RESPONSIVE MOBILE LAYOUT (Flawless on 360px - 980px)
        ========================================================================== */
     @media (max-width: 980px) {
-      .wrap {
-        padding: 0 20px 0 42px;
+      body {
+        overflow-x: hidden;
       }
 
-      /* Continuous Vertical Left-Side Transit Line on Mobile */
+      .wrap {
+        padding: 0 16px 0 32px;
+      }
+
+      /* Clean Left-Side Route Spine */
       body::before {
         content: "";
         position: fixed;
-        left: 14px;
+        left: 10px;
         top: 0;
         bottom: 0;
-        width: 6px;
+        width: 5px;
         background: var(--ink);
         z-index: 40;
       }
@@ -2242,47 +2407,146 @@ your real studio details:
         display: none;
       }
 
+      /* Mobile Nav */
       .station-nav {
-        gap: 16px;
-        flex-wrap: wrap;
-        padding-bottom: 12px;
-      }
-      .station-nav::after,
-      .station-nav li::after {
         display: none;
       }
 
-      .hero-grid,
-      .promise-banner,
-      .trust-split,
-      .estimator-machine,
-      .terminal-block,
-      .demo-mock-hero {
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .nav-bar {
+        align-items: center;
+      }
+
+      /* Hero Section */
+      .hero-grid {
         grid-template-columns: 1fr;
+        gap: 32px;
       }
 
-      .process-grid,
-      .tier-options,
-      .testimonials-grid,
-      .demo-mock-cards {
+      .hero-headline {
+        font-size: clamp(38px, 10vw, 68px);
+        margin-bottom: 20px;
+        line-height: 0.95;
+      }
+
+      .hero-sub {
+        font-size: 18px;
+        margin-bottom: 24px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .hero-actions .btn,
+      .hero-actions .btn-secondary {
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+      }
+
+      .route-ticket-card {
+        padding: 20px 16px;
+      }
+
+      .ba-stage {
+        height: 290px;
+      }
+
+      .ba-controls {
+        gap: 6px;
+      }
+
+      .ba-btn {
+        font-size: 15px;
+        padding: 6px 10px;
+        flex: 1;
+        text-align: center;
+      }
+
+      /* How We Work 4 Stations */
+      .process-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
       }
 
-      .addon-options,
-      .form-row,
-      .tram-windows-grid,
-      .trust-badges-row {
-        grid-template-columns: 1fr;
+      .station-panel {
+        padding: 20px;
       }
 
-      .estimator-controls {
-        border-right: none;
-        border-bottom: 5px dashed var(--ink);
-        padding: 24px;
+      /* Live Build Demo */
+      .demo-section {
+        padding: 56px 0;
       }
 
-      .estimator-ticket-output {
-        padding: 24px;
+      .demo-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 14px;
+      }
+
+      .demo-url {
+        font-size: 14px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .demo-steps-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 10px;
+      }
+
+      .demo-step-pill {
+        font-size: 14px;
+        padding: 6px 8px;
+        text-align: center;
+      }
+
+      .demo-canvas {
+        min-height: 380px;
+      }
+
+      /* Work Section */
+      .work-section {
+        padding: 56px 0;
+      }
+
+      .work-quick-switcher {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 8px 12px;
+        margin-bottom: 32px;
+        gap: 8px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .work-quick-switcher::-webkit-scrollbar {
+        display: none;
+      }
+
+      .switcher-label {
+        display: none;
+      }
+
+      .work-switch-btn {
+        padding: 6px 14px;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      .case-study-row {
+        gap: 20px;
       }
 
       .case-study-row.case-1 .browser-window,
@@ -2295,16 +2559,259 @@ your real studio details:
         grid-row: auto;
       }
 
-      .demo-steps-bar {
-        grid-template-columns: repeat(2, 1fr);
+      .browser-chrome {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 14px;
       }
 
-      .bus-Sign-pole {
+      .browser-actions {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 6px;
+      }
+
+      .chrome-btn {
+        font-size: 14px;
+        padding: 6px 10px;
+        min-height: 40px;
+      }
+
+      .browser-body {
+        min-height: 300px;
+      }
+
+      .case-details {
+        padding: 20px;
+      }
+
+      .case-details h3 {
+        font-size: 26px;
+      }
+
+      /* Station Inspector Modal on Mobile (Full Screen Native Experience) */
+      .station-inspector-modal {
+        padding: 0;
+      }
+
+      .inspector-dialog {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+      }
+
+      .inspector-transit-bar {
+        padding: 10px 14px;
+        gap: 8px;
+      }
+
+      .inspector-title {
         display: none;
       }
 
+      .inspector-station-pill {
+        font-size: 15px;
+        padding: 3px 10px;
+      }
+
+      .inspector-vp-group {
+        display: none;
+      }
+
+      .inspector-nav-btn {
+        padding: 4px 10px;
+        font-size: 14px;
+      }
+
+      .inspector-tab-btn {
+        padding: 4px 10px;
+        font-size: 14px;
+      }
+
+      .inspector-viewport-wrapper.is-desktop,
+      .inspector-viewport-wrapper.is-mobile {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0;
+      }
+
+      .inspector-footer-strip {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+
+      /* Trust & Team */
+      .trust-section {
+        padding: 56px 0;
+      }
+
+      .promise-banner {
+        grid-template-columns: 1fr;
+        padding: 24px 18px;
+        gap: 20px;
+      }
+
+      .trust-badges-row {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-split {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .included-panel,
+      .team-panel {
+        padding: 20px;
+      }
+
+      .checklist-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tram-windows-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      /* Price Estimator */
+      .estimator-section {
+        padding: 56px 0;
+      }
+
+      .estimator-machine {
+        grid-template-columns: 1fr;
+      }
+
+      .estimator-controls {
+        border-right: none;
+        border-bottom: 5px dashed var(--ink);
+        padding: 20px 16px;
+      }
+
+      .tier-options {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .addon-options {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .estimator-ticket-output {
+        padding: 20px 16px;
+      }
+
+      .fare-amount {
+        font-size: clamp(38px, 12vw, 56px);
+      }
+
+      /* FAQ Accordion */
+      .faq-section {
+        padding: 56px 0;
+      }
+
+      .faq-trigger {
+        padding: 16px 18px;
+        font-size: 18px;
+        min-height: 54px;
+      }
+
+      .faq-answer {
+        padding: 0 18px 18px;
+        font-size: 16px;
+      }
+
+      /* Contact Terminal */
+      .contact-section {
+        padding: 56px 0;
+      }
+
       .terminal-block {
-        padding: 24px;
+        grid-template-columns: 1fr;
+        padding: 20px 16px;
+        gap: 24px;
+      }
+
+      .bus-sign-bubble h2 {
+        font-size: 28px;
+      }
+
+      .bus-sign-pole {
+        display: none;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .field-group input,
+      .field-group select,
+      .field-group textarea {
+        font-size: 16px; /* Prevents auto zoom on iOS */
+        padding: 14px;
+        min-height: 48px;
+      }
+
+      /* Floating WhatsApp Button on Mobile */
+      .floating-wa {
+        bottom: 16px;
+        right: 14px;
+        padding: 10px 16px;
+        font-size: 17px;
+        z-index: 999;
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+
+      /* Footer */
+      .site-footer {
+        padding: 48px 0 36px;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wrap {
+        padding: 0 12px 0 24px;
+      }
+
+      .section-title {
+        font-size: clamp(26px, 7.5vw, 36px);
+        line-height: 1.05;
+      }
+
+      .hero-headline {
+        font-size: clamp(32px, 8.8vw, 48px);
+        line-height: 0.95;
+      }
+
+      .station-tag {
+        font-size: 14px;
+        padding: 4px 10px;
+        white-space: normal;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 100%;
+      }
+
+      .demo-steps-bar {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -2344,6 +2851,27 @@ your real studio details:
   </script>
 </head>
 <body>
+  <!-- Continuous Reading Progress Bar -->
+  <div class="route-progress-bar" id="route-progress-bar" aria-hidden="true"></div>
+
+  <!-- Mobile Transit Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Stations Route Menu">
+    <div class="mobile-drawer-top">
+      <div class="mobile-drawer-title">ST Dev · Stations Route</div>
+      <button type="button" class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close Stations Menu">✕</button>
+    </div>
+    <ul class="mobile-stations-list">
+      <li><a href="#top" class="mobile-station-link"><span class="mobile-station-num">0</span> Station 0 · Origin &amp; Before/After</a></li>
+      <li><a href="#how-we-work" class="mobile-station-link"><span class="mobile-station-num">1</span> Station 1 · How We Work (7-Day Route)</a></li>
+      <li><a href="#live-demo" class="mobile-station-link"><span class="mobile-station-num">2</span> Station 2 · 8-Second Live Build Demo</a></li>
+      <li><a href="#work" class="mobile-station-link"><span class="mobile-station-num">3</span> Station 3 · Real Client Work (3 Live Sites)</a></li>
+      <li><a href="#trust" class="mobile-station-link"><span class="mobile-station-num">4</span> Station 4 · Why Shop Owners Trust Us</a></li>
+      <li><a href="#estimator" class="mobile-station-link"><span class="mobile-station-num">5</span> Station 5 · Interactive Price Estimator</a></li>
+      <li><a href="#faq" class="mobile-station-link"><span class="mobile-station-num">6</span> Station 6 · Plain-English FAQ</a></li>
+      <li><a href="#contact" class="mobile-station-link"><span class="mobile-station-num">7</span> Station 7 · Contact &amp; Free 3-Day Draft</a></li>
+    </ul>
+  </div>
+
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true"></div>
 
@@ -2370,6 +2898,9 @@ your real studio details:
           <li><a href="#contact">Talk to us</a></li>
         </ul>
       </nav>
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle Station Menu">
+        <span>Stations ☰</span>
+      </button>
     </div>
   </header>
 
@@ -4016,6 +4547,93 @@ your real studio details:
           }
           window.open(waUrl, "_blank", "noopener,noreferrer");
         });
+      }
+
+      /* ----------------------------------------------------------------------
+         7B. ROUTE PROGRESS BAR, MOBILE DRAWER & SCROLLSPY
+         ---------------------------------------------------------------------- */
+      var progressBar = document.getElementById("route-progress-bar");
+      var mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      var mobileDrawer = document.getElementById("mobile-drawer");
+      var mobileDrawerClose = document.getElementById("mobile-drawer-close");
+      var mobileStationLinks = document.querySelectorAll(".mobile-station-link");
+
+      // Reading Progress Line
+      window.addEventListener("scroll", function () {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0 && progressBar) {
+          var pct = Math.min(100, Math.max(0, (window.scrollY / h) * 100));
+          progressBar.style.width = pct + "%";
+        }
+      }, { passive: true });
+
+      // Mobile Drawer Controls
+      function openMobileDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.add("is-open");
+        if (mobileMenuBtn) mobileMenuBtn.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMobileDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.remove("is-open");
+        if (mobileMenuBtn) mobileMenuBtn.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+
+      if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", openMobileDrawer);
+      if (mobileDrawerClose) mobileDrawerClose.addEventListener("click", closeMobileDrawer);
+
+      mobileStationLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          closeMobileDrawer();
+        });
+      });
+
+      // Touch drag enhancement for Before/After Slider
+      var baStageEl = document.getElementById("ba-stage");
+      if (baStageEl) {
+        var isDragging = false;
+        function handleTouchSplit(clientX) {
+          var rect = baStageEl.getBoundingClientRect();
+          var pct = ((clientX - rect.left) / rect.width) * 100;
+          pct = Math.max(5, Math.min(95, pct));
+          updateSplit(pct.toFixed(0));
+        }
+
+        baStageEl.addEventListener("touchstart", function (e) {
+          isDragging = true;
+          handleTouchSplit(e.touches[0].clientX);
+        }, { passive: true });
+
+        window.addEventListener("touchmove", function (e) {
+          if (!isDragging) return;
+          handleTouchSplit(e.touches[0].clientX);
+        }, { passive: true });
+
+        window.addEventListener("touchend", function () {
+          isDragging = false;
+        });
+      }
+
+      // Scroll-Reveal for Station Cards
+      var revealTargets = document.querySelectorAll(".station-panel, .case-study-row, .promise-banner, .estimator-machine, .terminal-block");
+      revealTargets.forEach(function (el) { el.classList.add("station-reveal"); });
+
+      if ("IntersectionObserver" in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        revealTargets.forEach(function (el) { revealObserver.observe(el); });
+      } else {
+        revealTargets.forEach(function (el) { el.classList.add("is-revealed"); });
       }
 
       /* ----------------------------------------------------------------------
