@@ -1,7 +1,15 @@
 /**
  * ST Dev Solutions — Agency Backend Server & API
- * Built with Express, MongoDB / Mongoose, and Multer for Client Intakes
+ * Built with Express, MongoDB Atlas (Mongoose), and Multer for Client Intakes
  */
+
+// Fix for Windows DNS resolution for MongoDB Atlas SRV records
+const dns = require('dns');
+try {
+  dns.setServers(['8.8.8.8', '1.1.1.1']);
+} catch (e) {
+  // fallback to system dns
+}
 
 require('dotenv').config();
 const express = require('express');
@@ -23,7 +31,7 @@ if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
 const LOCAL_DB_PATH = path.join(DATA_DIR, 'db.json');
 
-// Initialize local JSON DB if missing
+// Local JSON DB helper
 function getLocalData() {
   if (!fs.existsSync(LOCAL_DB_PATH)) {
     const initial = {
@@ -83,8 +91,80 @@ function getLocalData() {
 }
 
 function saveLocalData(data) {
-  fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
+  try {
+    fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Error saving local backup:', e.message);
+  }
 }
+
+// ==========================================
+// MONGOOSE SCHEMAS & MODELS
+// ==========================================
+const InvoiceSchema = new mongoose.Schema({
+  id: { type: String, required: true, unique: true },
+  invoiceNumber: { type: String, required: true },
+  receiptNumber: String,
+  clientName: String,
+  businessName: String,
+  clientPhone: String,
+  clientEmail: String,
+  address: String,
+  milestone: String,
+  milestoneTitle: String,
+  totalProjectAmount: Number,
+  payableAmount: Number,
+  status: { type: String, default: 'DUE' },
+  upiId: String,
+  txnRef: String,
+  items: Array,
+  terms: String,
+  verifiedBy: String,
+  paidAt: Date,
+  utrSubmittedAt: Date,
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
+}, { timestamps: true });
+
+const LedgerSchema = new mongoose.Schema({
+  id: { type: String, required: true, unique: true },
+  invoiceNumber: String,
+  receiptNumber: String,
+  clientName: String,
+  businessName: String,
+  amount: Number,
+  milestone: String,
+  paymentMethod: String,
+  status: String,
+  txnRef: String,
+  date: String
+}, { timestamps: true });
+
+const OnboardingSchema = new mongoose.Schema({
+  id: { type: String, required: true, unique: true },
+  businessName: String,
+  ownerName: String,
+  phone: String,
+  email: String,
+  industry: String,
+  tagline: String,
+  operatingHours: String,
+  address: String,
+  googleMapsUrl: String,
+  primaryGoal: String,
+  services: Array,
+  doctorOrStaffBios: String,
+  competitorOrRefLinks: String,
+  domainPreference: String,
+  uploadedAssets: Array,
+  checklistProgress: Number,
+  status: { type: String, default: 'Submitted' },
+  createdAt: { type: Date, default: Date.now }
+}, { timestamps: true });
+
+const InvoiceModel = mongoose.model('Invoice', InvoiceSchema);
+const LedgerModel = mongoose.model('Ledger', LedgerSchema);
+const OnboardingModel = mongoose.model('Onboarding', OnboardingSchema);
 
 // MongoDB Connection with seamless fallback
 let isMongoConnected = false;
@@ -92,9 +172,26 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 if (MONGODB_URI) {
   mongoose.connect(MONGODB_URI)
-    .then(() => {
+    .then(async () => {
       isMongoConnected = true;
-      console.log('⚡ Connected to MongoDB Atlas / Local MongoDB successfully!');
+      console.log('⚡ Connected to MongoDB Atlas cluster0.rd6yjeg.mongodb.net/ST-DEV-Solutions successfully!');
+      
+      // Seed initial invoice in MongoDB if empty
+      try {
+        const count = await InvoiceModel.countDocuments();
+        if (count === 0) {
+          const local = getLocalData();
+          if (local.invoices && local.invoices.length > 0) {
+            await InvoiceModel.insertMany(local.invoices);
+            if (local.ledger && local.ledger.length > 0) {
+              await LedgerModel.insertMany(local.ledger);
+            }
+            console.log('🌱 Seeded initial invoice & ledger records to MongoDB Atlas!');
+          }
+        }
+      } catch (seedErr) {
+        console.warn('Seed notice:', seedErr.message);
+      }
     })
     .catch((err) => {
       console.warn('⚠️ MongoDB connection failed. Running in persistent Local Storage mode.', err.message);
@@ -157,23 +254,50 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',
     agency: 'ST Dev Solutions',
-    founders: ['Swadhin Panigrahi (Founder)', 'Tusar (Co-Founder)'],
-    contact: '+91 93379 22291',
-    storageMode: isMongoConnected ? 'MongoDB' : 'Persistent Local Storage (data/db.json)'
+    database: isMongoConnected ? 'MongoDB Atlas (Connected)' : 'Local File Persistence',
+    cluster: isMongoConnected ? 'cluster0.rd6yjeg.mongodb.net/ST-DEV-Solutions' : 'local',
+    founders: ['Swadhin Panigrahi (Founder, +91 93379 22291)', 'Tusar (Co-Founder)'],
+    location: 'Saheed Nagar, Bhubaneswar, Odisha'
   });
 });
 
 // 1. INVOICES API
 // Get all invoices (Protected for Studio)
-app.get('/api/invoices', (req, res) => {
+app.get('/api/invoices', async (req, res) => {
+  if (isMongoConnected) {
+    try {
+      const invoices = await InvoiceModel.find().sort({ createdAt: -1 });
+      return res.json({ success: true, count: invoices.length, invoices, source: 'MongoDB Atlas' });
+    } catch (e) {
+      console.warn('MongoDB fetch failed, falling back to local:', e.message);
+    }
+  }
   const data = getLocalData();
-  res.json({ success: true, count: data.invoices.length, invoices: data.invoices });
+  res.json({ success: true, count: data.invoices.length, invoices: data.invoices, source: 'Local Storage' });
 });
 
 // Get single invoice by ID or invoiceNumber (Client Pay Portal)
-app.get('/api/invoices/:id', (req, res) => {
-  const data = getLocalData();
+app.get('/api/invoices/:id', async (req, res) => {
   const query = req.params.id.trim();
+
+  if (isMongoConnected) {
+    try {
+      const invoice = await InvoiceModel.findOne({
+        $or: [
+          { id: query },
+          { invoiceNumber: query },
+          { id: new RegExp('^' + query + '$', 'i') }
+        ]
+      });
+      if (invoice) {
+        return res.json({ success: true, invoice, source: 'MongoDB Atlas' });
+      }
+    } catch (e) {
+      console.warn('MongoDB query error:', e.message);
+    }
+  }
+
+  const data = getLocalData();
   const invoice = data.invoices.find(inv =>
     inv.id === query ||
     inv.invoiceNumber === query ||
@@ -184,21 +308,17 @@ app.get('/api/invoices/:id', (req, res) => {
   if (!invoice) {
     return res.status(404).json({ success: false, message: 'Invoice not found' });
   }
-  res.json({ success: true, invoice });
+  res.json({ success: true, invoice, source: 'Local Storage' });
 });
 
 // Create or update invoice from Studio
-app.post('/api/invoices', (req, res) => {
-  const data = getLocalData();
+app.post('/api/invoices', async (req, res) => {
   const invData = req.body;
-
   if (!invData.invoiceNumber) {
     return res.status(400).json({ success: false, message: 'Invoice number is required' });
   }
 
-  const existingIdx = data.invoices.findIndex(i => i.invoiceNumber === invData.invoiceNumber || i.id === invData.id);
   const now = new Date().toISOString();
-
   const record = {
     id: invData.id || ('INV-' + Date.now()),
     invoiceNumber: invData.invoiceNumber,
@@ -217,18 +337,9 @@ app.post('/api/invoices', (req, res) => {
     txnRef: invData.txnRef || '',
     items: invData.items || [],
     terms: invData.terms || '50% on Day-3 draft approval, 50% on final live deployment.',
-    updatedAt: now,
-    createdAt: existingIdx >= 0 ? data.invoices[existingIdx].createdAt : now
+    updatedAt: now
   };
 
-  if (existingIdx >= 0) {
-    data.invoices[existingIdx] = record;
-  } else {
-    data.invoices.unshift(record);
-  }
-
-  // Update or insert into Ledger
-  const ledgerIdx = data.ledger.findIndex(l => l.invoiceNumber === record.invoiceNumber);
   const ledgerRecord = {
     id: 'TXN-' + record.invoiceNumber.replace(/[^a-zA-Z0-9]/g, ''),
     invoiceNumber: record.invoiceNumber,
@@ -243,45 +354,93 @@ app.post('/api/invoices', (req, res) => {
     date: new Date().toLocaleDateString('en-IN')
   };
 
+  // 1. Save to MongoDB Atlas if connected
+  if (isMongoConnected) {
+    try {
+      await InvoiceModel.findOneAndUpdate({ id: record.id }, record, { upsert: true, new: true });
+      await LedgerModel.findOneAndUpdate({ id: ledgerRecord.id }, ledgerRecord, { upsert: true, new: true });
+      console.log('✓ Invoice saved to MongoDB Atlas:', record.invoiceNumber);
+    } catch (mongoErr) {
+      console.error('MongoDB Atlas save error:', mongoErr.message);
+    }
+  }
+
+  // 2. Always sync to local JSON backup
+  const data = getLocalData();
+  const existingIdx = data.invoices.findIndex(i => i.invoiceNumber === invData.invoiceNumber || i.id === invData.id);
+  if (existingIdx >= 0) {
+    data.invoices[existingIdx] = record;
+  } else {
+    data.invoices.unshift(record);
+  }
+
+  const ledgerIdx = data.ledger.findIndex(l => l.invoiceNumber === record.invoiceNumber);
   if (ledgerIdx >= 0) {
     data.ledger[ledgerIdx] = ledgerRecord;
   } else {
     data.ledger.unshift(ledgerRecord);
   }
-
   saveLocalData(data);
-  res.json({ success: true, message: 'Invoice saved successfully', invoice: record });
+
+  res.json({ success: true, message: 'Invoice saved successfully', invoice: record, storedIn: isMongoConnected ? 'MongoDB Atlas + Backup' : 'Local Backup' });
 });
 
 // Client submits payment proof (UTR / Ref number)
-app.post('/api/invoices/:id/submit-utr', (req, res) => {
-  const data = getLocalData();
+app.post('/api/invoices/:id/submit-utr', async (req, res) => {
   const query = req.params.id.trim();
   const { txnRef, clientPhone } = req.body;
 
-  const invoice = data.invoices.find(inv =>
+  let invoice = null;
+
+  if (isMongoConnected) {
+    try {
+      invoice = await InvoiceModel.findOneAndUpdate(
+        { $or: [{ id: query }, { invoiceNumber: query }] },
+        {
+          txnRef: txnRef || 'SUBMITTED_FOR_VERIFICATION',
+          status: 'PENDING_VERIFICATION',
+          utrSubmittedAt: new Date(),
+          ...(clientPhone && { clientPhone })
+        },
+        { new: true }
+      );
+      if (invoice) {
+        await LedgerModel.findOneAndUpdate(
+          { invoiceNumber: invoice.invoiceNumber },
+          { status: 'PENDING_VERIFICATION', txnRef: txnRef }
+        );
+      }
+    } catch (e) {
+      console.error('MongoDB UTR error:', e.message);
+    }
+  }
+
+  // Local sync
+  const data = getLocalData();
+  const localInv = data.invoices.find(inv =>
     inv.id === query ||
     inv.invoiceNumber === query ||
     inv.invoiceNumber.replace(/\//g, '-') === query
   );
+  if (localInv) {
+    localInv.txnRef = txnRef || 'SUBMITTED_FOR_VERIFICATION';
+    localInv.status = 'PENDING_VERIFICATION';
+    localInv.utrSubmittedAt = new Date().toISOString();
+    if (clientPhone) localInv.clientPhone = clientPhone;
+
+    const lItem = data.ledger.find(l => l.invoiceNumber === localInv.invoiceNumber);
+    if (lItem) {
+      lItem.status = 'PENDING_VERIFICATION';
+      lItem.txnRef = txnRef;
+    }
+    saveLocalData(data);
+    if (!invoice) invoice = localInv;
+  }
 
   if (!invoice) {
     return res.status(404).json({ success: false, message: 'Invoice not found' });
   }
 
-  invoice.txnRef = txnRef || 'SUBMITTED_FOR_VERIFICATION';
-  invoice.status = 'PENDING_VERIFICATION';
-  invoice.utrSubmittedAt = new Date().toISOString();
-  if (clientPhone) invoice.clientPhone = clientPhone;
-
-  // Update ledger
-  const lItem = data.ledger.find(l => l.invoiceNumber === invoice.invoiceNumber);
-  if (lItem) {
-    lItem.status = 'PENDING_VERIFICATION';
-    lItem.txnRef = txnRef;
-  }
-
-  saveLocalData(data);
   res.json({
     success: true,
     message: 'Payment details submitted for verification. The agency will confirm and mark your official receipt.',
@@ -290,37 +449,65 @@ app.post('/api/invoices/:id/submit-utr', (req, res) => {
 });
 
 // Agency marks payment as PAID (1-click verification)
-app.post('/api/invoices/:id/verify-payment', (req, res) => {
+app.post('/api/invoices/:id/verify-payment', async (req, res) => {
   const { password, txnRef, verifiedBy } = req.body;
   if (password !== STUDIO_PASSWORD) {
     return res.status(401).json({ success: false, message: 'Unauthorized: Invalid Studio password' });
   }
 
-  const data = getLocalData();
   const query = req.params.id.trim();
-  const invoice = data.invoices.find(inv =>
+  let invoice = null;
+
+  if (isMongoConnected) {
+    try {
+      invoice = await InvoiceModel.findOneAndUpdate(
+        { $or: [{ id: query }, { invoiceNumber: query }] },
+        {
+          status: 'PAID',
+          paidAt: new Date(),
+          verifiedBy: verifiedBy || 'Swadhin Panigrahi (Founder)',
+          ...(txnRef && { txnRef })
+        },
+        { new: true }
+      );
+      if (invoice) {
+        await LedgerModel.findOneAndUpdate(
+          { invoiceNumber: invoice.invoiceNumber },
+          { status: 'PAID', ...(txnRef && { txnRef }) }
+        );
+        console.log('✓ Invoice marked as PAID in MongoDB Atlas:', invoice.invoiceNumber);
+      }
+    } catch (e) {
+      console.error('MongoDB verify error:', e.message);
+    }
+  }
+
+  // Local sync
+  const data = getLocalData();
+  const localInv = data.invoices.find(inv =>
     inv.id === query ||
     inv.invoiceNumber === query ||
     inv.invoiceNumber.replace(/\//g, '-') === query
   );
+  if (localInv) {
+    localInv.status = 'PAID';
+    if (txnRef) localInv.txnRef = txnRef;
+    localInv.paidAt = new Date().toISOString();
+    localInv.verifiedBy = verifiedBy || 'Swadhin Panigrahi (Founder)';
+
+    const lItem = data.ledger.find(l => l.invoiceNumber === localInv.invoiceNumber);
+    if (lItem) {
+      lItem.status = 'PAID';
+      if (txnRef) lItem.txnRef = txnRef;
+    }
+    saveLocalData(data);
+    if (!invoice) invoice = localInv;
+  }
 
   if (!invoice) {
     return res.status(404).json({ success: false, message: 'Invoice not found' });
   }
 
-  invoice.status = 'PAID';
-  if (txnRef) invoice.txnRef = txnRef;
-  invoice.paidAt = new Date().toISOString();
-  invoice.verifiedBy = verifiedBy || 'Swadhin Panigrahi (Founder)';
-
-  // Update ledger
-  const lItem = data.ledger.find(l => l.invoiceNumber === invoice.invoiceNumber);
-  if (lItem) {
-    lItem.status = 'PAID';
-    if (txnRef) lItem.txnRef = txnRef;
-  }
-
-  saveLocalData(data);
   res.json({
     success: true,
     message: 'Invoice marked as PAID. Client can now download their marked receipt.',
@@ -329,38 +516,50 @@ app.post('/api/invoices/:id/verify-payment', (req, res) => {
 });
 
 // 2. PAYMENT LEDGER API
-app.get('/api/ledger', (req, res) => {
-  const data = getLocalData();
-  const totalCollected = data.ledger
+app.get('/api/ledger', async (req, res) => {
+  let ledgerItems = [];
+
+  if (isMongoConnected) {
+    try {
+      ledgerItems = await LedgerModel.find().sort({ createdAt: -1 });
+    } catch (e) {
+      console.warn('MongoDB ledger fetch failed:', e.message);
+    }
+  }
+
+  if (ledgerItems.length === 0) {
+    const data = getLocalData();
+    ledgerItems = data.ledger || [];
+  }
+
+  const totalCollected = ledgerItems
     .filter(l => l.status === 'PAID')
     .reduce((sum, l) => sum + (Number(l.amount) || 0), 0);
-  const pendingCollection = data.ledger
+  const pendingCollection = ledgerItems
     .filter(l => l.status !== 'PAID')
     .reduce((sum, l) => sum + (Number(l.amount) || 0), 0);
 
   res.json({
     success: true,
+    database: isMongoConnected ? 'MongoDB Atlas' : 'Local Storage',
     summary: {
       totalCollected,
       pendingCollection,
-      totalTransactions: data.ledger.length,
-      paidCount: data.ledger.filter(l => l.status === 'PAID').length,
-      pendingCount: data.ledger.filter(l => l.status !== 'PAID').length
+      totalTransactions: ledgerItems.length,
+      paidCount: ledgerItems.filter(l => l.status === 'PAID').length,
+      pendingCount: ledgerItems.filter(l => l.status !== 'PAID').length
     },
-    ledger: data.ledger
+    ledger: ledgerItems
   });
 });
 
 // 3. CLIENT ONBOARDING INTAKE API (P2)
-// Multi-part file upload support (logos, photos, menus)
 app.post('/api/onboard', upload.fields([
   { name: 'logo', maxCount: 1 },
   { name: 'photos', maxCount: 10 },
   { name: 'menuDoc', maxCount: 2 }
-]), (req, res) => {
-  const data = getLocalData();
+]), async (req, res) => {
   const body = req.body;
-
   const uploadedFiles = [];
   if (req.files) {
     if (req.files.logo) {
@@ -381,7 +580,7 @@ app.post('/api/onboard', upload.fields([
     services = [{ name: body.services || 'General Services', price: 'As agreed' }];
   }
 
-  const onboardingSubmission = {
+  const submission = {
     id: 'ONB-' + Date.now(),
     businessName: body.businessName || 'Unnamed Business',
     ownerName: body.ownerName || 'Business Owner',
@@ -400,26 +599,48 @@ app.post('/api/onboard', upload.fields([
     uploadedAssets: uploadedFiles,
     checklistProgress: Number(body.checklistProgress) || 100,
     status: 'Submitted',
-    createdAt: new Date().toISOString()
+    createdAt: new Date()
   };
 
-  data.onboardings.unshift(onboardingSubmission);
+  // Save to MongoDB Atlas
+  if (isMongoConnected) {
+    try {
+      await OnboardingModel.create(submission);
+      console.log('✓ Client intake recorded to MongoDB Atlas:', submission.businessName);
+    } catch (mongoErr) {
+      console.error('MongoDB Onboard save error:', mongoErr.message);
+    }
+  }
+
+  // Save to local backup
+  const data = getLocalData();
+  data.onboardings.unshift(submission);
   saveLocalData(data);
 
   res.json({
     success: true,
-    message: 'Client intake submitted successfully! The ST Dev Solutions team has received your business assets.',
-    onboarding: onboardingSubmission
+    message: 'Client intake submitted successfully! The ST Dev Solutions team has received your business assets in MongoDB Atlas.',
+    onboarding: submission,
+    storage: isMongoConnected ? 'MongoDB Atlas' : 'Local Storage'
   });
 });
 
 // Get all client onboarding submissions (Studio)
-app.get('/api/onboard', (req, res) => {
+app.get('/api/onboard', async (req, res) => {
+  if (isMongoConnected) {
+    try {
+      const onboardings = await OnboardingModel.find().sort({ createdAt: -1 });
+      return res.json({ success: true, count: onboardings.length, onboardings, source: 'MongoDB Atlas' });
+    } catch (e) {
+      console.warn('MongoDB onboard fetch failed:', e.message);
+    }
+  }
   const data = getLocalData();
   res.json({
     success: true,
     count: data.onboardings.length,
-    onboardings: data.onboardings
+    onboardings: data.onboardings,
+    source: 'Local Storage'
   });
 });
 

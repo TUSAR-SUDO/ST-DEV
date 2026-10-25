@@ -41,12 +41,185 @@ your real studio details:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>ST Dev Solutions — Websites for local businesses in Odisha</title>
-  <meta name="description" content="We build fast, plain-English websites for sweet shops, clinics, salons, cafés, and coaching centres in Odisha. Working draft in 3 days. Pay only if you like it.">
+  <title>ST Dev Solutions — Modern Websites for Local Businesses in Odisha</title>
+  <meta name="description" content="We build fast, high-converting websites for clinics, gyms, restaurants & local businesses in Odisha. Live in 7 days. Pay ₹0 until you approve your Day-3 working draft.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="theme-color" content="#2A1230">
+
+  <!-- OpenGraph / WhatsApp / Facebook Rich Link Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stdevsolutions.in/">
+  <meta property="og:title" content="ST Dev Solutions — Modern Websites for Local Businesses in Odisha">
+  <meta property="og:description" content="Fast websites for clinics, gyms, cafes & local shops in Odisha. Live in 7 days. Pay ₹0 until you approve your Day-3 working draft on your phone.">
+  <meta property="og:image" content="images/social-preview.png">
+  <meta property="og:image:secure_url" content="images/social-preview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ST Dev Solutions Agency — Websites for Odisha Local Businesses">
+  <meta property="og:site_name" content="ST Dev Solutions Agency">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ST Dev Solutions — Websites for Local Businesses in Odisha">
+  <meta name="twitter:description" content="Fast websites for clinics, gyms & local shops in Odisha. Live in 7 days. Pay ₹0 until you approve your Day-3 draft.">
+  <meta name="twitter:image" content="images/social-preview.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Barlow+Condensed:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    
+    /* ==========================================================================
+       STICKY STATION NAVIGATOR & MOBILE ACTION DOCK
+       ========================================================================== */
+    .sticky-station-bar {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: var(--ink);
+      border-bottom: 3px solid var(--lime);
+      box-shadow: 0 4px 10px rgba(42, 18, 48, 0.35);
+      padding: 8px 16px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .sticky-station-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .station-nav-track {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .station-nav-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--lime);
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .station-pill {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.22);
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.08);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .station-pill span {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-family: 'Archivo', sans-serif;
+    }
+    .station-pill:hover {
+      border-color: var(--lime);
+      color: var(--lime);
+      background: rgba(232, 242, 92, 0.15);
+      transform: translateY(-1px);
+    }
+    .station-pill.active {
+      background: var(--lime);
+      color: var(--ink);
+      border-color: var(--lime);
+      box-shadow: 2px 2px 0 var(--pink);
+    }
+    .station-pill.active span {
+      background: var(--ink);
+      color: var(--lime);
+    }
+    .station-pill.highlight {
+      background: var(--pink);
+      color: #fff;
+      border-color: #fff;
+      margin-left: auto;
+    }
+    .station-pill.highlight:hover {
+      background: #ff257a;
+      color: #fff;
+    }
+
+    /* Mobile Sticky Action Dock */
+    .mobile-action-dock {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9990;
+      background: #2A1230;
+      border-top: 3px solid #E8F25C;
+      box-shadow: 0 -4px 14px rgba(0,0,0,0.3);
+      padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+      gap: 10px;
+    }
+    @media (max-width: 820px) {
+      .mobile-action-dock {
+        display: flex;
+      }
+      body {
+        padding-bottom: 68px;
+      }
+    }
+    .dock-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 12px;
+      border-radius: 8px;
+      border: 2px solid var(--ink);
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900;
+      font-size: 13.5px;
+      text-decoration: none;
+      box-shadow: 2px 2px 0 var(--ink);
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+    .dock-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+    .btn-dock-wa {
+      background: #25D366;
+      color: #FFFFFF;
+      border-color: #128C7E;
+    }
+    .btn-dock-draft {
+      background: var(--pink);
+      color: #FFFFFF;
+      border-color: #2A1230;
+    }
+    .dock-icon {
+      font-size: 16px;
+      line-height: 1;
+    }
+
     /* ==========================================================================
        1. DESIGN TOKENS & STRICT FLAT PALETTE
        Palette: Sage #CFD8CC | Ink #2A1230 | Magenta #FF3D8B | Lime #E8F25C | Panel #F6F7F2
@@ -4309,6 +4482,20 @@ your real studio details:
     </div>
   </header>
 
+  <!-- STICKY STATION NAVIGATOR -->
+  <nav class="sticky-station-bar" id="sticky-station-bar" aria-label="City Transit Stations Navigator">
+    <div class="station-nav-track">
+      <span class="station-nav-label">🚌 Transit Stops:</span>
+      <a href="#how-we-work" class="station-pill active" data-target="how-we-work"><span>01</span> Process</a>
+      <a href="#live-demo" class="station-pill" data-target="live-demo"><span>02</span> Demo</a>
+      <a href="#work" class="station-pill" data-target="work"><span>03</span> Work</a>
+      <a href="#trust" class="station-pill" data-target="trust"><span>04</span> Team</a>
+      <a href="#estimator" class="station-pill" data-target="estimator"><span>05</span> Pricing</a>
+      <a href="#faq" class="station-pill" data-target="faq"><span>06</span> FAQ</a>
+      <a href="#contact" class="station-pill highlight" data-target="contact"><span>⚡</span> Book Day-3 Draft</a>
+    </div>
+  </nav>
+
   <main id="main-content">
     <!-- ======================================================================
          1. HERO SECTION (100px+ Headline + Self-Drawing Route + Before/After)
@@ -7728,6 +7915,53 @@ your real studio details:
         btnRefreshLedger.addEventListener("click", renderLedger);
       }
 
+
+      // ==========================================
+      // STICKY STATION NAVIGATOR SCROLL SPY
+      // ==========================================
+      var stationPills = document.querySelectorAll(".sticky-station-bar .station-pill");
+      var stationSections = [
+        document.getElementById("how-we-work"),
+        document.getElementById("live-demo"),
+        document.getElementById("work"),
+        document.getElementById("trust"),
+        document.getElementById("estimator"),
+        document.getElementById("faq"),
+        document.getElementById("contact")
+      ].filter(Boolean);
+
+      window.addEventListener("scroll", function () {
+        var scrollPos = window.scrollY + 160;
+        var currentSectionId = "";
+
+        stationSections.forEach(function (sec) {
+          var top = sec.offsetTop;
+          var height = sec.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            currentSectionId = sec.id;
+          }
+        });
+
+        if (currentSectionId) {
+          stationPills.forEach(function (pill) {
+            var target = pill.getAttribute("data-target");
+            pill.classList.toggle("active", target === currentSectionId);
+          });
+        }
+      }, { passive: true });
+
+      // Smooth scroll on pill click
+      stationPills.forEach(function (pill) {
+        pill.addEventListener("click", function (e) {
+          var targetId = pill.getAttribute("data-target");
+          var targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
     })();
   </script>
 
@@ -7896,6 +8130,19 @@ your real studio details:
       </div>
 
     </div>
+  </div>
+
+
+  <!-- MOBILE STICKY ACTION DOCK -->
+  <div class="mobile-action-dock" id="mobile-action-dock" aria-label="Quick Actions">
+    <a href="https://wa.me/919337922291?text=Hello%20Swadhin,%20I%20want%20to%20build%20a%20website%20for%20my%20business%20in%20Odisha." target="_blank" class="dock-btn btn-dock-wa">
+      <span class="dock-icon">💬</span>
+      <span class="dock-text">WhatsApp Swadhin</span>
+    </a>
+    <a href="#contact" class="dock-btn btn-dock-draft" id="dock-btn-draft">
+      <span class="dock-icon">⚡</span>
+      <span class="dock-text">Get Day-3 Draft</span>
+    </a>
   </div>
 
 </body>
