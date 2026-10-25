@@ -4643,7 +4643,7 @@ your real studio details:
               <div class="demo-mock-nav">
                 <div style="display:flex;align-items:center;gap:10px;">
                   <span style="background:var(--pink);border:2px solid var(--ink);padding:4px 10px;border-radius:6px;font-weight:900;">1</span>
-                  <strong style="font-family:'Archivo',sans-serif;font-size:20px;">[Shop Name Placeholder] · Since 1998</strong>
+                  <strong style="font-family:Archivo,sans-serif;font-size:20px;">[Shop Name Placeholder] · Since 1998</strong>
                 </div>
                 <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;">
                   Open today: 8:00 AM – 9:30 PM · Call: +91 93379 22291
@@ -4675,15 +4675,15 @@ your real studio details:
             <div class="demo-part" data-build-part="2">
               <div class="demo-mock-cards">
                 <div class="demo-item-card">
-                  <strong style="font-family:'Archivo',sans-serif;display:block;font-size:18px;">3A · Hot Rasagola Tin</strong>
+                  <strong style="font-family:Archivo,sans-serif;display:block;font-size:18px;">3A · Hot Rasagola Tin</strong>
                   <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;">₹240 · 12 pieces</span>
                 </div>
                 <div class="demo-item-card">
-                  <strong style="font-family:'Archivo',sans-serif;display:block;font-size:18px;">3B · Special Chhena Poda</strong>
+                  <strong style="font-family:Archivo,sans-serif;display:block;font-size:18px;">3B · Special Chhena Poda</strong>
                   <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;">₹320 · 500g box</span>
                 </div>
                 <div class="demo-item-card">
-                  <strong style="font-family:'Archivo',sans-serif;display:block;font-size:18px;">3C · Festival Gift Box</strong>
+                  <strong style="font-family:Archivo,sans-serif;display:block;font-size:18px;">3C · Festival Gift Box</strong>
                   <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;">₹550 · Assorted 1kg</span>
                 </div>
               </div>
@@ -5465,6 +5465,9 @@ your real studio details:
           <button type="button" class="qs-action-btn" id="qs-copy-btn" title="Copy Text Summary">
             <span>📋 Copy</span>
           </button>
+          <a href="onboard.html" target="_blank" class="qs-action-btn" style="text-decoration:none;background:var(--lime);color:var(--ink);font-weight:800;" title="Open Client Intake Checklist Page">📋 Client Intake</a>
+          <a href="pay.html" target="_blank" class="qs-action-btn" id="qs-open-pay-btn" style="text-decoration:none;background:#2A1230;color:#fff;border:2px solid #fff;" title="Open Client-Facing Payment & Receipt Portal">💳 Client Pay Portal</a>
+          <button type="button" class="qs-action-btn" id="qs-ledger-btn" style="background:#FF3D8B;color:#fff;" title="View Agency Payment Ledger">📊 Payment Ledger</button>
           <button type="button" class="qs-lock-btn" id="qs-lock-btn" title="Lock studio session">🔒 Lock</button>
           <button type="button" class="qs-close-btn" id="qs-close-btn" aria-label="Close Quotation Studio">✕</button>
         </div>
@@ -5516,12 +5519,21 @@ your real studio details:
             <div class="qs-input-row">
               <div class="qs-field">
                 <label for="inv-upi-input">UPI ID for Payment</label>
-                <input type="text" id="inv-upi-input" value="9337922291@upi">
+                <input type="text" id="inv-upi-input" value="swadhinpanigrahi44@okhdfcbank">
               </div>
               <div class="qs-field">
                 <label for="inv-txn-ref">Transaction / UTR (If Paid)</label>
                 <input type="text" id="inv-txn-ref" placeholder="e.g. UPI/429188204910">
               </div>
+            </div>
+
+            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+              <button type="button" class="qs-action-btn" id="btn-save-invoice-db" style="background:var(--lime);color:var(--ink);font-weight:800;flex:1;justify-content:center;">
+                💾 Save to Ledger &amp; DB
+              </button>
+              <button type="button" class="qs-action-btn" id="btn-copy-pay-link" style="background:var(--magenta);color:#fff;font-weight:800;flex:1;justify-content:center;">
+                🔗 Copy Client Pay Link
+              </button>
             </div>
           </div>
 
@@ -5922,47 +5934,10 @@ your real studio details:
             <!-- UPI Payment & QR Code Card -->
             <div class="inv-payment-block" id="inv-payment-block">
               <div class="inv-qr-card">
-                <!-- Stylized High-Contrast UPI QR Code with ST Badge -->
-                <svg viewBox="0 0 160 160" class="inv-qr-img" role="img" aria-label="UPI Payment QR Code">
-                  <rect width="160" height="160" fill="#ffffff" />
-                  <!-- QR Finder Patterns -->
-                  <!-- Top-Left -->
-                  <rect x="10" y="10" width="40" height="40" fill="#2A1230" rx="4" />
-                  <rect x="16" y="16" width="28" height="28" fill="#ffffff" rx="2" />
-                  <rect x="22" y="22" width="16" height="16" fill="#2A1230" rx="2" />
-                  <!-- Top-Right -->
-                  <rect x="110" y="10" width="40" height="40" fill="#2A1230" rx="4" />
-                  <rect x="116" y="16" width="28" height="28" fill="#ffffff" rx="2" />
-                  <rect x="122" y="22" width="16" height="16" fill="#2A1230" rx="2" />
-                  <!-- Bottom-Left -->
-                  <rect x="10" y="110" width="40" height="40" fill="#2A1230" rx="4" />
-                  <rect x="16" y="116" width="28" height="28" fill="#ffffff" rx="2" />
-                  <rect x="22" y="122" width="16" height="16" fill="#2A1230" rx="2" />
-                  <!-- Simulated Data Modules -->
-                  <rect x="60" y="15" width="8" height="8" fill="#2A1230" />
-                  <rect x="75" y="15" width="8" height="16" fill="#2A1230" />
-                  <rect x="90" y="15" width="8" height="8" fill="#2A1230" />
-                  <rect x="60" y="32" width="16" height="8" fill="#2A1230" />
-                  <rect x="85" y="32" width="12" height="12" fill="#2A1230" />
-                  <rect x="15" y="60" width="12" height="8" fill="#2A1230" />
-                  <rect x="35" y="60" width="8" height="16" fill="#2A1230" />
-                  <rect x="15" y="80" width="16" height="10" fill="#2A1230" />
-                  <rect x="40" y="85" width="12" height="12" fill="#2A1230" />
-                  <rect x="110" y="60" width="10" height="16" fill="#2A1230" />
-                  <rect x="130" y="60" width="16" height="8" fill="#2A1230" />
-                  <rect x="115" y="85" width="20" height="10" fill="#2A1230" />
-                  <rect x="60" y="115" width="12" height="12" fill="#2A1230" />
-                  <rect x="80" y="115" width="16" height="8" fill="#2A1230" />
-                  <rect x="105" y="115" width="12" height="16" fill="#2A1230" />
-                  <rect x="65" y="135" width="16" height="10" fill="#2A1230" />
-                  <rect x="90" y="135" width="20" height="8" fill="#2A1230" />
-                  <rect x="125" y="130" width="14" height="14" fill="#2A1230" />
-                  <!-- Center ST Logo Badge -->
-                  <rect x="62" y="62" width="36" height="36" rx="8" fill="#2A1230" stroke="#E8F25C" stroke-width="2" />
-                  <text x="80" y="85" fill="#E8F25C" font-family="Archivo, sans-serif" font-weight="900" font-size="14" text-anchor="middle">ST</text>
-                </svg>
-                <div class="inv-qr-label">Scan to Pay via UPI</div>
-                <div style="font-size:10px;color:#666;">GPay · PhonePe · Paytm · BHIM</div>
+                <img src="images/swadhin-upi-qr.jpg" alt="Swadhin Panigrahi Google Pay UPI QR Code" class="inv-qr-img" style="width:150px;height:auto;object-fit:contain;border-radius:6px;display:block;margin:0 auto 8px;">
+                <div class="inv-qr-label">Scan to Pay via Any UPI App</div>
+                <div style="font-size:11px;font-weight:700;color:var(--ink);">Swadhin Panigrahi</div>
+                <div style="font-size:10px;color:#666;">Google Pay · PhonePe · Paytm · BHIM</div>
               </div>
 
               <div class="inv-bank-info">
@@ -5970,11 +5945,11 @@ your real studio details:
                 <div class="inv-bank-grid">
                   <div>
                     <div><strong>UPI ID / VPA:</strong></div>
-                    <span class="inv-upi-badge" id="inv-view-upi-badge">9337922291@upi</span>
+                    <span class="inv-upi-badge" id="inv-view-upi-badge">swadhinpanigrahi44@okhdfcbank</span>
                   </div>
                   <div>
                     <div><strong>Payee Name:</strong></div>
-                    <div style="font-weight:700;color:var(--ink);">ST DEV SOLUTIONS</div>
+                    <div style="font-weight:700;color:var(--ink);">Swadhin Panigrahi / ST DEV SOLUTIONS</div>
                   </div>
                   <div>
                     <div><strong>Bank:</strong> State Bank of India / HDFC</div>
@@ -7009,7 +6984,7 @@ your real studio details:
         var cCity = document.getElementById("qf-client-city") ? document.getElementById("qf-client-city").value : "Bhubaneswar, Odisha";
         var qRef = document.getElementById("qf-quote-ref") ? document.getElementById("qf-quote-ref").value : "STDS/2026/001";
         var invNum = document.getElementById("inv-number-input") ? document.getElementById("inv-number-input").value : (isReceipt ? "REC/STDS/2026/001" : "INV/STDS/2026/001");
-        var upiId = document.getElementById("inv-upi-input") ? document.getElementById("inv-upi-input").value : "9337922291@upi";
+        var upiId = document.getElementById("inv-upi-input") ? document.getElementById("inv-upi-input").value : "swadhinpanigrahi44@okhdfcbank";
 
         if (document.getElementById("inv-view-client-biz")) document.getElementById("inv-view-client-biz").textContent = cBiz;
         if (document.getElementById("inv-view-client-name")) document.getElementById("inv-view-client-name").textContent = cName;
@@ -7355,7 +7330,7 @@ your real studio details:
           if (currentStudioMode === "invoice") {
             var invNum = document.getElementById("inv-number-input") ? document.getElementById("inv-number-input").value : "INV/STDS/2026/001";
             var status = document.getElementById("inv-payment-status") ? document.getElementById("inv-payment-status").value : "DUE";
-            var upi = document.getElementById("inv-upi-input") ? document.getElementById("inv-upi-input").value : "9337922291@upi";
+            var upi = document.getElementById("inv-upi-input") ? document.getElementById("inv-upi-input").value : "swadhinpanigrahi44@okhdfcbank";
             var invAmount = (currentInvoiceMilestone === "advance") ? Math.round(projectTotal * 0.5) : ((currentInvoiceMilestone === "final") ? (projectTotal - Math.round(projectTotal * 0.5)) : projectTotal);
             var isReceipt = (status === "PAID" || currentInvoiceMilestone === "receipt");
 
@@ -7410,7 +7385,14 @@ your real studio details:
       }
 
       // Auto-open if URL hash present
-      if (window.location.hash === "#quotation" || window.location.hash === "#quote" || window.location.hash === "#quotation-studio") {
+      if (window.location.hash === "#quotation" || window.location.hash === "#quote" || window.location.hash === "#quotation-studio" || window.location.hash === "#studio" || window.location.hash === "#invoice" || window.location.pathname === "/studio") {
+        setTimeout(function () {
+          openQuotationStudio();
+          if (window.location.hash === "#invoice") {
+            setStudioMode("invoice");
+          }
+        }, 300);
+      } else if (false) {
         setTimeout(openQuotationStudio, 300);
       }
 
@@ -7523,6 +7505,229 @@ your real studio details:
           el.addEventListener("mouseleave", function () { cursor.classList.remove("is-hover"); });
         });
       }
+
+      // ==========================================
+      // PAYMENT LEDGER & BACKEND API INTEGRATION
+      // ==========================================
+      var ledgerModal = document.getElementById("qs-ledger-modal");
+      var btnOpenLedger = document.getElementById("qs-ledger-btn");
+      var btnCloseLedger = document.getElementById("btn-close-ledger");
+      var btnRefreshLedger = document.getElementById("btn-refresh-ledger");
+      var btnSaveInvoiceDb = document.getElementById("btn-save-invoice-db");
+      var btnCopyPayLink = document.getElementById("btn-copy-pay-link");
+
+      function getActiveInvoiceData() {
+        var subtotal = 0;
+        activeQuoteData.pricing.forEach(function (i) { subtotal += parseInt(i.amount, 10) || 0; });
+        var discount = parseInt(document.getElementById("qf-discount-val") ? document.getElementById("qf-discount-val").value : 0, 10) || 0;
+        var projectTotal = Math.max(0, subtotal - discount);
+
+        var invAmount = (currentInvoiceMilestone === "advance") ? Math.round(projectTotal * 0.5) : ((currentInvoiceMilestone === "final") ? (projectTotal - Math.round(projectTotal * 0.5)) : projectTotal);
+        var invNum = document.getElementById("inv-number-input") ? document.getElementById("inv-number-input").value : "INV/STDS/2026/001";
+        var status = document.getElementById("inv-payment-status") ? document.getElementById("inv-payment-status").value : "DUE";
+        var upi = document.getElementById("inv-upi-input") ? document.getElementById("inv-upi-input").value : "swadhinpanigrahi44@okhdfcbank";
+        var txn = document.getElementById("inv-txn-ref") ? document.getElementById("inv-txn-ref").value.trim() : "";
+
+        return {
+          id: invNum.replace(/[^a-zA-Z0-9]/g, "-"),
+          invoiceNumber: invNum,
+          receiptNumber: invNum.replace("INV/", "REC/"),
+          clientName: document.getElementById("qf-client-name") ? document.getElementById("qf-client-name").value : "Dr. S. Mohapatra",
+          businessName: document.getElementById("qf-business-name") ? document.getElementById("qf-business-name").value : "Aesthedent Dental & Skin Clinic",
+          clientPhone: document.getElementById("qf-client-phone") ? document.getElementById("qf-client-phone").value : "+91 98765 00000",
+          clientEmail: document.getElementById("qf-client-email") ? document.getElementById("qf-client-email").value : "contact@aesthedent.in",
+          address: document.getElementById("qf-client-city") ? document.getElementById("qf-client-city").value : "Saheed Nagar, Bhubaneswar",
+          milestone: currentInvoiceMilestone,
+          milestoneTitle: (currentInvoiceMilestone === "advance") ? "Milestone 1: 50% Advance (Day-3 Draft)" : ((currentInvoiceMilestone === "final") ? "Milestone 2: 50% Final Settlement" : "Full Project Investment"),
+          totalProjectAmount: projectTotal,
+          payableAmount: invAmount,
+          status: status,
+          upiId: upi,
+          txnRef: txn,
+          date: new Date().toLocaleDateString("en-IN")
+        };
+      }
+
+      // Save Invoice to DB / Ledger
+      if (btnSaveInvoiceDb) {
+        btnSaveInvoiceDb.addEventListener("click", function () {
+          var inv = getActiveInvoiceData();
+          btnSaveInvoiceDb.textContent = "⏳ Saving...";
+
+          fetch("/api/invoices", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(inv)
+          })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            btnSaveInvoiceDb.textContent = "✓ Saved to Database!";
+            setTimeout(function () { btnSaveInvoiceDb.textContent = "💾 Save to Ledger & DB"; }, 2500);
+            localStorage.setItem("stds_active_invoice", JSON.stringify(inv));
+            alert("✓ Invoice " + inv.invoiceNumber + " saved to Payment Ledger & MongoDB database!");
+          })
+          .catch(function () {
+            // Local fallback
+            var storedList = [];
+            try { storedList = JSON.parse(localStorage.getItem("stds_local_invoices")) || []; } catch(e){}
+            storedList = storedList.filter(function (x) { return x.invoiceNumber !== inv.invoiceNumber; });
+            storedList.unshift(inv);
+            localStorage.setItem("stds_local_invoices", JSON.stringify(storedList));
+            localStorage.setItem("stds_active_invoice", JSON.stringify(inv));
+
+            btnSaveInvoiceDb.textContent = "✓ Saved Locally!";
+            setTimeout(function () { btnSaveInvoiceDb.textContent = "💾 Save to Ledger & DB"; }, 2500);
+            alert("✓ Invoice saved to local agency ledger!");
+          });
+        });
+      }
+
+      // Copy Client Pay Link
+      if (btnCopyPayLink) {
+        btnCopyPayLink.addEventListener("click", function () {
+          var inv = getActiveInvoiceData();
+          var payUrl = window.location.origin + "/pay?id=" + encodeURIComponent(inv.id);
+          if (window.location.protocol === "file:") {
+            payUrl = window.location.href.replace("index.html", "pay.html") + "?id=" + encodeURIComponent(inv.id);
+          }
+          navigator.clipboard.writeText(payUrl).then(function () {
+            btnCopyPayLink.textContent = "✓ LINK COPIED!";
+            setTimeout(function () { btnCopyPayLink.textContent = "🔗 Copy Client Pay Link"; }, 2500);
+            alert("✓ Client Payment Portal link copied to clipboard:\n" + payUrl);
+          });
+        });
+      }
+
+      // Render Ledger Table
+      function renderLedger() {
+        var tbody = document.getElementById("ledger-table-body");
+        if (!tbody) return;
+
+        fetch("/api/ledger")
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data.success) {
+              document.getElementById("ledger-stat-collected").textContent = "₹" + (data.summary.totalCollected || 0).toLocaleString("en-IN");
+              document.getElementById("ledger-stat-pending").textContent = "₹" + (data.summary.pendingCollection || 0).toLocaleString("en-IN");
+              document.getElementById("ledger-stat-count").textContent = data.summary.totalTransactions || 0;
+              renderLedgerRows(data.ledger || []);
+            }
+          })
+          .catch(function () {
+            // LocalStorage fallback
+            var localInvoices = [];
+            try { localInvoices = JSON.parse(localStorage.getItem("stds_local_invoices")) || []; } catch(e){}
+            if (localInvoices.length === 0) {
+              localInvoices = [getActiveInvoiceData()];
+            }
+            var collected = 0;
+            var pending = 0;
+            localInvoices.forEach(function (i) {
+              if (i.status === "PAID") collected += Number(i.payableAmount);
+              else pending += Number(i.payableAmount);
+            });
+            document.getElementById("ledger-stat-collected").textContent = "₹" + collected.toLocaleString("en-IN");
+            document.getElementById("ledger-stat-pending").textContent = "₹" + pending.toLocaleString("en-IN");
+            document.getElementById("ledger-stat-count").textContent = localInvoices.length;
+            renderLedgerRows(localInvoices);
+          });
+      }
+
+      function renderLedgerRows(items) {
+        var tbody = document.getElementById("ledger-table-body");
+        if (!tbody) return;
+        if (items.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="7" style="padding:20px;text-align:center;color:#777;">No invoices recorded yet. Click "Save to Ledger & DB" in Invoice Mode.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = items.map(function (item) {
+          var isPaid = (item.status === "PAID");
+          var isVerifying = (item.status === "PENDING_VERIFICATION");
+          var badgeColor = isPaid ? "#00875A" : (isVerifying ? "#e17055" : "#d63031");
+          var badgeBg = isPaid ? "#f0fdf4" : (isVerifying ? "#fff7f3" : "#fff5f5");
+          var badgeText = isPaid ? "PAID IN FULL ✓" : (isVerifying ? "VERIFYING UTR" : "PAYMENT DUE");
+          var payUrl = (window.location.protocol === "file:" ? "pay.html" : "/pay") + "?id=" + encodeURIComponent(item.id || item.invoiceNumber);
+
+          return '<tr style="border-bottom:1px solid #e5e5e5;">' +
+            '<td style="padding:10px 12px;font-size:12px;color:#555;">' + (item.date || "Today") + '</td>' +
+            '<td style="padding:10px 12px;font-weight:700;">' + (item.invoiceNumber || item.id) + '</td>' +
+            '<td style="padding:10px 12px;"><strong>' + (item.businessName || "Client") + '</strong><br><span style="font-size:11.5px;color:#666;">' + (item.clientName || "") + '</span></td>' +
+            '<td style="padding:10px 12px;font-size:12px;">' + (item.milestone || item.milestoneTitle || "Milestone 1") + '</td>' +
+            '<td style="padding:10px 12px;text-align:right;font-weight:800;font-family:Archivo,sans-serif;">₹' + Number(item.amount || item.payableAmount || 0).toLocaleString("en-IN") + '</td>' +
+            '<td style="padding:10px 12px;text-align:center;">' +
+              '<span style="font-size:11px;font-weight:800;padding:3px 8px;border-radius:4px;border:1.5px solid ' + badgeColor + ';color:' + badgeColor + ';background:' + badgeBg + ';">' + badgeText + '</span>' +
+              (item.txnRef ? '<div style="font-size:10px;color:#666;margin-top:2px;">Ref: ' + item.txnRef + '</div>' : '') +
+            '</td>' +
+            '<td style="padding:10px 12px;text-align:center;">' +
+              '<div style="display:flex;gap:4px;justify-content:center;">' +
+                ((!isPaid ? '<button type="button" class="btn-ledger-mark-paid" data-id="' + (item.id || item.invoiceNumber) + '" style="background:#E8F25C;border:1.5px solid #2A1230;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:800;cursor:pointer;">✓ Mark Paid</button>' : '')) +
+                '<a href="' + payUrl + '" target="_blank" style="background:#2A1230;color:#fff;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700;text-decoration:none;">📄 Portal</a>' +
+              '</div>' +
+            '</td>' +
+          '</tr>';
+        }).join("");
+      }
+
+      
+      // Ledger click delegation
+      var ledgerTbody = document.getElementById("ledger-table-body");
+      if (ledgerTbody) {
+        ledgerTbody.addEventListener("click", function (e) {
+          var btn = e.target.closest(".btn-ledger-mark-paid");
+          if (btn) {
+            markLedgerPaid(btn.getAttribute("data-id"));
+          }
+        });
+      }
+
+      window.markLedgerPaid = function (invId) {
+        var txn = prompt("Enter payment UTR / reference for invoice " + invId + " (optional):", "UPI/VERIFIED");
+        if (txn === null) return;
+
+        fetch("/api/invoices/" + encodeURIComponent(invId) + "/verify-payment", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: "Stdevsolutions1523", txnRef: txn, verifiedBy: "Swadhin Panigrahi" })
+        })
+        .then(function () {
+          alert("✓ Invoice marked as PAID IN FULL! Receipt generated.");
+          renderLedger();
+        })
+        .catch(function () {
+          // Local fallback
+          var localInvoices = [];
+          try { localInvoices = JSON.parse(localStorage.getItem("stds_local_invoices")) || []; } catch(e){}
+          localInvoices.forEach(function (i) {
+            if (i.id === invId || i.invoiceNumber === invId) {
+              i.status = "PAID";
+              i.txnRef = txn;
+            }
+          });
+          localStorage.setItem("stds_local_invoices", JSON.stringify(localInvoices));
+          alert("✓ Invoice marked as PAID IN FULL locally!");
+          renderLedger();
+        });
+      };
+
+      // Ledger Modal Open/Close
+      if (btnOpenLedger) {
+        btnOpenLedger.addEventListener("click", function () {
+          if (ledgerModal) {
+            ledgerModal.style.display = "block";
+            renderLedger();
+          }
+        });
+      }
+      if (btnCloseLedger) {
+        btnCloseLedger.addEventListener("click", function () {
+          if (ledgerModal) ledgerModal.style.display = "none";
+        });
+      }
+      if (btnRefreshLedger) {
+        btnRefreshLedger.addEventListener("click", renderLedger);
+      }
+
     })();
   </script>
 
@@ -7632,6 +7837,66 @@ your real studio details:
       }).observe(ctr);
     }
   </script>
+
+
+  <!-- PAYMENT LEDGER MODAL -->
+  <div id="qs-ledger-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(42,18,48,0.85);z-index:99999;overflow-y:auto;padding:24px 16px;">
+    <div style="max-width:960px;margin:30px auto;background:#F6F7F2;border:4px solid #2A1230;box-shadow:6px 6px 0 #2A1230;border-radius:12px;padding:28px;">
+      
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #2A1230;padding-bottom:16px;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <img src="images/logo.png" alt="Logo" style="width:40px;height:40px;border:2px solid #2A1230;border-radius:6px;background:#fff;padding:2px;">
+          <div>
+            <h2 style="font-family:Archivo,sans-serif;font-size:22px;font-weight:900;line-height:1.1;">AGENCY PAYMENT LEDGER &amp; COLLECTIONS</h2>
+            <div style="font-size:12px;font-weight:700;color:#FF3D8B;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;">ST DEV SOLUTIONS · REAL-TIME TRACKER</div>
+          </div>
+        </div>
+        <button type="button" id="btn-close-ledger" style="background:#2A1230;color:#fff;border:none;border-radius:6px;padding:8px 14px;font-weight:800;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;">✕ CLOSE LEDGER</button>
+      </div>
+
+      <!-- Stats Summary Strip -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;">
+        <div style="background:#fff;border:2px solid #2A1230;border-radius:8px;padding:14px;box-shadow:2px 2px 0 #2A1230;">
+          <div style="font-size:11px;font-weight:800;color:#666;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;">Total Collected (PAID)</div>
+          <div style="font-family:Archivo,sans-serif;font-size:26px;font-weight:900;color:#00875A;" id="ledger-stat-collected">₹0</div>
+        </div>
+        <div style="background:#fff;border:2px solid #2A1230;border-radius:8px;padding:14px;box-shadow:2px 2px 0 #2A1230;">
+          <div style="font-size:11px;font-weight:800;color:#666;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;">Pending Collections (DUE)</div>
+          <div style="font-family:Archivo,sans-serif;font-size:26px;font-weight:900;color:#d63031;" id="ledger-stat-pending">₹0</div>
+        </div>
+        <div style="background:#fff;border:2px solid #2A1230;border-radius:8px;padding:14px;box-shadow:2px 2px 0 #2A1230;">
+          <div style="font-size:11px;font-weight:800;color:#666;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;">Total Invoices Issued</div>
+          <div style="font-family:Archivo,sans-serif;font-size:26px;font-weight:900;color:#2A1230;" id="ledger-stat-count">0</div>
+        </div>
+      </div>
+
+      <!-- Ledger Table -->
+      <div style="border:2px solid #2A1230;border-radius:8px;overflow:hidden;background:#fff;margin-bottom:16px;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="background:#2A1230;color:#fff;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-size:12.5px;letter-spacing:0.5px;">
+              <th style="padding:10px 12px;text-align:left;">Date</th>
+              <th style="padding:10px 12px;text-align:left;">Invoice #</th>
+              <th style="padding:10px 12px;text-align:left;">Client / Business</th>
+              <th style="padding:10px 12px;text-align:left;">Milestone</th>
+              <th style="padding:10px 12px;text-align:right;">Amount</th>
+              <th style="padding:10px 12px;text-align:center;">Status</th>
+              <th style="padding:10px 12px;text-align:center;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ledger-table-body">
+            <!-- Dynamically Rendered -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#666;">
+        <span>UPI: <strong>swadhinpanigrahi44@okhdfcbank</strong> (Swadhin Panigrahi)</span>
+        <button type="button" id="btn-refresh-ledger" style="background:#E8F25C;border:2px solid #2A1230;border-radius:4px;padding:6px 12px;font-weight:800;cursor:pointer;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;">🔄 Refresh Ledger</button>
+      </div>
+
+    </div>
+  </div>
 
 </body>
 </html>

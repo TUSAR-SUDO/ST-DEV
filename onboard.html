@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Intake & Asset Checklist — ST Dev Solutions Agency</title>
+  <meta name="description" content="Official client onboarding checklist for ST Dev Solutions. Submit your logo, photos, menu prices and business details to fast-track your 7-day website build.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --sage: #CFD8CC;
+      --ink: #2A1230;
+      --magenta: #FF3D8B;
+      --lime: #E8F25C;
+      --panel: #F6F7F2;
+      --white: #FFFFFF;
+      --border-thick: 4px solid var(--ink);
+      --border-med: 3px solid var(--ink);
+      --border-thin: 2px solid var(--ink);
+      --shadow-flat: 4px 4px 0 var(--ink);
+      --shadow-flat-lg: 6px 6px 0 var(--ink);
+      --shadow-hover: 2px 2px 0 var(--ink);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--sage);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.5;
+      padding: 24px 16px 80px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Top Navigation / Brand Bar */
+    .top-nav {
+      background: var(--panel);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-flat);
+      border-radius: 12px;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border: 2px solid var(--ink);
+      background: #fff;
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .brand-text h1 {
+      font-family: 'Archivo', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--magenta);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border: var(--border-thin);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 2px 2px 0 var(--ink);
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    .nav-btn.primary {
+      background: var(--lime);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: var(--panel);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-flat-lg);
+      border-radius: 12px;
+      padding: 32px 28px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .kicker-tag {
+      display: inline-block;
+      background: var(--magenta);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: var(--border-thin);
+      margin-bottom: 12px;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    .hero-banner h2 {
+      font-family: 'Archivo', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-banner p {
+      font-size: 15px;
+      color: #444;
+      max-width: 760px;
+    }
+
+    /* Sticky Progress Tracker */
+    .progress-card {
+      position: sticky;
+      top: 16px;
+      z-index: 90;
+      background: var(--ink);
+      color: #fff;
+      border: 3px solid var(--lime);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-flat);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .progress-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .progress-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+
+    .progress-count {
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      min-width: 200px;
+      max-width: 380px;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid var(--lime);
+      border-radius: 999px;
+      height: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      background: var(--lime);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-badge {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--lime);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Form Stations (Cards) */
+    .station-block {
+      background: var(--panel);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-flat);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .station-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .station-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .station-num {
+      width: 36px;
+      height: 36px;
+      background: var(--ink);
+      color: var(--lime);
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+
+    .station-header h3 {
+      font-family: 'Archivo', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .station-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    /* Form Elements */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 680px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    label .req {
+      color: var(--magenta);
+      font-weight: 900;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--white);
+      border: var(--border-thin);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      outline: none;
+      transition: all 0.15s ease;
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--magenta);
+      box-shadow: 2px 2px 0 var(--magenta);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .field-hint {
+      font-size: 11.5px;
+      color: #666;
+    }
+
+    /* File Drop Zone */
+    .file-dropzone {
+      border: 2px dashed var(--ink);
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .file-dropzone:hover {
+      background: #fdfdf9;
+      border-color: var(--magenta);
+    }
+
+    .file-dropzone input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .dropzone-icon {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .dropzone-text {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .dropzone-sub {
+      font-size: 11px;
+      color: #777;
+      margin-top: 2px;
+    }
+
+    .file-preview-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .file-preview-pill {
+      background: var(--lime);
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Dynamic Service Rows */
+    .service-table-wrap {
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      margin-bottom: 14px;
+    }
+
+    .service-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    .service-table th {
+      background: var(--ink);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .service-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .service-table input {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+
+    .btn-row-del {
+      background: #ff4757;
+      color: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .btn-add-service {
+      background: var(--lime);
+      color: var(--ink);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      border: var(--border-thin);
+      border-radius: 6px;
+      padding: 8px 16px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-add-service:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    /* Goals Checkbox Grid */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .check-card {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
+      transition: all 0.15s ease;
+    }
+
+    .check-card:hover {
+      background: #fafaf5;
+      transform: translate(-1px, -1px);
+    }
+
+    .check-card input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--magenta);
+    }
+
+    .check-card span {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Bottom Sticky Action Bar */
+    .action-bar {
+      background: var(--panel);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-flat-lg);
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .action-btns-wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-submit {
+      background: var(--lime);
+      color: var(--ink);
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      padding: 14px 26px;
+      border: var(--border-thick);
+      border-radius: 8px;
+      box-shadow: 4px 4px 0 var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--ink);
+      background: #e0ea48;
+    }
+
+    .btn-wa-export {
+      background: #25D366;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      text-transform: uppercase;
+      padding: 14px 22px;
+      border: var(--border-thick);
+      border-radius: 8px;
+      box-shadow: 4px 4px 0 var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-wa-export:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--ink);
+      background: #20b858;
+    }
+
+    .btn-save-draft {
+      background: #fff;
+      color: var(--ink);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      text-transform: uppercase;
+      padding: 14px 18px;
+      border: var(--border-thick);
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 var(--ink);
+      cursor: pointer;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--ink);
+      color: var(--lime);
+      border: 3px solid var(--lime);
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: var(--shadow-flat);
+      z-index: 9999;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="brand-wrap">
+        <img src="images/logo.png" alt="ST Dev Solutions Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>ST DEV SOLUTIONS</h1>
+          <span>CLIENT INTAKE &amp; ASSET HUB</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-btn">🏠 Homepage</a>
+        <a href="pay.html" class="nav-btn">💳 Pay &amp; Receipts</a>
+        <a href="https://wa.me/919337922291?text=Hello%20Swadhin,%20I%20have%20a%20question%20about%20the%20onboarding%20checklist" target="_blank" class="nav-btn primary">
+          💬 Help: +91 93379 22291
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <span class="kicker-tag">⚡ 7-DAY WEBSITE ACCELERATOR</span>
+      <h2>Fast-Track Your Website: Submit Your Business Assets</h2>
+      <p>
+        To deliver your <strong>Day-3 working preview</strong> without delays, please complete this intake checklist. Upload your logo, phone numbers, and services/menu prices below. Your progress auto-saves as you type.
+      </p>
+    </section>
+
+    <!-- Sticky Live Progress Tracker -->
+    <div class="progress-card" id="progress-card">
+      <div class="progress-info">
+        <div class="progress-title">Intake Completion Progress</div>
+        <div class="progress-count" id="progress-text">0 of 12 essential items provided</div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-badge" id="progress-percent">0%</div>
+    </div>
+
+    <!-- MAIN FORM -->
+    <form id="onboard-form" enctype="multipart/form-data">
+
+      <!-- STATION 01: Business Profile & Contact -->
+      <section class="station-block">
+        <div class="station-header">
+          <div class="station-title-wrap">
+            <div class="station-num">01</div>
+            <h3>Business Profile &amp; Contact Details</h3>
+          </div>
+          <span class="station-badge">Essential Station</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="biz-name">Business / Clinic / Shop Name <span class="req">*</span></label>
+            <input type="text" id="biz-name" name="businessName" placeholder="e.g. Aesthedent Dental & Skin Clinic" required class="track-input">
+          </div>
+
+          <div class="form-group">
+            <label for="biz-category">Business Category <span class="req">*</span></label>
+            <select id="biz-category" name="industry" required class="track-input">
+              <option value="">Select your business category...</option>
+              <option value="Clinic & Healthcare">Clinic / Doctor / Dental / Diagnostic Lab</option>
+              <option value="Gym & Fitness">Gym / Fitness Center / Yoga Studio</option>
+              <option value="Restaurant & Cafe">Restaurant / Cafe / Cloud Kitchen</option>
+              <option value="Travel & Hospitality">Travel Agency / Tour Operator / Hotel</option>
+              <option value="Retail & Showroom">Retail Store / Fashion Boutique / Furniture</option>
+              <option value="Professional Services">Lawyer / CA / Architecture / Consulting</option>
+              <option value="Real Estate">Real Estate / Builder / Property Agency</option>
+              <option value="Other">Other Local Business</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="owner-name">Owner / Doctor / Contact Person <span class="req">*</span></label>
+            <input type="text" id="owner-name" name="ownerName" placeholder="e.g. Dr. S. Mohapatra" required class="track-input">
+          </div>
+
+          <div class="form-group">
+            <label for="biz-phone">WhatsApp Booking Number <span class="req">*</span></label>
+            <input type="tel" id="biz-phone" name="phone" placeholder="+91 98765 00000" required class="track-input">
+            <span class="field-hint">All client booking messages will be routed directly to this WhatsApp number.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="biz-email">Official Email Address</label>
+            <input type="email" id="biz-email" name="email" placeholder="contact@yourbusiness.in" class="track-input">
+          </div>
+
+          <div class="form-group">
+            <label for="biz-hours">Operating / Visiting Hours</label>
+            <input type="text" id="biz-hours" name="operatingHours" placeholder="e.g. 10:00 AM - 8:30 PM (Mon-Sat)" class="track-input">
+          </div>
+
+          <div class="form-group full">
+            <label for="biz-address">Physical Address / Landmark <span class="req">*</span></label>
+            <input type="text" id="biz-address" name="address" placeholder="e.g. Plot 142, Saheed Nagar, Near Durga Mandap, Bhubaneswar, Odisha" required class="track-input">
+          </div>
+
+          <div class="form-group full">
+            <label for="biz-maps">Google Maps Listing Link</label>
+            <input type="url" id="biz-maps" name="googleMapsUrl" placeholder="https://maps.app.goo.gl/..." class="track-input">
+            <span class="field-hint">We will embed an interactive Google Maps pin so customers can navigate straight to your shop.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATION 02: Brand Assets & Media -->
+      <section class="station-block">
+        <div class="station-header">
+          <div class="station-title-wrap">
+            <div class="station-num">02</div>
+            <h3>Brand Identity, Logo &amp; High-Res Photos</h3>
+          </div>
+          <span class="station-badge">Media Station</span>
+        </div>
+
+        <div class="form-grid">
+          <!-- Logo Upload -->
+          <div class="form-group full">
+            <label>Business Logo File (High-Res PNG, SVG or JPG)</label>
+            <div class="file-dropzone" id="logo-dropzone">
+              <input type="file" id="logo-file" name="logo" accept="image/*,.pdf,.svg">
+              <div class="dropzone-icon">🖼️</div>
+              <div class="dropzone-text">Click or Drag &amp; Drop Your High-Res Logo Here</div>
+              <div class="dropzone-sub">PNG with transparent background preferred (Max 15MB)</div>
+            </div>
+            <div class="file-preview-list" id="logo-preview-list"></div>
+          </div>
+
+          <!-- Color Palette Preference -->
+          <div class="form-group">
+            <label for="brand-colors">Brand Color Palette Preference</label>
+            <select id="brand-colors" name="brandColors" class="track-input">
+              <option value="ST_Dev_Decides">🎨 Let ST Dev Solutions Design (Recommended)</option>
+              <option value="Navy_Gold">Navy Blue &amp; Premium Gold (Corporate/Luxury)</option>
+              <option value="Medical_Cyan">Cyan Blue &amp; Pure White (Clinical/Healthcare)</option>
+              <option value="Neon_Charcoal">Neon Lime &amp; Deep Charcoal (Fitness/Gym)</option>
+              <option value="Warm_Burgundy">Warm Terracotta &amp; Deep Burgundy (Cafe/Food)</option>
+              <option value="Custom">Custom Brand Colors (Specify in notes below)</option>
+            </select>
+          </div>
+
+          <!-- Domain Preference -->
+          <div class="form-group">
+            <label for="domain-pref">Preferred Domain Name (.com / .in)</label>
+            <input type="text" id="domain-pref" name="domainPreference" placeholder="e.g. aesthedent.in or ironforgegym.com" class="track-input">
+            <span class="field-hint">Included free in your 1st-year package.</span>
+          </div>
+
+          <!-- Business Photos Upload -->
+          <div class="form-group full">
+            <label>Interior, Exterior, Equipment &amp; Team Photos (Up to 10 photos)</label>
+            <div class="file-dropzone" id="photos-dropzone">
+              <input type="file" id="photos-files" name="photos" accept="image/*" multiple>
+              <div class="dropzone-icon">📸</div>
+              <div class="dropzone-text">Click or Drag &amp; Drop Clinic / Shop Photos Here</div>
+              <div class="dropzone-sub">Real photos boost customer conversion by 300% over stock images</div>
+            </div>
+            <div class="file-preview-list" id="photos-preview-list"></div>
+          </div>
+
+          <!-- Team / Doctor Bio -->
+          <div class="form-group full">
+            <label for="staff-bio">Key Doctors / Trainers / Founder Bio &amp; Qualifications</label>
+            <textarea id="staff-bio" name="doctorOrStaffBios" placeholder="e.g. Dr. S. Mohapatra (BDS, MDS - Oral & Maxillofacial Surgeon, 12+ years experience. Trained in Germany for painless implants.)" class="track-input"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATION 03: Services, Menu & Pricing Catalog -->
+      <section class="station-block">
+        <div class="station-header">
+          <div class="station-title-wrap">
+            <div class="station-num">03</div>
+            <h3>Services, Treatments &amp; Menu Pricing</h3>
+          </div>
+          <span class="station-badge">Pricing Station</span>
+        </div>
+
+        <p style="font-size:13.5px;color:#555;margin-bottom:14px;">
+          List your key treatments, products, or membership packages below. You can also upload your existing pamphlet, menu card, or rate list.
+        </p>
+
+        <!-- Dynamic Service Builder -->
+        <div class="service-table-wrap">
+          <table class="service-table" id="service-table">
+            <thead>
+              <tr>
+                <th style="width:55%;">Service / Treatment / Package Name</th>
+                <th style="width:30%;">Price / Fee</th>
+                <th style="width:15%;text-align:center;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="service-tbody">
+              <tr>
+                <td><input type="text" class="srv-name" placeholder="e.g. Dental Scaling & Polishing" value="Dental Scaling & Cleaning"></td>
+                <td><input type="text" class="srv-price" placeholder="e.g. ₹1,200" value="₹1,200"></td>
+                <td style="text-align:center;"><button type="button" class="btn-row-del" onclick="removeServiceRow(this)">✕</button></td>
+              </tr>
+              <tr>
+                <td><input type="text" class="srv-name" placeholder="e.g. Laser Teeth Whitening" value="Laser Teeth Whitening"></td>
+                <td><input type="text" class="srv-price" placeholder="e.g. ₹3,500" value="₹3,500"></td>
+                <td style="text-align:center;"><button type="button" class="btn-row-del" onclick="removeServiceRow(this)">✕</button></td>
+              </tr>
+              <tr>
+                <td><input type="text" class="srv-name" placeholder="e.g. Dental Implant Consultation" value="Painless Dental Implants"></td>
+                <td><input type="text" class="srv-price" placeholder="e.g. From ₹18,000" value="From ₹18,000"></td>
+                <td style="text-align:center;"><button type="button" class="btn-row-del" onclick="removeServiceRow(this)">✕</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
+          <button type="button" class="btn-add-service" id="btn-add-row">＋ Add Another Service Row</button>
+          <span style="font-size:12px;color:#666;">You can add more services later during draft review.</span>
+        </div>
+
+        <!-- Or Upload Rate Card Document -->
+        <div class="form-group">
+          <label>OR Upload Existing Rate Card / Pamphlet / Menu PDF</label>
+          <div class="file-dropzone" id="menu-dropzone">
+            <input type="file" id="menu-file" name="menuDoc" accept=".pdf,.doc,.docx,image/*">
+            <div class="dropzone-icon">📋</div>
+            <div class="dropzone-text">Click or Drag &amp; Drop Price List / Menu File Here</div>
+            <div class="dropzone-sub">PDF, Word Document or High-Res Photo</div>
+          </div>
+          <div class="file-preview-list" id="menu-preview-list"></div>
+        </div>
+      </section>
+
+      <!-- STATION 04: Goals & Conversion Funnel -->
+      <section class="station-block">
+        <div class="station-header">
+          <div class="station-title-wrap">
+            <div class="station-num">04</div>
+            <h3>Website Goals &amp; Customer Journey</h3>
+          </div>
+          <span class="station-badge">Conversion Station</span>
+        </div>
+
+        <div class="form-group full" style="margin-bottom:18px;">
+          <label>What is the #1 primary action you want website visitors to take?</label>
+          <div class="checkbox-grid">
+            <label class="check-card">
+              <input type="checkbox" name="goals" value="WhatsApp Bookings" checked class="track-input">
+              <span>Direct WhatsApp Appointment / Inquiry (Recommended)</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" name="goals" value="Phone Calls" checked class="track-input">
+              <span>One-Click Phone Call to Reception</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" name="goals" value="Store Visits" checked class="track-input">
+              <span>Google Maps Directions to Clinic / Shop</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" name="goals" value="Online Form" class="track-input">
+              <span>Detailed Online Consultation Form</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="ref-links">Any websites you admire? (Optional)</label>
+            <input type="text" id="ref-links" name="competitorOrRefLinks" placeholder="e.g. www.clearchoice.com, www.cult.fit (Paste any links or aesthetic inspirations)" class="track-input">
+          </div>
+
+          <div class="form-group full">
+            <label for="extra-notes">Special Requirements / Notes for Swadhin &amp; Tusar</label>
+            <textarea id="extra-notes" name="extraNotes" placeholder="e.g. Please emphasize that we offer Sunday appointments and painless procedures..." class="track-input"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sticky Bottom Action Bar -->
+      <div class="action-bar">
+        <div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;">Ready to Submit?</div>
+          <div style="font-size:12.5px;color:#555;">All files and details will be delivered to ST Dev Solutions immediately.</div>
+        </div>
+
+        <div class="action-btns-wrap">
+          <button type="button" class="btn-save-draft" id="btn-save-draft">💾 Save Draft</button>
+          
+          <button type="button" class="btn-wa-export" id="btn-wa-export">
+            💬 Send to Swadhin on WhatsApp
+          </button>
+
+          <button type="submit" class="btn-submit" id="btn-submit-intake">
+            🚀 Submit Intake to Agency
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <!-- Toast Notification Element -->
+  <div class="toast" id="toast">✓ Saved successfully!</div>
+
+  <script>
+    // Live Checklist Tracker & Dynamic Service Table Logic
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.getElementById("onboard-form");
+      var trackInputs = document.querySelectorAll(".track-input");
+      var progressFill = document.getElementById("progress-fill");
+      var progressText = document.getElementById("progress-text");
+      var progressPercent = document.getElementById("progress-percent");
+      var toast = document.getElementById("toast");
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 3000);
+      }
+
+      // Calculate progress
+      function updateProgress() {
+        var totalKeyItems = 12;
+        var completed = 0;
+
+        if (document.getElementById("biz-name").value.trim().length > 2) completed++;
+        if (document.getElementById("biz-category").value !== "") completed++;
+        if (document.getElementById("owner-name").value.trim().length > 2) completed++;
+        if (document.getElementById("biz-phone").value.trim().length > 6) completed++;
+        if (document.getElementById("biz-email").value.trim().length > 4) completed++;
+        if (document.getElementById("biz-address").value.trim().length > 6) completed++;
+        if (document.getElementById("biz-maps").value.trim().length > 8) completed++;
+        
+        // Logo
+        if (document.getElementById("logo-file").files.length > 0 || localStorage.getItem("stds_onboard_logo_uploaded")) completed++;
+        // Photos
+        if (document.getElementById("photos-files").files.length > 0 || localStorage.getItem("stds_onboard_photos_uploaded")) completed++;
+        
+        // Services table has items
+        var srvRows = document.querySelectorAll("#service-tbody tr");
+        if (srvRows.length >= 1) {
+          var firstRowName = srvRows[0].querySelector(".srv-name").value.trim();
+          if (firstRowName.length > 0) completed++;
+        }
+        
+        // Domain preference
+        if (document.getElementById("domain-pref").value.trim().length > 2) completed++;
+        // Goals
+        var checkedGoals = document.querySelectorAll("input[name='goals']:checked");
+        if (checkedGoals.length > 0) completed++;
+
+        var pct = Math.min(100, Math.round((completed / totalKeyItems) * 100));
+        progressFill.style.width = pct + "%";
+        progressPercent.textContent = pct + "%";
+        progressText.textContent = completed + " of " + totalKeyItems + " essential items provided";
+      }
+
+      // Attach listeners to all inputs
+      trackInputs.forEach(function (inp) {
+        inp.addEventListener("input", updateProgress);
+        inp.addEventListener("change", updateProgress);
+      });
+
+      // File upload preview handlers
+      function handleFilePreview(inputEl, listEl, storageKey) {
+        inputEl.addEventListener("change", function () {
+          listEl.innerHTML = "";
+          if (inputEl.files.length > 0) {
+            localStorage.setItem(storageKey, "true");
+            Array.from(inputEl.files).forEach(function (f) {
+              var pill = document.createElement("div");
+              pill.className = "file-preview-pill";
+              pill.innerHTML = "<span>📄 " + f.name + " (" + Math.round(f.size / 1024) + " KB)</span>";
+              listEl.appendChild(pill);
+            });
+          }
+          updateProgress();
+        });
+      }
+
+      handleFilePreview(document.getElementById("logo-file"), document.getElementById("logo-preview-list"), "stds_onboard_logo_uploaded");
+      handleFilePreview(document.getElementById("photos-files"), document.getElementById("photos-preview-list"), "stds_onboard_photos_uploaded");
+      handleFilePreview(document.getElementById("menu-file"), document.getElementById("menu-preview-list"), "stds_onboard_menu_uploaded");
+
+      // Dynamic Service Table Add Row
+      var btnAddRow = document.getElementById("btn-add-row");
+      btnAddRow.addEventListener("click", function () {
+        var tbody = document.getElementById("service-tbody");
+        var tr = document.createElement("tr");
+        tr.innerHTML = '<td><input type="text" class="srv-name" placeholder="Service / Package Name"></td>' +
+          '<td><input type="text" class="srv-price" placeholder="Price / Fee (e.g. ₹1,500)"></td>' +
+          '<td style="text-align:center;"><button type="button" class="btn-row-del" onclick="removeServiceRow(this)">✕</button></td>';
+        tbody.appendChild(tr);
+
+        // attach event listeners to new row
+        tr.querySelectorAll("input").forEach(function (i) {
+          i.addEventListener("input", updateProgress);
+        });
+        updateProgress();
+      });
+
+      window.removeServiceRow = function (btn) {
+        var tr = btn.closest("tr");
+        if (tr) {
+          tr.remove();
+          updateProgress();
+        }
+      };
+
+      // Collect Services
+      function getServicesArray() {
+        var items = [];
+        document.querySelectorAll("#service-tbody tr").forEach(function (row) {
+          var name = row.querySelector(".srv-name") ? row.querySelector(".srv-name").value.trim() : "";
+          var price = row.querySelector(".srv-price") ? row.querySelector(".srv-price").value.trim() : "";
+          if (name) {
+            items.push({ name: name, price: price });
+          }
+        });
+        return items;
+      }
+
+      // LocalStorage Draft Save
+      var btnSaveDraft = document.getElementById("btn-save-draft");
+      btnSaveDraft.addEventListener("click", function () {
+        var draft = {
+          bizName: document.getElementById("biz-name").value,
+          industry: document.getElementById("biz-category").value,
+          ownerName: document.getElementById("owner-name").value,
+          phone: document.getElementById("biz-phone").value,
+          email: document.getElementById("biz-email").value,
+          hours: document.getElementById("biz-hours").value,
+          address: document.getElementById("biz-address").value,
+          maps: document.getElementById("biz-maps").value,
+          domain: document.getElementById("domain-pref").value,
+          bio: document.getElementById("staff-bio").value,
+          services: getServicesArray(),
+          notes: document.getElementById("extra-notes").value
+        };
+        localStorage.setItem("stds_onboard_draft", JSON.stringify(draft));
+        showToast("✓ Intake progress saved to browser draft!");
+      });
+
+      // Load draft if exists
+      var saved = localStorage.getItem("stds_onboard_draft");
+      if (saved) {
+        try {
+          var data = JSON.parse(saved);
+          if (data.bizName) document.getElementById("biz-name").value = data.bizName;
+          if (data.industry) document.getElementById("biz-category").value = data.industry;
+          if (data.ownerName) document.getElementById("owner-name").value = data.ownerName;
+          if (data.phone) document.getElementById("biz-phone").value = data.phone;
+          if (data.email) document.getElementById("biz-email").value = data.email;
+          if (data.hours) document.getElementById("biz-hours").value = data.hours;
+          if (data.address) document.getElementById("biz-address").value = data.address;
+          if (data.maps) document.getElementById("biz-maps").value = data.maps;
+          if (data.domain) document.getElementById("domain-pref").value = data.domain;
+          if (data.bio) document.getElementById("staff-bio").value = data.bio;
+          if (data.notes) document.getElementById("extra-notes").value = data.notes;
+        } catch (e) {}
+      }
+
+      // WhatsApp Export to Swadhin (+91 93379 22291)
+      var btnWaExport = document.getElementById("btn-wa-export");
+      btnWaExport.addEventListener("click", function () {
+        var bName = document.getElementById("biz-name").value || "New Client";
+        var oName = document.getElementById("owner-name").value || "Business Owner";
+        var phone = document.getElementById("biz-phone").value || "";
+        var cat = document.getElementById("biz-category").value || "Local Business";
+        var addr = document.getElementById("biz-address").value || "Bhubaneswar";
+        var domain = document.getElementById("domain-pref").value || "Pending";
+        var services = getServicesArray();
+
+        var srvText = services.map(function (s) {
+          return "  • " + s.name + " (" + s.price + ")";
+        }).join("\n");
+
+        var waMsg = "*CLIENT INTAKE CHECKLIST — ST DEV SOLUTIONS*\n" +
+          "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+          "• *Business:* " + bName + " (" + cat + ")\n" +
+          "• *Owner / Contact:* " + oName + "\n" +
+          "• *WhatsApp Booking No:* " + phone + "\n" +
+          "• *Address:* " + addr + "\n" +
+          "• *Preferred Domain:* " + domain + "\n" +
+          "• *Key Services & Menu Prices:*\n" + (srvText || "  • (Attached via portal)") + "\n" +
+          "• *Asset Files:* Logo and photos submitted\n" +
+          "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+          "Ready for Day-3 working draft build!\n" +
+          "Sent to Swadhin Panigrahi (+91 93379 22291), Founder @ ST Dev Solutions";
+
+        var waUrl = "https://wa.me/919337922291?text=" + encodeURIComponent(waMsg);
+        window.open(waUrl, "_blank");
+      });
+
+      // Form Submit to Backend API / Local fallback
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var submitBtn = document.getElementById("btn-submit-intake");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "⏳ Submitting Assets...";
+
+        var formData = new FormData(form);
+        formData.append("services", JSON.stringify(getServicesArray()));
+        formData.append("checklistProgress", progressPercent.textContent.replace("%", ""));
+
+        fetch("/api/onboard", {
+          method: "POST",
+          body: formData
+        })
+        .then(function (res) { return res.json(); })
+        .then(function (result) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "🚀 Submit Intake to Agency";
+          if (result.success) {
+            showToast("🎉 All assets submitted successfully to ST Dev Solutions!");
+            // Offer to send WhatsApp confirmation as well
+            setTimeout(function () {
+              if (confirm("Intake saved! Would you also like to send the summary to Swadhin Panigrahi on WhatsApp (+91 93379 22291)?")) {
+                btnWaExport.click();
+              }
+            }, 600);
+          } else {
+            showToast("✓ Saved locally! " + (result.message || ""));
+          }
+        })
+        .catch(function (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "🚀 Submit Intake to Agency";
+          // Fallback to localStorage if running static file
+          showToast("✓ Intake details saved locally! Opening WhatsApp export...");
+          setTimeout(function () {
+            btnWaExport.click();
+          }, 800);
+        });
+      });
+
+      // Initial progress calculation
+      updateProgress();
+    });
+  </script>
+</body>
+</html>
