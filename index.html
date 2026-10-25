@@ -29,9 +29,9 @@ your real studio details:
 
 5. PRICING & ESTIMATOR NUMBERS (Stop 5 · Price Estimator & Stop 6 · FAQ):
    - Base page prices in JS (`BASE_PRICES`):
-     * 1-page storefront: currently ₹8,000 – ₹10,000
-     * 3–5 page site:     currently ₹15,000 – ₹18,000
-     * 6–10 page site:    currently ₹24,000 – ₹28,000
+     * 1-page storefront: currently ₹6,000
+     * 3–5 page site:     currently ₹12,000 – ₹15,000
+     * 6–10 page site:    currently From ₹20,000+ (Custom Planning)
    - Add-on feature prices in checkboxes (`data-min` and `data-max`)
    - Yearly renewal placeholder in FAQ #1: currently "₹2,500 to ₹3,500 per year"
 ================================================================================
@@ -1277,6 +1277,745 @@ your real studio details:
       font-weight: 600;
       color: var(--ink);
       line-height: 1.4;
+    }
+
+    
+    /* ==========================================================================
+       TEAM QUOTATION STUDIO & GENERATOR (Dual-Panel + Live A4 Preview + Print PDF)
+       ========================================================================== */
+    .team-quote-btn {
+      background: var(--pink);
+      color: var(--panel);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border: 2px solid var(--ink);
+      border-radius: 99px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
+      transition: transform var(--dur-luxury) var(--ease-luxury),
+                  background-color var(--dur-luxury) var(--ease-luxury),
+                  box-shadow var(--dur-luxury) var(--ease-luxury);
+    }
+    .team-quote-btn:hover {
+      background: var(--lime);
+      color: var(--ink);
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .footer-quote-btn {
+      background: var(--lime);
+      color: var(--ink);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 8px 18px;
+      border: 3px solid var(--panel);
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--panel);
+      transition: transform 0.2s ease;
+    }
+    .footer-quote-btn:hover {
+      background: var(--pink);
+      color: var(--panel);
+      transform: translate(-2px, -2px);
+    }
+
+    .quotation-studio-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      background: rgba(42, 18, 48, 0.92);
+      backdrop-filter: blur(4px);
+    }
+    .quotation-studio-modal.is-open {
+      display: flex;
+    }
+
+    .qs-dialog {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1540px;
+      height: 96vh;
+      max-height: 980px;
+      background: var(--panel);
+      border: 6px solid var(--ink);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 12px 12px 0 var(--ink);
+    }
+
+    /* Studio Header Bar */
+    .qs-top-bar {
+      background: var(--ink);
+      color: var(--panel);
+      padding: 12px 20px;
+      border-bottom: 4px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .qs-brand-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--lime);
+    }
+    .qs-presets-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .qs-preset-btn {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 4px 10px;
+      border: 2px solid var(--panel);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .qs-preset-btn:hover {
+      background: var(--lime);
+      transform: translateY(-1px);
+    }
+    .qs-preset-btn.active {
+      background: var(--pink);
+      color: var(--panel);
+      border-color: var(--pink);
+    }
+
+    .qs-actions-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qs-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 2px solid var(--panel);
+      background: transparent;
+      color: var(--panel);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .qs-action-btn:hover {
+      background: var(--panel);
+      color: var(--ink);
+    }
+    .qs-action-btn.btn-print {
+      background: var(--pink);
+      color: var(--panel);
+      border-color: var(--pink);
+      box-shadow: 2px 2px 0 #000;
+    }
+    .qs-action-btn.btn-print:hover {
+      background: var(--lime);
+      color: var(--ink);
+      border-color: var(--lime);
+    }
+    .qs-action-btn.btn-wa {
+      background: #25D366;
+      color: #000;
+      border-color: #25D366;
+      box-shadow: 2px 2px 0 #000;
+    }
+    .qs-action-btn.btn-wa:hover {
+      background: #20BA5A;
+      color: #fff;
+    }
+    .qs-close-btn {
+      background: transparent;
+      color: var(--panel);
+      border: 2px solid var(--panel);
+      border-radius: 6px;
+      width: 34px;
+      height: 34px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .qs-close-btn:hover {
+      background: var(--pink);
+      border-color: var(--pink);
+    }
+
+    /* Main Workspace (Editor on Left, Live Quotation Document on Right) */
+    .qs-workspace {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      flex: 1;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    @media (max-width: 1080px) {
+      .qs-workspace {
+        grid-template-columns: 1fr;
+      }
+      .qs-sheet-panel {
+        display: none; /* In small screens, toggled via tab or view preview */
+      }
+      .qs-workspace.show-preview .qs-editor-panel {
+        display: none;
+      }
+      .qs-workspace.show-preview .qs-sheet-panel {
+        display: block;
+      }
+    }
+
+    /* Left Editor Panel */
+    .qs-editor-panel {
+      background: var(--panel);
+      border-right: 5px solid var(--ink);
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .qs-section-card {
+      background: var(--bg);
+      border: 3px solid var(--ink);
+      padding: 14px 16px;
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .qs-card-title {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .qs-input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .qs-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+    .qs-field label {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+    .qs-field input, .qs-field select, .qs-field textarea {
+      background: var(--panel);
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .qs-field input:focus, .qs-field select:focus, .qs-field textarea:focus {
+      outline: 2px solid var(--pink);
+      background: #fff;
+    }
+
+    /* Deliverables checklist editor */
+    .qs-deliverables-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 220px;
+      overflow-y: auto;
+      border: 2px solid var(--ink);
+      padding: 8px;
+      background: var(--panel);
+      border-radius: 4px;
+    }
+    .qs-deliv-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .qs-deliv-item input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--ink);
+      cursor: pointer;
+    }
+
+    /* Price items editor table */
+    .qs-price-items-editor {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .qs-price-items-editor th {
+      background: var(--ink);
+      color: var(--panel);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 13px;
+      text-align: left;
+      padding: 6px;
+    }
+    .qs-price-items-editor td {
+      padding: 4px;
+      border-bottom: 1px solid rgba(42, 18, 48, 0.2);
+    }
+    .qs-price-items-editor input {
+      width: 100%;
+      border: 1px solid var(--ink);
+      padding: 4px 6px;
+      font-size: 13px;
+    }
+
+    /* Right Sheet Panel (A4 Live Quotation Document) */
+    .qs-sheet-panel {
+      overflow-y: auto;
+      padding: 30px;
+      background: #778374;
+      display: flex;
+      justify-content: center;
+    }
+    .quote-doc {
+      background: #ffffff;
+      color: #1a1a1a;
+      width: 100%;
+      max-width: 820px;
+      min-height: 1100px;
+      padding: 48px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 1px solid #ccc;
+      font-family: "Hanken Grotesk", sans-serif;
+      box-sizing: border-box;
+      line-height: 1.5;
+    }
+
+    /* Document Structure */
+    .qd-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 4px solid var(--ink);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    .qd-agency-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .qd-logo-box {
+      width: 52px;
+      height: 52px;
+      background: var(--ink);
+      color: var(--panel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Archivo", sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      border-radius: 8px;
+    }
+    .qd-agency-info h1 {
+      font-family: "Archivo", sans-serif;
+      font-size: 26px;
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .qd-agency-info p {
+      margin: 3px 0 0;
+      font-size: 13px;
+      color: #555;
+    }
+    .qd-agency-contacts {
+      text-align: right;
+      font-size: 12px;
+      color: #333;
+    }
+    .qd-agency-contacts strong {
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .qd-doc-title-bar {
+      margin-bottom: 24px;
+      border-left: 6px solid var(--pink);
+      padding-left: 16px;
+    }
+    .qd-doc-title-bar .qd-kicker {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--pink);
+    }
+    .qd-doc-title-bar h2 {
+      font-family: "Archivo", sans-serif;
+      font-size: 28px;
+      margin: 4px 0 6px;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+    .qd-doc-title-bar p {
+      margin: 0;
+      font-size: 14px;
+      color: #444;
+      max-width: 65ch;
+    }
+
+    /* Client & Total Meta Grid */
+    .qd-meta-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+      background: #F6F7F2;
+      border: 3px solid var(--ink);
+      padding: 18px 20px;
+    }
+    .qd-client-box h3, .qd-quote-box h3 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 8px;
+      color: #666;
+    }
+    .qd-client-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .qd-client-details {
+      font-size: 13px;
+      color: #333;
+      line-height: 1.4;
+    }
+    .qd-quote-box {
+      border-left: 3px solid var(--ink);
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .qd-total-display {
+      font-family: "Archivo", sans-serif;
+      font-weight: 900;
+      font-size: 34px;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .qd-total-words {
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .qd-ref-date {
+      font-size: 12px;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    /* Section Headings in Document */
+    .qd-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 6px;
+      margin: 24px 0 14px;
+    }
+    .qd-sec-num {
+      background: var(--ink);
+      color: #fff;
+      padding: 2px 8px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    /* Scope & Deliverables Grid */
+    .qd-deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 18px;
+      margin-bottom: 20px;
+    }
+    .qd-deliv-cell {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      line-height: 1.35;
+      color: #222;
+    }
+    .qd-check-box {
+      color: #0b8043;
+      font-weight: 900;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    /* Exclusions Note */
+    .qd-exclusions-box {
+      background: #fafafa;
+      border: 1px dashed #999;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    /* Itemized Table */
+    .qd-price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+    }
+    .qd-price-table th {
+      background: var(--ink);
+      color: #fff;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .qd-price-table th:last-child {
+      text-align: right;
+    }
+    .qd-price-table td {
+      padding: 10px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid #e0e0e0;
+      color: #222;
+    }
+    .qd-price-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+    }
+    .qd-price-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+    .qd-totals-summary {
+      width: 320px;
+      margin-left: auto;
+      margin-bottom: 24px;
+    }
+    .qd-total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13px;
+      border-bottom: 1px solid #eee;
+    }
+    .qd-total-row.grand {
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ink);
+      padding: 8px 0;
+    }
+
+    /* Timeline & Payment Schedule */
+    .qd-timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .qd-timeline-phase {
+      background: #F6F7F2;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .qd-phase-step {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--pink);
+      text-transform: uppercase;
+    }
+    .qd-phase-name {
+      font-weight: 700;
+      font-size: 12px;
+      margin: 4px 0;
+      color: var(--ink);
+    }
+    .qd-phase-days {
+      font-size: 11px;
+      color: #666;
+    }
+
+    .qd-payment-schedule {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .qd-pay-card {
+      background: #f9f9f9;
+      border-left: 4px solid var(--ink);
+      padding: 10px 14px;
+    }
+    .qd-pay-card strong {
+      display: block;
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .qd-pay-card span {
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* Terms & Acceptance Sign-off */
+    .qd-terms-list {
+      font-size: 12px;
+      color: #555;
+      margin: 0 0 24px;
+      padding-left: 18px;
+      line-height: 1.5;
+    }
+    .qd-signatures-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 2px dashed #bbb;
+    }
+    .qd-sig-col {
+      font-size: 12px;
+      color: #444;
+    }
+    .qd-sig-line {
+      height: 40px;
+      border-bottom: 1px solid #222;
+      margin-bottom: 8px;
+    }
+
+    /* ==========================================================================
+       DEDICATED @MEDIA PRINT STYLES FOR CLEAN 1-CLICK A4 PDF
+       ========================================================================== */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .quotation-studio-modal,
+      .quotation-studio-modal * {
+        visibility: visible;
+      }
+      .quotation-studio-modal {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+      }
+      .qs-dialog {
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        overflow: visible !important;
+        display: block !important;
+      }
+      .qs-top-bar, .qs-editor-panel {
+        display: none !important;
+      }
+      .qs-sheet-panel {
+        padding: 0 !important;
+        background: transparent !important;
+        display: block !important;
+        overflow: visible !important;
+      }
+      .quote-doc {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        min-height: auto !important;
+      }
+      .qd-meta-grid, .qd-price-table th, .qd-sec-num {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 12mm 10mm;
+      }
     }
 
     .inline-live-iframe {
@@ -3020,6 +3759,7 @@ your real studio details:
       <li><a href="#estimator" class="mobile-station-link"><span class="mobile-station-num">5</span> Station 5 · Interactive Price Estimator</a></li>
       <li><a href="#faq" class="mobile-station-link"><span class="mobile-station-num">6</span> Station 6 · Plain-English FAQ</a></li>
       <li><a href="#contact" class="mobile-station-link"><span class="mobile-station-num">7</span> Station 7 · Contact &amp; Free 3-Day Draft</a></li>
+      <li style="margin-top:12px;padding-top:12px;border-top:3px solid var(--ink);"><button type="button" class="mobile-station-link mobile-quote-action" id="open-quote-studio-mobile" style="width:100%;text-align:left;background:var(--lime);font-weight:700;"><span class="mobile-station-num" style="background:var(--ink);color:var(--panel);">📄</span> Team Quotation Studio (Create &amp; Print)</button></li>
     </ul>
   </div>
 
@@ -3047,6 +3787,7 @@ your real studio details:
           <li><a href="#trust">Why trust us</a></li>
           <li><a href="#estimator">Pricing</a></li>
           <li><a href="#contact">Talk to us</a></li>
+          <li><button type="button" class="team-quote-btn" id="open-quote-studio-btn" aria-label="Open Agency Quotation Studio">📄 Quotation Studio</button></li>
         </ul>
       </nav>
       <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle Station Menu">
@@ -3905,23 +4646,23 @@ your real studio details:
             <div class="tier-options" role="radiogroup" aria-label="Website size">
               <label class="tier-label">
                 <input type="radio" name="site_tier" value="starter" checked>
-                <span class="tier-name">1-page shopfront</span>
-                <span class="tier-desc">Best for cafés, sweet shops, salons &amp; single stores.</span>
-                <span class="tier-price-tag">₹8,000 – ₹10,000</span>
+                <span class="tier-name">1 to 2 pages (Starter)</span>
+                <span class="tier-desc">Best for single-outlet storefronts, cafés, bakeries &amp; quick portfolios.</span>
+                <span class="tier-price-tag">₹6,000</span>
               </label>
 
               <label class="tier-label">
                 <input type="radio" name="site_tier" value="growth">
-                <span class="tier-name">3 to 5 pages</span>
-                <span class="tier-desc">Best for clinics, coaching centres &amp; service businesses.</span>
-                <span class="tier-price-tag">₹15,000 – ₹18,000</span>
+                <span class="tier-name">3 to 5 pages (Complete Business)</span>
+                <span class="tier-desc">Best for clinics, gyms, salons, coaching centres &amp; service businesses.</span>
+                <span class="tier-price-tag">₹12,000 – ₹15,000</span>
               </label>
 
               <label class="tier-label">
                 <input type="radio" name="site_tier" value="catalogue">
-                <span class="tier-name">6 to 10 pages</span>
-                <span class="tier-desc">Best for large product catalogues &amp; multi-branch shops.</span>
-                <span class="tier-price-tag">₹24,000 – ₹28,000</span>
+                <span class="tier-name">Custom Architecture (6+ pages)</span>
+                <span class="tier-desc">Tailor-made planning for multi-branch, e-commerce, custom booking &amp; web apps.</span>
+                <span class="tier-price-tag">From ₹20,000+ · Custom Planning</span>
               </label>
             </div>
 
@@ -4140,6 +4881,322 @@ your real studio details:
         </div>
       </div>
     </section>
+  
+  <!-- ========================================================================
+       OFFICIAL AGENCY QUOTATION STUDIO MODAL (TEAM BUILDER & PDF GENERATOR)
+       ======================================================================== -->
+  <div class="quotation-studio-modal" id="quotation-studio-modal" role="dialog" aria-modal="true" aria-labelledby="qs-modal-title" aria-hidden="true">
+    <div class="inspector-backdrop" id="qs-backdrop"></div>
+    <div class="qs-dialog">
+      <!-- Top Action & Preset Bar -->
+      <div class="qs-top-bar">
+        <div class="qs-brand-title">
+          <span style="background:var(--lime);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:16px;">ST DEV</span>
+          <span id="qs-modal-title">Official Agency Quotation Studio</span>
+        </div>
+
+        <div class="qs-presets-strip">
+          <span style="font-size:13px;color:#aaa;font-weight:700;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;">Quick Presets:</span>
+          <button type="button" class="qs-preset-btn" data-preset="starter">⚡ 1–2 Page Starter (₹6k)</button>
+          <button type="button" class="qs-preset-btn" data-preset="business">⚡ 3–5 Page Business (₹12k)</button>
+          <button type="button" class="qs-preset-btn active" data-preset="clinic">⚡ 3–5 Page Clinic/Gym (₹15k)</button>
+          <button type="button" class="qs-preset-btn" data-preset="custom">⚡ Custom Architecture (₹22k+)</button>
+        </div>
+
+        <div class="qs-actions-strip">
+          <button type="button" class="qs-action-btn btn-print" id="qs-print-btn" title="Download clean A4 PDF or Print">
+            <span>🖨️ Download / Print PDF</span>
+          </button>
+          <button type="button" class="qs-action-btn btn-wa" id="qs-share-wa-btn" title="Send Quotation Summary to Client on WhatsApp">
+            <span>💬 Send via WhatsApp</span>
+          </button>
+          <button type="button" class="qs-action-btn" id="qs-copy-btn" title="Copy Text Summary">
+            <span>📋 Copy</span>
+          </button>
+          <button type="button" class="qs-close-btn" id="qs-close-btn" aria-label="Close Quotation Studio">✕</button>
+        </div>
+      </div>
+
+      <!-- Main Workspace -->
+      <div class="qs-workspace" id="qs-workspace">
+        <!-- Left Column: Inputs & Controls -->
+        <div class="qs-editor-panel">
+          <!-- Card 1: Client & Project Info -->
+          <div class="qs-section-card">
+            <div class="qs-card-title">
+              <span>01 · Client &amp; Business Info</span>
+              <span style="font-size:12px;background:var(--panel);padding:2px 6px;border-radius:4px;">Live Sync</span>
+            </div>
+
+            <div class="qs-field">
+              <label for="qf-business-name">Business / Clinic / Shop Name *</label>
+              <input type="text" id="qf-business-name" value="Aesthedent Dental &amp; Skin Clinic">
+            </div>
+
+            <div class="qs-input-row">
+              <div class="qs-field">
+                <label for="qf-client-name">Client Contact Person *</label>
+                <input type="text" id="qf-client-name" value="Dr. S. Mohapatra">
+              </div>
+              <div class="qs-field">
+                <label for="qf-client-phone">Client Phone / WhatsApp *</label>
+                <input type="text" id="qf-client-phone" value="+91 98765 00000">
+              </div>
+            </div>
+
+            <div class="qs-input-row">
+              <div class="qs-field">
+                <label for="qf-client-email">Client Email</label>
+                <input type="email" id="qf-client-email" value="contact@aesthedent.in">
+              </div>
+              <div class="qs-field">
+                <label for="qf-client-city">Address / Area</label>
+                <input type="text" id="qf-client-city" value="Saheed Nagar, Bhubaneswar">
+              </div>
+            </div>
+
+            <div class="qs-input-row">
+              <div class="qs-field">
+                <label for="qf-quote-ref">Quotation Reference</label>
+                <input type="text" id="qf-quote-ref" value="STDS/AESTHEDENT/2026/001">
+              </div>
+              <div class="qs-field">
+                <label for="qf-validity-days">Validity (Days)</label>
+                <input type="number" id="qf-validity-days" value="15" min="1" max="90">
+              </div>
+            </div>
+
+            <div class="qs-field">
+              <label for="qf-project-lead">Assigned Agency Lead</label>
+              <select id="qf-project-lead">
+                <option value="Swadhin Panigrahi (Founder, +91 93379 22291)">Swadhin Panigrahi (Founder)</option>
+                <option value="Tusar (Co-Founder)">Tusar (Co-Founder)</option>
+                <option value="Swadhin Panigrahi &amp; Tusar">Swadhin Panigrahi &amp; Tusar</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Card 2: Deliverables Checklist -->
+          <div class="qs-section-card">
+            <div class="qs-card-title">
+              <span>02 · Scope &amp; Deliverables Checklist</span>
+              <span style="font-size:12px;color:#555;">Toggle items</span>
+            </div>
+            <div class="qs-deliverables-list" id="qs-deliverables-list">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Card 3: Itemized Pricing Table -->
+          <div class="qs-section-card">
+            <div class="qs-card-title">
+              <span>03 · Itemized Budget Allocation</span>
+              <span style="font-size:12px;color:var(--pink);font-weight:700;">₹ Total Auto-Calculates</span>
+            </div>
+
+            <table class="qs-price-items-editor" id="qs-price-items-table">
+              <thead>
+                <tr>
+                  <th style="width:65%;">Deliverable</th>
+                  <th style="width:35%;">Amount (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="qs-pricing-rows">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+
+            <div class="qs-input-row" style="margin-top:10px;">
+              <div class="qs-field">
+                <label for="qf-discount">Discount / Founder Offer (₹)</label>
+                <input type="number" id="qf-discount" value="0" min="0" step="500">
+              </div>
+              <div class="qs-field">
+                <label for="qf-timeline-days">Overall Estimated Timeline</label>
+                <input type="text" id="qf-timeline-days" value="10–14 working days">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Printable Quotation Sheet -->
+        <div class="qs-sheet-panel">
+          <article class="quote-doc" id="quote-doc">
+            <!-- Header -->
+            <header class="qd-header">
+              <div class="qd-agency-badge">
+                <div class="qd-logo-box">ST</div>
+                <div class="qd-agency-info">
+                  <h1>ST DEV SOLUTIONS</h1>
+                  <p>Web Development Agency · Bhubaneswar, Odisha</p>
+                </div>
+              </div>
+
+              <div class="qd-agency-contacts">
+                <div><strong>ST Dev Solutions Agency</strong></div>
+                <div>Saheed Nagar, Bhubaneswar, Odisha 751007</div>
+                <div>Direct: <strong>+91 93379 22291</strong></div>
+                <div>Email: <strong>stdevsolutions@gmail.com</strong></div>
+              </div>
+            </header>
+
+            <!-- Document Title -->
+            <div class="qd-doc-title-bar">
+              <span class="qd-kicker">OFFICIAL CLIENT QUOTATION · 2026</span>
+              <h2 id="qd-rendered-project-title">Website Design, Development &amp; Deployment</h2>
+              <p id="qd-rendered-project-desc">
+                A modern, high-speed, mobile-responsive website designed to showcase services, strengthen online visibility on Google, and convert local visitors into direct WhatsApp enquiries.
+              </p>
+            </div>
+
+            <!-- Client & Quotation Meta Box -->
+            <div class="qd-meta-grid">
+              <div class="qd-client-box">
+                <h3>PREPARED FOR</h3>
+                <div class="qd-client-name" id="qd-view-client-biz">Aesthedent Dental &amp; Skin Clinic</div>
+                <div class="qd-client-details">
+                  <div><strong>Contact:</strong> <span id="qd-view-client-name">Dr. S. Mohapatra</span></div>
+                  <div><strong>Phone:</strong> <span id="qd-view-client-phone">+91 98765 00000</span></div>
+                  <div><strong>Email:</strong> <span id="qd-view-client-email">contact@aesthedent.in</span></div>
+                  <div><strong>Location:</strong> <span id="qd-view-client-city">Saheed Nagar, Bhubaneswar</span></div>
+                </div>
+              </div>
+
+              <div class="qd-quote-box">
+                <div>
+                  <h3>TOTAL PROJECT QUOTATION</h3>
+                  <div class="qd-total-display" id="qd-view-total-amount">₹15,000</div>
+                  <div class="qd-total-words" id="qd-view-total-words">Indian Rupees Fifteen Thousand Only</div>
+                  <div style="font-size:11px;color:#666;margin-top:2px;">Fixed price for the agreed scope · 100% Client Owned</div>
+                </div>
+
+                <div class="qd-ref-date">
+                  <div><strong>Quotation Ref:</strong> <span id="qd-view-ref">STDS/AESTHEDENT/2026/001</span></div>
+                  <div><strong>Issue Date:</strong> <span id="qd-view-date">25 October 2026</span></div>
+                  <div><strong>Validity:</strong> <span id="qd-view-validity">15 days</span></div>
+                  <div><strong>Prepared By:</strong> <span id="qd-view-lead">Swadhin Panigrahi (Founder)</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 02: Deliverables -->
+            <div class="qd-section-header">
+              <span class="qd-sec-num">02</span>
+              <span>Project Scope &amp; Included Deliverables</span>
+            </div>
+            <div class="qd-deliverables-grid" id="qd-view-deliverables">
+              <!-- Populated via JS -->
+            </div>
+
+            <div class="qd-exclusions-box">
+              <strong>Scope Boundary:</strong> Includes up to 2 reasonable revision rounds before final approval. Work outside this agreed scope or third-party paid ad spend requires separate approval.
+            </div>
+
+            <!-- Section 03: Itemized Pricing Table -->
+            <div class="qd-section-header">
+              <span class="qd-sec-num">03</span>
+              <span>Itemized Price Breakdown</span>
+            </div>
+            <table class="qd-price-table">
+              <thead>
+                <tr>
+                  <th style="width:10%;">No.</th>
+                  <th style="width:65%;">Deliverable</th>
+                  <th style="width:25%;">Allocated Budget</th>
+                </tr>
+              </thead>
+              <tbody id="qd-view-pricing-rows">
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+
+            <div class="qd-totals-summary">
+              <div class="qd-total-row">
+                <span>Subtotal:</span>
+                <span id="qd-view-subtotal">₹15,000</span>
+              </div>
+              <div class="qd-total-row" id="qd-discount-row" style="display:none;color:#c00;">
+                <span>Founder Discount:</span>
+                <span id="qd-view-discount">-₹0</span>
+              </div>
+              <div class="qd-total-row grand">
+                <span>Total Project Quotation:</span>
+                <span id="qd-view-grand-total">₹15,000</span>
+              </div>
+            </div>
+
+            <!-- Section 04: Timeline & Payment Terms -->
+            <div class="qd-section-header">
+              <span class="qd-sec-num">04</span>
+              <span>Estimated Timeline &amp; Payment Schedule</span>
+            </div>
+
+            <div class="qd-timeline-grid">
+              <div class="qd-timeline-phase">
+                <span class="qd-phase-step">Phase 01</span>
+                <div class="qd-phase-name">Requirements &amp; Content</div>
+                <div class="qd-phase-days">1–2 working days</div>
+              </div>
+              <div class="qd-timeline-phase">
+                <span class="qd-phase-step">Phase 02</span>
+                <div class="qd-phase-name">Day 3 Working Draft</div>
+                <div class="qd-phase-days">3 working days (Zero Risk)</div>
+              </div>
+              <div class="qd-timeline-phase">
+                <span class="qd-phase-step">Phase 03</span>
+                <div class="qd-phase-name">Features &amp; Integrations</div>
+                <div class="qd-phase-days">3–5 working days</div>
+              </div>
+              <div class="qd-timeline-phase">
+                <span class="qd-phase-step">Phase 04</span>
+                <div class="qd-phase-name">Testing &amp; Live Launch</div>
+                <div class="qd-phase-days">1–2 working days</div>
+              </div>
+            </div>
+
+            <div class="qd-payment-schedule">
+              <div class="qd-pay-card">
+                <strong>Milestone 1: Advance (50%)</strong>
+                <span>Payable ONLY after client approves the Day 3 working draft. Pay ₹0 before seeing the draft.</span>
+              </div>
+              <div class="qd-pay-card">
+                <strong>Milestone 2: Final Handover (50%)</strong>
+                <span>Payable upon complete site testing, domain DNS mapping, and delivery of admin/host logins.</span>
+              </div>
+            </div>
+
+            <!-- Section 05: Terms & Acceptance -->
+            <div class="qd-section-header">
+              <span class="qd-sec-num">05</span>
+              <span>Ownership, Terms &amp; Acceptance</span>
+            </div>
+            <ul class="qd-terms-list">
+              <li><strong>100% Client Ownership:</strong> The custom domain, website code, and creative assets remain the exclusive property of the client upon project completion.</li>
+              <li><strong>30 Days Free Support:</strong> Includes 30 days of free post-launch support for content changes, festival banners, or phone updates.</li>
+              <li><strong>Hosting &amp; Domain:</strong> First full year of domain registration (.com/.in) and fast hosting arrangement is included in the project budget. Renewal after Year 1 is roughly ₹2,500 – ₹3,500/year directly to the providers.</li>
+            </ul>
+
+            <div class="qd-signatures-block">
+              <div class="qd-sig-col">
+                <div class="qd-sig-line"></div>
+                <div><strong>For ST Dev Solutions Agency</strong></div>
+                <div id="qd-sig-lead">Swadhin Panigrahi (Founder) &amp; Tusar</div>
+                <div>Saheed Nagar, Bhubaneswar, Odisha</div>
+              </div>
+
+              <div class="qd-sig-col">
+                <div class="qd-sig-line"></div>
+                <div><strong>Client Acceptance &amp; Sign-off</strong></div>
+                <div id="qd-sig-client">Dr. S. Mohapatra</div>
+                <div>Date &amp; Seal / Signature</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </main>
 
   <!-- Floating WhatsApp Quick Button -->
@@ -4172,6 +5229,9 @@ your real studio details:
         <p style="margin:0;color:var(--bg);max-width:48ch;font-size:18px;">
           A full-service web agency in Bhubaneswar, Odisha building high-impact websites for local gyms, travel agencies, clinics, and businesses across Odisha.
         </p>
+        <div style="margin-top:14px;margin-bottom:12px;">
+          <button type="button" class="footer-quote-btn" id="open-quote-studio-footer">📄 Open Team Quotation Studio (Instant PDF &amp; Presets)</button>
+        </div>
         <div style="margin-top:16px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--lime);">Live Client Sites:</span>
           <a href="https://rs-fit-club.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--pink);font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-decoration:underline;">RS Fit Club ↗</a>
@@ -4541,9 +5601,9 @@ your real studio details:
          5. INTERACTIVE PRICE ESTIMATOR
          ---------------------------------------------------------------------- */
       var BASE_PRICES = {
-        starter: { min: 8000, max: 10000, label: "1-page shopfront (Domain + 1 yr hosting included)", days: "First draft in 3 days · Live in 5–7 days" },
-        growth: { min: 15000, max: 18000, label: "3 to 5 page business site (Domain + 1 yr hosting included)", days: "First draft in 3 days · Live in 7–9 days" },
-        catalogue: { min: 24000, max: 28000, label: "6 to 10 page full catalogue (Domain + 1 yr hosting included)", days: "First draft in 3 days · Live in 10–14 days" }
+        starter: { min: 6000, max: 6000, label: "1 to 2-page starter storefront (Domain + 1 yr hosting included)", days: "First draft in 3 days · Live in 4–5 days" },
+        growth: { min: 12000, max: 15000, label: "3 to 5-page complete business website (Domain + 1 yr hosting included)", days: "First draft in 3 days · Live in 7–10 days" },
+        catalogue: { min: 20000, max: 25000, label: "Custom Architecture / 6+ Pages (Tailor-made roadmap & custom planning)", days: "First draft in 3–5 days · Dedicated roadmap" }
       };
 
       var tierRadios = document.querySelectorAll('input[name="site_tier"]');
@@ -4576,7 +5636,7 @@ your real studio details:
           }
         });
 
-        var rangeText = formatINR(totalMin) + " – " + formatINR(totalMax);
+        var rangeText = (totalMin === totalMax) ? formatINR(totalMin) : (formatINR(totalMin) + " – " + formatINR(totalMax));
         if (fareRangeEl) fareRangeEl.textContent = rangeText;
         if (fareDaysEl) fareDaysEl.textContent = "Estimated timeline: " + base.days;
 
@@ -4648,6 +5708,431 @@ your real studio details:
           window.open(waUrl, "_blank", "noopener,noreferrer");
         });
       }
+
+      
+      /* ----------------------------------------------------------------------
+         8. TEAM QUOTATION STUDIO & GENERATOR (Presets, Live Sync, Print & WhatsApp)
+         ---------------------------------------------------------------------- */
+      var PRESETS = {
+        starter: {
+          title: "1–2 Page Starter Storefront Website",
+          desc: "Fast, mobile-optimized storefront designed for quick walk-ins, menu showcases, and direct WhatsApp customer orders.",
+          business: "Sri Jagannath Sweets & Bakery",
+          client: "Rajesh Mohanty",
+          phone: "+91 93379 00000",
+          email: "srijagannath@gmail.com",
+          city: "Cuttack Road, Bhubaneswar",
+          ref: "STDS/STARTER/2026/001",
+          timeline: "4–5 working days (Draft in 3 days)",
+          lead: "Swadhin Panigrahi (Founder, +91 93379 22291)",
+          deliverables: [
+            { text: "Fast, mobile-first 1 to 2 page storefront", active: true },
+            { text: "About the business & founder heritage story", active: true },
+            { text: "Product showcase & transparent price list", active: true },
+            { text: "Direct 1-tap WhatsApp ordering & enquiry button", active: true },
+            { text: "Google Maps location pin & Google Business sync", active: true },
+            { text: "1st year .com or .in domain registration included", active: true },
+            { text: "1st year fast cloud hosting arrangement included", active: true },
+            { text: "30 days of free phone & content support", active: true }
+          ],
+          pricing: [
+            { name: "UI/UX Design & Responsive Core Development", amount: 3500 },
+            { name: "1-Tap WhatsApp Order Funnel & Maps Pin Setup", amount: 1000 },
+            { name: "Domain Registration, 1st Year Hosting & Launch", amount: 1500 }
+          ],
+          discount: 0
+        },
+        business: {
+          title: "3–5 Page Complete Business Website",
+          desc: "A comprehensive digital presence with dedicated pages for services, company story, client gallery, and WhatsApp lead funnel.",
+          business: "Wanderlust Travels Odia",
+          client: "Priya Ranjan Das",
+          phone: "+91 94370 00000",
+          email: "booking@wanderlustodia.com",
+          city: "Jayadev Vihar, Bhubaneswar",
+          ref: "STDS/BUSINESS/2026/002",
+          timeline: "7–10 working days",
+          lead: "Swadhin Panigrahi & Tusar",
+          deliverables: [
+            { text: "Premium homepage with brand presentation", active: true },
+            { text: "About the company & verified credentials", active: true },
+            { text: "3 dedicated service / package detail pages", active: true },
+            { text: "Interactive destination cards & itinerary filters", active: true },
+            { text: "Direct WhatsApp custom booking funnel", active: true },
+            { text: "Google Business Profile & Maps optimization", active: true },
+            { text: "1st year custom domain (.com/.in) setup", active: true },
+            { text: "1st year high-speed cloud hosting arrangement", active: true },
+            { text: "Basic on-page SEO & speed tuning", active: true },
+            { text: "30 days free post-launch updates & assistance", active: true }
+          ],
+          pricing: [
+            { name: "UI/UX Architecture & Responsive Development", amount: 5000 },
+            { name: "Dedicated Service Pages, Itineraries & Gallery", amount: 2500 },
+            { name: "1-Tap WhatsApp Conversion Funnel & Form", amount: 1500 },
+            { name: "Domain, 1st Year Fast Cloud Hosting Setup", amount: 2000 },
+            { name: "Local SEO, Speed Optimization & Handover", amount: 1000 }
+          ],
+          discount: 0
+        },
+        clinic: {
+          title: "Professional Clinic Website Design, Development & Deployment",
+          desc: "A modern, high-speed clinic website designed to showcase Dental, Skin, Hair and PMU services, strengthen Google visibility, and drive WhatsApp appointments.",
+          business: "Aesthedent Dental & Skin Clinic",
+          client: "Dr. S. Mohapatra",
+          phone: "+91 98765 00000",
+          email: "contact@aesthedent.in",
+          city: "Saheed Nagar, Bhubaneswar",
+          ref: "STDS/AESTHEDENT/2026/001",
+          timeline: "10–14 working days",
+          lead: "Swadhin Panigrahi (Founder, +91 93379 22291)",
+          deliverables: [
+            { text: "Premium clinic homepage & about section", active: true },
+            { text: "Dental, Skin, Hair and PMU service categories", active: true },
+            { text: "Doctor profiles, clinical qualifications & timings", active: true },
+            { text: "Interactive Before/After treatment slider", active: true },
+            { text: "Direct WhatsApp appointment enquiry integration", active: true },
+            { text: "Clinic location and Google Maps integration", active: true },
+            { text: "Verified patient testimonials & clinic gallery", active: true },
+            { text: "1st year .com or .in domain registration included", active: true },
+            { text: "1st year high-speed cloud hosting arrangement included", active: true },
+            { text: "Basic SEO, Google indexing & speed optimization", active: true },
+            { text: "Testing, staff training & 30 days free support", active: true }
+          ],
+          pricing: [
+            { name: "UI/UX Clinic Design & Responsive Core Engine", amount: 6000 },
+            { name: "Service Pages, Doctor Profiles, Gallery & Testimonials", amount: 2500 },
+            { name: "Appointment Enquiry Form & WhatsApp Funnel", amount: 1500 },
+            { name: "Interactive Before/After Treatment Slider", amount: 1500 },
+            { name: "Domain Registration, 1st Year Cloud Hosting & Deployment", amount: 2500 },
+            { name: "Testing, Local SEO & Website Handover", amount: 1000 }
+          ],
+          discount: 0
+        },
+        custom: {
+          title: "Custom Web Application & Scalable Business Architecture",
+          desc: "Bespoke digital platform with custom calculators, multi-branch listings, dynamic database feeds, and specialized client workflows.",
+          business: "IronForge Fitness & Strength Hub",
+          client: "Subrat Nayak",
+          phone: "+91 99370 00000",
+          email: "team@ironforgegym.in",
+          city: "Patia, Bhubaneswar",
+          ref: "STDS/CUSTOM/2026/004",
+          timeline: "14–20 working days",
+          lead: "Swadhin Panigrahi & Tusar",
+          deliverables: [
+            { text: "Custom brand identity & fullstack responsive architecture", active: true },
+            { text: "Live real-time horizontal member activity ticker", active: true },
+            { text: "Custom interactive BMI & fitness goal calculator in nav", active: true },
+            { text: "Asymmetric bento video tour & trainer spotlights", active: true },
+            { text: "Multi-tier membership checkout & WhatsApp lead routing", active: true },
+            { text: "Google Maps, local citations & speed optimization", active: true },
+            { text: "Custom domain, premium CDN cloud hosting & SSL", active: true },
+            { text: "Dedicated maintenance roadmap & priority founder support", active: true }
+          ],
+          pricing: [
+            { name: "Fullstack Architecture & Custom UI/UX Design", amount: 9000 },
+            { name: "Interactive BMI Calculator & Live Activity Ticker", amount: 4500 },
+            { name: "Multi-Tier Membership Funnel & WhatsApp Routing", amount: 3500 },
+            { name: "Custom Domain, Cloudflare CDN & Server Deployment", amount: 3000 },
+            { name: "Performance Optimization, Local SEO & Founder Handover", amount: 2000 }
+          ],
+          discount: 0
+        }
+      };
+
+      var activeQuoteData = JSON.parse(JSON.stringify(PRESETS.clinic));
+
+      function numberToIndianWords(num) {
+        if (!num || isNaN(num)) return "Zero Rupees Only";
+        num = Math.round(num);
+        var a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+        var b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+        function inWords(n) {
+          if (n === 0) return '';
+          if (n < 20) return a[n];
+          if (n < 100) return b[Math.floor(n / 10)] + (n % 10 !== 0 ? '-' + a[n % 10] : ' ');
+          if (n < 1000) return inWords(Math.floor(n / 100)) + 'Hundred ' + (n % 100 !== 0 ? inWords(n % 100) : '');
+          if (n < 100000) return inWords(Math.floor(n / 1000)) + 'Thousand ' + (n % 1000 !== 0 ? inWords(n % 1000) : '');
+          if (n < 10000000) return inWords(Math.floor(n / 100000)) + 'Lakh ' + (n % 100000 !== 0 ? inWords(n % 100000) : '');
+          return inWords(Math.floor(n / 10000000)) + 'Crore ' + (n % 10000000 !== 0 ? inWords(n % 10000000) : '');
+        }
+        return "Indian Rupees " + inWords(num).trim() + " Only";
+      }
+
+      function renderDeliverablesEditor() {
+        var listEl = document.getElementById("qs-deliverables-list");
+        if (!listEl) return;
+        listEl.innerHTML = activeQuoteData.deliverables.map(function (item, idx) {
+          return '<label class="qs-deliv-item">' +
+            '<input type="checkbox" data-deliv-idx="' + idx + '" ' + (item.active ? 'checked' : '') + '>' +
+            '<span>' + item.text + '</span>' +
+          '</label>';
+        }).join("");
+
+        listEl.querySelectorAll('input[type="checkbox"]').forEach(function (cb) {
+          cb.addEventListener("change", function () {
+            var i = parseInt(cb.getAttribute("data-deliv-idx"), 10);
+            activeQuoteData.deliverables[i].active = cb.checked;
+            renderQuotationDocument();
+          });
+        });
+      }
+
+      function renderPricingRowsEditor() {
+        var tbody = document.getElementById("qs-pricing-rows");
+        if (!tbody) return;
+        tbody.innerHTML = activeQuoteData.pricing.map(function (item, idx) {
+          return '<tr>' +
+            '<td><input type="text" class="qs-item-name" data-idx="' + idx + '" value="' + item.name + '"></td>' +
+            '<td><input type="number" class="qs-item-amount" data-idx="' + idx + '" value="' + item.amount + '" step="500"></td>' +
+          '</tr>';
+        }).join("");
+
+        tbody.querySelectorAll(".qs-item-name").forEach(function (inp) {
+          inp.addEventListener("input", function () {
+            var idx = parseInt(inp.getAttribute("data-idx"), 10);
+            activeQuoteData.pricing[idx].name = inp.value;
+            renderQuotationDocument();
+          });
+        });
+        tbody.querySelectorAll(".qs-item-amount").forEach(function (inp) {
+          inp.addEventListener("input", function () {
+            var idx = parseInt(inp.getAttribute("data-idx"), 10);
+            activeQuoteData.pricing[idx].amount = parseInt(inp.value || "0", 10);
+            renderQuotationDocument();
+          });
+        });
+      }
+
+      function renderQuotationDocument() {
+        // Compute subtotal, discount, total
+        var subtotal = 0;
+        activeQuoteData.pricing.forEach(function (item) {
+          subtotal += (parseInt(item.amount, 10) || 0);
+        });
+        var discount = parseInt(document.getElementById("qf-discount") ? document.getElementById("qf-discount").value : "0", 10) || 0;
+        var grandTotal = Math.max(0, subtotal - discount);
+
+        // Update Document Header & Titles
+        var projTitleEl = document.getElementById("qd-rendered-project-title");
+        var projDescEl = document.getElementById("qd-rendered-project-desc");
+        if (projTitleEl) projTitleEl.textContent = activeQuoteData.title;
+        if (projDescEl) projDescEl.textContent = activeQuoteData.desc;
+
+        // Client box
+        var cBiz = document.getElementById("qf-business-name") ? document.getElementById("qf-business-name").value : activeQuoteData.business;
+        var cName = document.getElementById("qf-client-name") ? document.getElementById("qf-client-name").value : activeQuoteData.client;
+        var cPhone = document.getElementById("qf-client-phone") ? document.getElementById("qf-client-phone").value : activeQuoteData.phone;
+        var cEmail = document.getElementById("qf-client-email") ? document.getElementById("qf-client-email").value : activeQuoteData.email;
+        var cCity = document.getElementById("qf-client-city") ? document.getElementById("qf-client-city").value : activeQuoteData.city;
+        var qRef = document.getElementById("qf-quote-ref") ? document.getElementById("qf-quote-ref").value : activeQuoteData.ref;
+        var qDays = document.getElementById("qf-validity-days") ? document.getElementById("qf-validity-days").value : "15";
+        var qLead = document.getElementById("qf-project-lead") ? document.getElementById("qf-project-lead").value : activeQuoteData.lead;
+
+        if (document.getElementById("qd-view-client-biz")) document.getElementById("qd-view-client-biz").textContent = cBiz;
+        if (document.getElementById("qd-view-client-name")) document.getElementById("qd-view-client-name").textContent = cName;
+        if (document.getElementById("qd-view-client-phone")) document.getElementById("qd-view-client-phone").textContent = cPhone;
+        if (document.getElementById("qd-view-client-email")) document.getElementById("qd-view-client-email").textContent = cEmail;
+        if (document.getElementById("qd-view-client-city")) document.getElementById("qd-view-client-city").textContent = cCity;
+        if (document.getElementById("qd-view-ref")) document.getElementById("qd-view-ref").textContent = qRef;
+        if (document.getElementById("qd-view-validity")) document.getElementById("qd-view-validity").textContent = qDays + " days";
+        if (document.getElementById("qd-view-lead")) document.getElementById("qd-view-lead").textContent = qLead;
+
+        // Date
+        var now = new Date();
+        var dateStr = now.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
+        if (document.getElementById("qd-view-date")) document.getElementById("qd-view-date").textContent = dateStr;
+
+        // Totals
+        var totalFormatted = "₹" + grandTotal.toLocaleString("en-IN");
+        if (document.getElementById("qd-view-total-amount")) document.getElementById("qd-view-total-amount").textContent = totalFormatted;
+        if (document.getElementById("qd-view-total-words")) document.getElementById("qd-view-total-words").textContent = numberToIndianWords(grandTotal);
+        if (document.getElementById("qd-view-subtotal")) document.getElementById("qd-view-subtotal").textContent = "₹" + subtotal.toLocaleString("en-IN");
+        if (document.getElementById("qd-view-grand-total")) document.getElementById("qd-view-grand-total").textContent = totalFormatted;
+
+        var discRow = document.getElementById("qd-discount-row");
+        if (discRow) {
+          if (discount > 0) {
+            discRow.style.display = "flex";
+            if (document.getElementById("qd-view-discount")) document.getElementById("qd-view-discount").textContent = "-₹" + discount.toLocaleString("en-IN");
+          } else {
+            discRow.style.display = "none";
+          }
+        }
+
+        // Deliverables in Sheet
+        var delivViewEl = document.getElementById("qd-view-deliverables");
+        if (delivViewEl) {
+          var activeDelivs = activeQuoteData.deliverables.filter(function (d) { return d.active; });
+          delivViewEl.innerHTML = activeDelivs.map(function (d) {
+            return '<div class="qd-deliv-cell">' +
+              '<span class="qd-check-box">✓</span>' +
+              '<span>' + d.text + '</span>' +
+            '</div>';
+          }).join("");
+        }
+
+        // Pricing Rows in Sheet
+        var priceTableTbody = document.getElementById("qd-view-pricing-rows");
+        if (priceTableTbody) {
+          priceTableTbody.innerHTML = activeQuoteData.pricing.map(function (item, idx) {
+            return '<tr>' +
+              '<td>' + (idx < 9 ? '0' + (idx + 1) : (idx + 1)) + '</td>' +
+              '<td><strong>' + item.name + '</strong></td>' +
+              '<td>₹' + (parseInt(item.amount, 10) || 0).toLocaleString("en-IN") + '</td>' +
+            '</tr>';
+          }).join("");
+        }
+
+        // Signatures
+        if (document.getElementById("qd-sig-client")) document.getElementById("qd-sig-client").textContent = cName + " (" + cBiz + ")";
+        if (document.getElementById("qd-sig-lead")) document.getElementById("qd-sig-lead").textContent = qLead;
+      }
+
+      function loadPreset(key) {
+        if (!PRESETS[key]) return;
+        activeQuoteData = JSON.parse(JSON.stringify(PRESETS[key]));
+
+        // Fill Form Fields
+        if (document.getElementById("qf-business-name")) document.getElementById("qf-business-name").value = activeQuoteData.business;
+        if (document.getElementById("qf-client-name")) document.getElementById("qf-client-name").value = activeQuoteData.client;
+        if (document.getElementById("qf-client-phone")) document.getElementById("qf-client-phone").value = activeQuoteData.phone;
+        if (document.getElementById("qf-client-email")) document.getElementById("qf-client-email").value = activeQuoteData.email;
+        if (document.getElementById("qf-client-city")) document.getElementById("qf-client-city").value = activeQuoteData.city;
+        if (document.getElementById("qf-quote-ref")) document.getElementById("qf-quote-ref").value = activeQuoteData.ref;
+        if (document.getElementById("qf-discount")) document.getElementById("qf-discount").value = activeQuoteData.discount || 0;
+        if (document.getElementById("qf-timeline-days")) document.getElementById("qf-timeline-days").value = activeQuoteData.timeline;
+        if (document.getElementById("qf-project-lead")) document.getElementById("qf-project-lead").value = activeQuoteData.lead;
+
+        // Update active preset button style
+        document.querySelectorAll(".qs-preset-btn").forEach(function (btn) {
+          btn.classList.toggle("active", btn.getAttribute("data-preset") === key);
+        });
+
+        renderDeliverablesEditor();
+        renderPricingRowsEditor();
+        renderQuotationDocument();
+      }
+
+      // Studio Modal Trigger & Handlers
+      var quoteModal = document.getElementById("quotation-studio-modal");
+      var openQuoteBtn = document.getElementById("open-quote-studio-btn");
+      var openQuoteMobileBtn = document.getElementById("open-quote-studio-mobile");
+      var openQuoteFooterBtn = document.getElementById("open-quote-studio-footer");
+      var closeQuoteBtn = document.getElementById("qs-close-btn");
+      var qsBackdrop = document.getElementById("qs-backdrop");
+      var qsPrintBtn = document.getElementById("qs-print-btn");
+      var qsShareWaBtn = document.getElementById("qs-share-wa-btn");
+      var qsCopyBtn = document.getElementById("qs-copy-btn");
+
+      function openQuotationStudio() {
+        if (!quoteModal) return;
+        quoteModal.classList.add("is-open");
+        quoteModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (mobileDrawer) mobileDrawer.classList.remove("is-open");
+        renderQuotationDocument();
+      }
+
+      function closeQuotationStudio() {
+        if (!quoteModal) return;
+        quoteModal.classList.remove("is-open");
+        quoteModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      if (openQuoteBtn) openQuoteBtn.addEventListener("click", openQuotationStudio);
+      if (openQuoteMobileBtn) openQuoteMobileBtn.addEventListener("click", openQuotationStudio);
+      if (openQuoteFooterBtn) openQuoteFooterBtn.addEventListener("click", openQuotationStudio);
+      if (closeQuoteBtn) closeQuoteBtn.addEventListener("click", closeQuotationStudio);
+      if (qsBackdrop) qsBackdrop.addEventListener("click", closeQuotationStudio);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && quoteModal && quoteModal.classList.contains("is-open")) {
+          closeQuotationStudio();
+        }
+      });
+
+      // Preset buttons
+      document.querySelectorAll(".qs-preset-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var p = btn.getAttribute("data-preset");
+          loadPreset(p);
+        });
+      });
+
+      // Form input listeners
+      ["qf-business-name", "qf-client-name", "qf-client-phone", "qf-client-email", "qf-client-city", "qf-quote-ref", "qf-validity-days", "qf-project-lead", "qf-discount"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener("input", renderQuotationDocument);
+      });
+
+      // 1-Click Print PDF
+      if (qsPrintBtn) {
+        qsPrintBtn.addEventListener("click", function () {
+          window.print();
+        });
+      }
+
+      // WhatsApp Share
+      if (qsShareWaBtn) {
+        qsShareWaBtn.addEventListener("click", function () {
+          var cBiz = document.getElementById("qf-business-name") ? document.getElementById("qf-business-name").value : activeQuoteData.business;
+          var cName = document.getElementById("qf-client-name") ? document.getElementById("qf-client-name").value : activeQuoteData.client;
+          var cPhone = document.getElementById("qf-client-phone") ? document.getElementById("qf-client-phone").value.replace(/[^0-9]/g, '') : '';
+          var qRef = document.getElementById("qf-quote-ref") ? document.getElementById("qf-quote-ref").value : activeQuoteData.ref;
+
+          var subtotal = 0;
+          activeQuoteData.pricing.forEach(function (i) { subtotal += (parseInt(i.amount, 10) || 0); });
+          var discount = parseInt(document.getElementById("qf-discount") ? document.getElementById("qf-discount").value : "0", 10) || 0;
+          var total = Math.max(0, subtotal - discount);
+          var totalFormatted = "₹" + total.toLocaleString("en-IN");
+
+          var waText = "*WEBSITE DEVELOPMENT QUOTATION — ST DEV SOLUTIONS*\n" +
+            "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+            "• *Client:* " + cBiz + " (" + cName + ")\n" +
+            "• *Quotation Ref:* " + qRef + "\n" +
+            "• *Total Investment:* *" + totalFormatted + "* (" + numberToIndianWords(total) + ")\n" +
+            "• *Timeline:* First draft in 3 days · Handover in " + (document.getElementById("qf-timeline-days") ? document.getElementById("qf-timeline-days").value : "7–10 days") + "\n" +
+            "• *Milestone Terms:* Pay ₹0 until you approve the Day 3 working draft (50% on draft approval, 50% on live launch)\n" +
+            "• *Included:* Domain (.com/.in), 1st yr fast cloud hosting, WhatsApp booking funnel, Google Maps pin & 30 days free support\n" +
+            "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+            "Prepared by *Swadhin Panigrahi (Founder, +91 93379 22291)* & *Tusar (Co-Founder)*\n" +
+            "ST Dev Solutions Agency, Saheed Nagar, Bhubaneswar";
+
+          var targetUrl = "https://wa.me/" + (cPhone.length >= 10 ? cPhone : "919337922291") + "?text=" + encodeURIComponent(waText);
+          window.open(targetUrl, "_blank", "noopener,noreferrer");
+        });
+      }
+
+      // Copy Text Summary
+      if (qsCopyBtn) {
+        qsCopyBtn.addEventListener("click", function () {
+          var cBiz = document.getElementById("qf-business-name") ? document.getElementById("qf-business-name").value : activeQuoteData.business;
+          var subtotal = 0;
+          activeQuoteData.pricing.forEach(function (i) { subtotal += (parseInt(i.amount, 10) || 0); });
+          var discount = parseInt(document.getElementById("qf-discount") ? document.getElementById("qf-discount").value : "0", 10) || 0;
+          var total = Math.max(0, subtotal - discount);
+
+          var summaryText = "ST Dev Solutions Quotation for " + cBiz + " — Total: ₹" + total.toLocaleString("en-IN") + " (" + numberToIndianWords(total) + "). Working draft in 3 days.";
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(summaryText).then(function () {
+              qsCopyBtn.textContent = "✓ Copied!";
+              setTimeout(function () { qsCopyBtn.innerHTML = "<span>📋 Copy</span>"; }, 2000);
+            });
+          }
+        });
+      }
+
+      // Check URL hash on page load
+      if (window.location.hash === "#quotation" || window.location.hash === "#quotation-studio" || window.location.hash === "#quote") {
+        setTimeout(openQuotationStudio, 300);
+      }
+
+      // Initial render of default preset (Aesthedent clinic model)
+      loadPreset("clinic");
+
 
       /* ----------------------------------------------------------------------
          7B. ROUTE PROGRESS BAR, MOBILE DRAWER & SCROLLSPY
