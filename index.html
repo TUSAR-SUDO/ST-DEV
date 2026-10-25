@@ -2190,6 +2190,286 @@ your real studio details:
       margin-bottom: 6px;
     }
 
+    
+    /* Mode Switcher in Studio Top Bar */
+    .qs-mode-switcher {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 3px;
+      border-radius: 8px;
+      border: 2px solid var(--panel);
+      gap: 4px;
+    }
+    .qs-mode-btn {
+      background: transparent;
+      color: var(--panel);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 5px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .qs-mode-btn.active {
+      background: var(--lime);
+      color: var(--ink);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .qs-mode-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Invoice Document Styling (Matching A4 Specs) */
+    .invoice-doc {
+      background: #ffffff;
+      color: #1a1a1a;
+      width: 100%;
+      max-width: 860px;
+      min-width: 760px;
+      margin: 0 auto;
+      padding: 40px 44px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      border: 1px solid #bbb;
+      font-family: "Hanken Grotesk", sans-serif;
+      box-sizing: border-box;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .inv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid var(--ink);
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    /* Invoice Title Bar with Status Stamp */
+    .inv-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 22px;
+      border-left: 6px solid var(--lime);
+      padding-left: 16px;
+    }
+    .inv-title-bar h2 {
+      font-family: "Archivo", sans-serif;
+      font-size: 30px;
+      margin: 0 0 4px;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .inv-milestone-tag {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--pink);
+    }
+
+    /* Status Badges & Stamps */
+    .inv-status-stamp {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 900;
+      font-size: 19px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 6px 18px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .stamp-due {
+      background: #ffebee;
+      color: #c62828;
+      border: 3px solid #c62828;
+      box-shadow: 2px 2px 0 #c62828;
+    }
+    .stamp-paid {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 3px solid #2e7d32;
+      box-shadow: 2px 2px 0 #2e7d32;
+      transform: rotate(-3deg);
+    }
+
+    /* Invoice Meta Grid */
+    .inv-meta-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 18px;
+      margin-bottom: 24px;
+      background: #F6F7F2;
+      border: 3px solid var(--ink);
+      padding: 16px 20px;
+      box-sizing: border-box;
+    }
+    .inv-box h3 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 6px;
+      color: #666;
+    }
+    .inv-client-name {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .inv-meta-right {
+      border-left: 3px solid var(--ink);
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .inv-amount-due-box strong {
+      display: block;
+      font-family: "Archivo", sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .inv-amount-words {
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Invoice Table */
+    .inv-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+      table-layout: fixed;
+      box-sizing: border-box;
+    }
+    .inv-table th {
+      background: var(--ink);
+      color: #fff;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .inv-table th:last-child {
+      text-align: right;
+    }
+    .inv-table td {
+      padding: 9px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid #e0e0e0;
+      color: #222;
+      word-break: break-word;
+    }
+    .inv-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+    }
+    .inv-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* UPI & Bank Payment Card */
+    .inv-payment-block {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 20px;
+      background: #F6F7F2;
+      border: 3px solid var(--ink);
+      padding: 18px;
+      margin: 22px 0;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .inv-qr-card {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    .inv-qr-img {
+      width: 140px;
+      height: 140px;
+      display: block;
+      margin: 0 auto;
+    }
+    .inv-qr-label {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-top: 6px;
+    }
+    .inv-bank-info h4 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 8px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .inv-bank-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      font-size: 13px;
+      color: #333;
+    }
+    .inv-upi-badge {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 2px 10px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+
+    /* Print Tweaks for Invoice */
+    @media print {
+      .invoice-doc {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+      }
+      .inv-payment-block, .inv-meta-grid, .inv-table th {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+
     /* ==========================================================================
        DEDICATED @MEDIA PRINT STYLES FOR CLEAN 1-CLICK A4 PDF
        ========================================================================== */
@@ -4313,6 +4593,7 @@ your real studio details:
               </div>
             </div>
           </article>
+          
         </div>
       </div>
     </section>
@@ -4648,6 +4929,7 @@ your real studio details:
               </div>
             </div>
           </article>
+          
         </div>
       </div>
     </section>
@@ -5148,15 +5430,29 @@ your real studio details:
       <div class="qs-top-bar">
         <div class="qs-brand-title">
           <img src="images/logo.png" alt="ST Dev Logo" class="qs-top-logo">
-          <span id="qs-modal-title">Client Quotation Studio</span>
+          <span id="qs-modal-title">Agency Billing &amp; Quotation Studio</span>
         </div>
 
-        <div class="qs-presets-strip">
+        <!-- Mode Switcher: Quotation vs Invoice/Receipt -->
+        <div class="qs-mode-switcher">
+          <button type="button" class="qs-mode-btn active" id="mode-quote-btn" data-mode="quote">📄 Quotation</button>
+          <button type="button" class="qs-mode-btn" id="mode-invoice-btn" data-mode="invoice">🧾 Invoice &amp; Receipt</button>
+        </div>
+
+        <div class="qs-presets-strip" id="qs-presets-strip">
           <span style="font-size:12px;color:#aaa;font-weight:700;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;">Quick Tiers:</span>
-          <button type="button" class="qs-preset-btn" data-preset="starter">⚡ 1–2 Pg Starter (₹6k)</button>
-          <button type="button" class="qs-preset-btn" data-preset="business">⚡ 3–5 Pg Business (₹12k)</button>
-          <button type="button" class="qs-preset-btn active" data-preset="clinic">⚡ 3–5 Pg Clinic/Gym (₹15k)</button>
-          <button type="button" class="qs-preset-btn" data-preset="custom">⚡ Custom Architecture (₹20k+)</button>
+          <button type="button" class="qs-preset-btn" data-preset="starter">⚡ 1–2 Pg (₹6k)</button>
+          <button type="button" class="qs-preset-btn" data-preset="business">⚡ 3–5 Pg (₹12k)</button>
+          <button type="button" class="qs-preset-btn active" data-preset="clinic">⚡ 3–5 Pg Clinic (₹15k)</button>
+          <button type="button" class="qs-preset-btn" data-preset="custom">⚡ Custom (₹20k+)</button>
+        </div>
+
+        <div class="qs-presets-strip" id="qs-milestone-strip" style="display:none;">
+          <span style="font-size:12px;color:#aaa;font-weight:700;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;">Invoice Milestone:</span>
+          <button type="button" class="qs-preset-btn active" data-milestone="advance">50% Advance (Day-3)</button>
+          <button type="button" class="qs-preset-btn" data-milestone="final">50% Handover</button>
+          <button type="button" class="qs-preset-btn" data-milestone="full">100% Full</button>
+          <button type="button" class="qs-preset-btn" data-milestone="receipt">Paid Receipt Stamp ✓</button>
         </div>
 
         <div class="qs-actions-strip">
@@ -5178,6 +5474,57 @@ your real studio details:
       <div class="qs-workspace" id="qs-workspace">
         <!-- Left Column: Inputs & Controls -->
         <div class="qs-editor-panel">
+                    <!-- Card 0: Invoice & Receipt Controls (Active in Invoice Mode) -->
+          <div class="qs-section-card" id="qs-invoice-settings-card" style="display:none;background:#f3e8f7;">
+            <div class="qs-card-title">
+              <span>🧾 Invoice &amp; Payment Settings</span>
+              <span style="font-size:12px;background:var(--pink);color:#fff;padding:2px 6px;border-radius:4px;font-weight:700;">Billing Mode</span>
+            </div>
+
+            <div class="qs-input-row">
+              <div class="qs-field">
+                <label for="inv-type-select">Document Type</label>
+                <select id="inv-type-select">
+                  <option value="tax_invoice">Tax / Commercial Invoice</option>
+                  <option value="payment_receipt">Official Payment Receipt (PAID)</option>
+                </select>
+              </div>
+              <div class="qs-field">
+                <label for="inv-payment-status">Payment Status</label>
+                <select id="inv-payment-status">
+                  <option value="DUE">PAYMENT DUE (Pending)</option>
+                  <option value="PAID">PAID IN FULL (Received ✓)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="qs-input-row">
+              <div class="qs-field">
+                <label for="inv-number-input">Invoice Number</label>
+                <input type="text" id="inv-number-input" value="INV/STDS/2026/001">
+              </div>
+              <div class="qs-field">
+                <label for="inv-milestone-select">Billing Milestone</label>
+                <select id="inv-milestone-select">
+                  <option value="advance">Milestone 1: 50% Advance (Day-3 Draft)</option>
+                  <option value="final">Milestone 2: 50% Final Settlement</option>
+                  <option value="full">100% Full Project Amount</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="qs-input-row">
+              <div class="qs-field">
+                <label for="inv-upi-input">UPI ID for Payment</label>
+                <input type="text" id="inv-upi-input" value="9337922291@upi">
+              </div>
+              <div class="qs-field">
+                <label for="inv-txn-ref">Transaction / UTR (If Paid)</label>
+                <input type="text" id="inv-txn-ref" placeholder="e.g. UPI/429188204910">
+              </div>
+            </div>
+          </div>
+
           <!-- Card 1: Business Category & Client Info -->
           <div class="qs-section-card">
             <div class="qs-card-title">
@@ -5470,6 +5817,198 @@ your real studio details:
                 <div><strong>Client Acceptance &amp; Sign-off</strong></div>
                 <div id="qd-sig-client">Dr. S. Mohapatra</div>
                 <div>Date &amp; Seal / Signature</div>
+              </div>
+            </div>
+          </article>
+          <!-- 2. OFFICIAL CLIENT INVOICE & PAYMENT RECEIPT DOCUMENT -->
+          <article class="invoice-doc" id="invoice-doc" style="display:none;">
+            <!-- Header with Official Logo -->
+            <header class="inv-header">
+              <div class="qd-agency-badge">
+                <img src="images/logo.png" alt="ST Dev Solution Agency Logo" class="qd-logo-img">
+                <div class="qd-agency-info">
+                  <h1>ST DEV SOLUTIONS</h1>
+                  <span class="qd-agency-tag">Web Development &amp; Digital Solutions Agency</span>
+                  <p>Saheed Nagar, Bhubaneswar, Odisha 751007</p>
+                </div>
+              </div>
+
+              <div class="qd-agency-contacts">
+                <div><strong>ST Dev Solutions Agency</strong></div>
+                <div>Direct Phone: <strong>+91 93379 22291</strong></div>
+                <div>Email: <strong>stdevsolutions@gmail.com</strong></div>
+                <div style="margin-top:4px;color:#555;font-size:12px;">GSTIN / UDYAM: Verified Agency</div>
+              </div>
+            </header>
+
+            <!-- Invoice Title Bar with Status Stamp -->
+            <div class="inv-title-bar">
+              <div>
+                <span class="inv-milestone-tag" id="inv-view-doc-kicker">TAX / COMMERCIAL INVOICE</span>
+                <h2 id="inv-view-doc-title">INVOICE</h2>
+                <div style="font-size:13.5px;color:#444;" id="inv-view-milestone-desc">
+                  Milestone 1: 50% Advance Payment upon approval of Day-3 working draft.
+                </div>
+              </div>
+
+              <div id="inv-view-status-stamp" class="inv-status-stamp stamp-due">
+                <span>PAYMENT DUE</span>
+              </div>
+            </div>
+
+            <!-- Billed To & Invoice Meta -->
+            <div class="inv-meta-grid">
+              <div class="inv-box">
+                <h3>BILLED TO</h3>
+                <div class="inv-client-name" id="inv-view-client-biz">Aesthedent Dental &amp; Skin Clinic</div>
+                <div style="font-size:13px;color:#333;line-height:1.4;">
+                  <div><strong>Contact:</strong> <span id="inv-view-client-name">Dr. S. Mohapatra</span></div>
+                  <div><strong>Phone:</strong> <span id="inv-view-client-phone">+91 98765 00000</span></div>
+                  <div><strong>Email:</strong> <span id="inv-view-client-email">contact@aesthedent.in</span></div>
+                  <div><strong>Address:</strong> <span id="inv-view-client-city">Saheed Nagar, Bhubaneswar</span></div>
+                </div>
+              </div>
+
+              <div class="inv-meta-right">
+                <div class="inv-amount-due-box">
+                  <h3 id="inv-view-amount-heading">AMOUNT DUE</h3>
+                  <strong id="inv-view-total-display">₹7,500</strong>
+                  <div class="inv-amount-words" id="inv-view-total-words">Indian Rupees Seven Thousand Five Hundred Only</div>
+                </div>
+
+                <div style="font-size:12px;margin-top:8px;color:#555;line-height:1.35;">
+                  <div><strong>Invoice No:</strong> <span id="inv-view-inv-number">INV/STDS/2026/001</span></div>
+                  <div><strong>Quotation Ref:</strong> <span id="inv-view-quote-ref">STDS/AESTHEDENT/2026/001</span></div>
+                  <div><strong>Issue Date:</strong> <span id="inv-view-date">25 October 2026</span></div>
+                  <div><strong>Payment Terms:</strong> <span id="inv-view-terms">Pay upon Day-3 draft approval</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Itemized Table for Invoice -->
+            <table class="inv-table">
+              <thead>
+                <tr>
+                  <th style="width:10%;">No.</th>
+                  <th style="width:55%;">Service / Deliverable Description</th>
+                  <th style="width:15%;">SAC Code</th>
+                  <th style="width:20%;">Amount (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="inv-view-rows">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+
+            <div class="qd-totals-summary">
+              <div class="qd-total-row">
+                <span>Subtotal:</span>
+                <span id="inv-view-subtotal">₹7,500</span>
+              </div>
+              <div class="qd-total-row" id="inv-view-discount-row" style="display:none;color:#c00;">
+                <span>Discount / Offer:</span>
+                <span id="inv-view-discount">-₹0</span>
+              </div>
+              <div class="qd-total-row">
+                <span>GST / Tax (Nil):</span>
+                <span>₹0</span>
+              </div>
+              <div class="qd-total-row grand">
+                <span id="inv-view-grand-label">Total Payable:</span>
+                <span id="inv-view-grand-total">₹7,500</span>
+              </div>
+            </div>
+
+            <!-- UPI Payment & QR Code Card -->
+            <div class="inv-payment-block" id="inv-payment-block">
+              <div class="inv-qr-card">
+                <!-- Stylized High-Contrast UPI QR Code with ST Badge -->
+                <svg viewBox="0 0 160 160" class="inv-qr-img" role="img" aria-label="UPI Payment QR Code">
+                  <rect width="160" height="160" fill="#ffffff" />
+                  <!-- QR Finder Patterns -->
+                  <!-- Top-Left -->
+                  <rect x="10" y="10" width="40" height="40" fill="#2A1230" rx="4" />
+                  <rect x="16" y="16" width="28" height="28" fill="#ffffff" rx="2" />
+                  <rect x="22" y="22" width="16" height="16" fill="#2A1230" rx="2" />
+                  <!-- Top-Right -->
+                  <rect x="110" y="10" width="40" height="40" fill="#2A1230" rx="4" />
+                  <rect x="116" y="16" width="28" height="28" fill="#ffffff" rx="2" />
+                  <rect x="122" y="22" width="16" height="16" fill="#2A1230" rx="2" />
+                  <!-- Bottom-Left -->
+                  <rect x="10" y="110" width="40" height="40" fill="#2A1230" rx="4" />
+                  <rect x="16" y="116" width="28" height="28" fill="#ffffff" rx="2" />
+                  <rect x="22" y="122" width="16" height="16" fill="#2A1230" rx="2" />
+                  <!-- Simulated Data Modules -->
+                  <rect x="60" y="15" width="8" height="8" fill="#2A1230" />
+                  <rect x="75" y="15" width="8" height="16" fill="#2A1230" />
+                  <rect x="90" y="15" width="8" height="8" fill="#2A1230" />
+                  <rect x="60" y="32" width="16" height="8" fill="#2A1230" />
+                  <rect x="85" y="32" width="12" height="12" fill="#2A1230" />
+                  <rect x="15" y="60" width="12" height="8" fill="#2A1230" />
+                  <rect x="35" y="60" width="8" height="16" fill="#2A1230" />
+                  <rect x="15" y="80" width="16" height="10" fill="#2A1230" />
+                  <rect x="40" y="85" width="12" height="12" fill="#2A1230" />
+                  <rect x="110" y="60" width="10" height="16" fill="#2A1230" />
+                  <rect x="130" y="60" width="16" height="8" fill="#2A1230" />
+                  <rect x="115" y="85" width="20" height="10" fill="#2A1230" />
+                  <rect x="60" y="115" width="12" height="12" fill="#2A1230" />
+                  <rect x="80" y="115" width="16" height="8" fill="#2A1230" />
+                  <rect x="105" y="115" width="12" height="16" fill="#2A1230" />
+                  <rect x="65" y="135" width="16" height="10" fill="#2A1230" />
+                  <rect x="90" y="135" width="20" height="8" fill="#2A1230" />
+                  <rect x="125" y="130" width="14" height="14" fill="#2A1230" />
+                  <!-- Center ST Logo Badge -->
+                  <rect x="62" y="62" width="36" height="36" rx="8" fill="#2A1230" stroke="#E8F25C" stroke-width="2" />
+                  <text x="80" y="85" fill="#E8F25C" font-family="Archivo, sans-serif" font-weight="900" font-size="14" text-anchor="middle">ST</text>
+                </svg>
+                <div class="inv-qr-label">Scan to Pay via UPI</div>
+                <div style="font-size:10px;color:#666;">GPay · PhonePe · Paytm · BHIM</div>
+              </div>
+
+              <div class="inv-bank-info">
+                <h4>⚡ Official Agency Payment Details</h4>
+                <div class="inv-bank-grid">
+                  <div>
+                    <div><strong>UPI ID / VPA:</strong></div>
+                    <span class="inv-upi-badge" id="inv-view-upi-badge">9337922291@upi</span>
+                  </div>
+                  <div>
+                    <div><strong>Payee Name:</strong></div>
+                    <div style="font-weight:700;color:var(--ink);">ST DEV SOLUTIONS</div>
+                  </div>
+                  <div>
+                    <div><strong>Bank:</strong> State Bank of India / HDFC</div>
+                    <div><strong>Branch:</strong> Saheed Nagar, Bhubaneswar</div>
+                  </div>
+                  <div>
+                    <div><strong>Payment Terms:</strong></div>
+                    <div>50% Advance on Day-3 draft approval · 50% on final launch</div>
+                  </div>
+                </div>
+                <div style="margin-top:10px;font-size:11.5px;color:#555;" id="inv-view-txn-info">
+                  *After completing payment, please share a screenshot or UTR number on WhatsApp (+91 93379 22291) for instant receipt generation.
+                </div>
+              </div>
+            </div>
+
+            <!-- Terms & Sign-off -->
+            <div style="font-size:12px;color:#666;border-top:1px solid #ddd;padding-top:12px;margin-top:14px;">
+              <strong>Terms:</strong> This invoice is issued under the agreed project scope. All intellectual property, website source code, and domain credentials are fully handed over to the client upon final settlement.
+            </div>
+
+            <div class="qd-signatures-block" style="margin-top:18px;">
+              <div class="qd-sig-col">
+                <div class="qd-sig-line"></div>
+                <div><strong>Authorized Signatory</strong></div>
+                <div>Swadhin Panigrahi (Founder, +91 93379 22291) &amp; Tusar</div>
+                <div>ST Dev Solutions Agency, Bhubaneswar</div>
+              </div>
+
+              <div class="qd-sig-col">
+                <div class="qd-sig-line"></div>
+                <div><strong>Client Confirmation / Acceptance</strong></div>
+                <div id="inv-sig-client">Dr. S. Mohapatra</div>
+                <div>Signature / Payment Acknowledged</div>
               </div>
             </div>
           </article>
@@ -6381,6 +6920,162 @@ your real studio details:
         if (document.getElementById("qd-sig-lead")) document.getElementById("qd-sig-lead").textContent = qLead;
       }
 
+      
+      // Current Studio Mode: 'quote' or 'invoice'
+      var currentStudioMode = "quote";
+      var currentInvoiceMilestone = "advance"; // 'advance', 'final', 'full', 'receipt'
+
+      function renderInvoiceDocument() {
+        var subtotal = 0;
+        activeQuoteData.pricing.forEach(function (item) {
+          subtotal += (parseInt(item.amount, 10) || 0);
+        });
+        var discount = parseInt(document.getElementById("qf-discount") ? document.getElementById("qf-discount").value : "0", 10) || 0;
+        var grandProjectTotal = Math.max(0, subtotal - discount);
+
+        // Milestone calculation
+        var invoiceAmount = grandProjectTotal;
+        var milestoneTag = "MILESTONE 1: 50% ADVANCE PAYMENT";
+        var milestoneDesc = "Milestone 1: 50% Advance Payment upon approval of Day-3 working draft.";
+        var invoiceType = document.getElementById("inv-type-select") ? document.getElementById("inv-type-select").value : "tax_invoice";
+        var status = document.getElementById("inv-payment-status") ? document.getElementById("inv-payment-status").value : "DUE";
+        var isReceipt = (invoiceType === "payment_receipt" || currentInvoiceMilestone === "receipt" || status === "PAID");
+
+        var rowsHtml = "";
+
+        if (currentInvoiceMilestone === "advance") {
+          invoiceAmount = Math.round(grandProjectTotal * 0.5);
+          milestoneTag = "MILESTONE 1: 50% ADVANCE PAYMENT";
+          milestoneDesc = "Payable ONLY after client approves the Day 3 working draft. Pay ₹0 before seeing the draft.";
+          rowsHtml = '<tr>' +
+            '<td>01</td>' +
+            '<td><strong>Website UI/UX Architecture &amp; Day-3 Working Draft Preview</strong><br><span style="font-size:11.5px;color:#666;">Milestone 1 (50% allocation of agreed project scope: ' + activeQuoteData.title + ')</span></td>' +
+            '<td>998314</td>' +
+            '<td>₹' + invoiceAmount.toLocaleString("en-IN") + '</td>' +
+          '</tr>';
+        } else if (currentInvoiceMilestone === "final") {
+          invoiceAmount = grandProjectTotal - Math.round(grandProjectTotal * 0.5);
+          milestoneTag = "MILESTONE 2: 50% FINAL SETTLEMENT";
+          milestoneDesc = "Payable upon complete website testing, domain DNS mapping, and delivery of logins.";
+          rowsHtml = '<tr>' +
+            '<td>01</td>' +
+            '<td><strong>Production Deployment, Custom Domain Setup &amp; Admin Handover</strong><br><span style="font-size:11.5px;color:#666;">Milestone 2 (50% final settlement of agreed project scope)</span></td>' +
+            '<td>998314</td>' +
+            '<td>₹' + invoiceAmount.toLocaleString("en-IN") + '</td>' +
+          '</tr>';
+        } else {
+          invoiceAmount = grandProjectTotal;
+          milestoneTag = isReceipt ? "OFFICIAL PAYMENT RECEIPT" : "FULL PROJECT INVESTMENT (100%)";
+          milestoneDesc = isReceipt ? "Official payment acknowledgment. Thank you for partnering with ST Dev Solutions Agency." : "Comprehensive project design, development, domain setup & handover.";
+          rowsHtml = activeQuoteData.pricing.map(function (item, idx) {
+            return '<tr>' +
+              '<td>' + (idx < 9 ? '0' + (idx + 1) : (idx + 1)) + '</td>' +
+              '<td><strong>' + item.name + '</strong></td>' +
+              '<td>998314</td>' +
+              '<td>₹' + (parseInt(item.amount, 10) || 0).toLocaleString("en-IN") + '</td>' +
+            '</tr>';
+          }).join("");
+        }
+
+        // Titles and Kickers
+        var docTitle = isReceipt ? "PAYMENT RECEIPT" : "TAX INVOICE";
+        var docKicker = isReceipt ? "OFFICIAL PAYMENT RECEIPT · 2026" : "TAX / COMMERCIAL INVOICE · 2026";
+        if (document.getElementById("inv-view-doc-title")) document.getElementById("inv-view-doc-title").textContent = docTitle;
+        if (document.getElementById("inv-view-doc-kicker")) document.getElementById("inv-view-doc-kicker").textContent = docKicker;
+        if (document.getElementById("inv-view-milestone-desc")) document.getElementById("inv-view-milestone-desc").textContent = milestoneDesc;
+
+        // Status Stamp
+        var stampEl = document.getElementById("inv-view-status-stamp");
+        if (stampEl) {
+          if (isReceipt || status === "PAID") {
+            stampEl.className = "inv-status-stamp stamp-paid";
+            var txnRef = document.getElementById("inv-txn-ref") ? document.getElementById("inv-txn-ref").value.trim() : "";
+            stampEl.innerHTML = "<span>PAID IN FULL ✓</span>";
+            if (document.getElementById("inv-view-amount-heading")) document.getElementById("inv-view-amount-heading").textContent = "AMOUNT PAID";
+            if (document.getElementById("inv-view-grand-label")) document.getElementById("inv-view-grand-label").textContent = "Total Paid:";
+          } else {
+            stampEl.className = "inv-status-stamp stamp-due";
+            stampEl.innerHTML = "<span>PAYMENT DUE</span>";
+            if (document.getElementById("inv-view-amount-heading")) document.getElementById("inv-view-amount-heading").textContent = "AMOUNT DUE";
+            if (document.getElementById("inv-view-grand-label")) document.getElementById("inv-view-grand-label").textContent = "Total Payable:";
+          }
+        }
+
+        // Client box
+        var cBiz = document.getElementById("qf-business-name") ? document.getElementById("qf-business-name").value : activeQuoteData.defaultBiz;
+        var cName = document.getElementById("qf-client-name") ? document.getElementById("qf-client-name").value : activeQuoteData.defaultClient;
+        var cPhone = document.getElementById("qf-client-phone") ? document.getElementById("qf-client-phone").value : "+91 98765 00000";
+        var cEmail = document.getElementById("qf-client-email") ? document.getElementById("qf-client-email").value : "client@email.com";
+        var cCity = document.getElementById("qf-client-city") ? document.getElementById("qf-client-city").value : "Bhubaneswar, Odisha";
+        var qRef = document.getElementById("qf-quote-ref") ? document.getElementById("qf-quote-ref").value : "STDS/2026/001";
+        var invNum = document.getElementById("inv-number-input") ? document.getElementById("inv-number-input").value : (isReceipt ? "REC/STDS/2026/001" : "INV/STDS/2026/001");
+        var upiId = document.getElementById("inv-upi-input") ? document.getElementById("inv-upi-input").value : "9337922291@upi";
+
+        if (document.getElementById("inv-view-client-biz")) document.getElementById("inv-view-client-biz").textContent = cBiz;
+        if (document.getElementById("inv-view-client-name")) document.getElementById("inv-view-client-name").textContent = cName;
+        if (document.getElementById("inv-view-client-phone")) document.getElementById("inv-view-client-phone").textContent = cPhone;
+        if (document.getElementById("inv-view-client-email")) document.getElementById("inv-view-client-email").textContent = cEmail;
+        if (document.getElementById("inv-view-client-city")) document.getElementById("inv-view-client-city").textContent = cCity;
+        if (document.getElementById("inv-view-inv-number")) document.getElementById("inv-view-inv-number").textContent = invNum;
+        if (document.getElementById("inv-view-quote-ref")) document.getElementById("inv-view-quote-ref").textContent = qRef;
+        if (document.getElementById("inv-view-upi-badge")) document.getElementById("inv-view-upi-badge").textContent = upiId;
+
+        var now = new Date();
+        var dateStr = now.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
+        if (document.getElementById("inv-view-date")) document.getElementById("inv-view-date").textContent = dateStr;
+
+        // Amounts
+        var formattedDue = "₹" + invoiceAmount.toLocaleString("en-IN");
+        if (document.getElementById("inv-view-total-display")) document.getElementById("inv-view-total-display").textContent = formattedDue;
+        if (document.getElementById("inv-view-total-words")) document.getElementById("inv-view-total-words").textContent = numberToIndianWords(invoiceAmount);
+        if (document.getElementById("inv-view-subtotal")) document.getElementById("inv-view-subtotal").textContent = formattedDue;
+        if (document.getElementById("inv-view-grand-total")) document.getElementById("inv-view-grand-total").textContent = formattedDue;
+
+        if (document.getElementById("inv-view-rows")) {
+          document.getElementById("inv-view-rows").innerHTML = rowsHtml;
+        }
+        if (document.getElementById("inv-sig-client")) {
+          document.getElementById("inv-sig-client").textContent = cName + " (" + cBiz + ")";
+        }
+      }
+
+      function setStudioMode(mode) {
+        currentStudioMode = mode;
+        var quoteDoc = document.getElementById("quote-doc");
+        var invoiceDoc = document.getElementById("invoice-doc");
+        var quoteModeBtn = document.getElementById("mode-quote-btn");
+        var invoiceModeBtn = document.getElementById("mode-invoice-btn");
+        var presetsStrip = document.getElementById("qs-presets-strip");
+        var milestoneStrip = document.getElementById("qs-milestone-strip");
+        var invoiceSettingsCard = document.getElementById("qs-invoice-settings-card");
+        var printLabel = document.getElementById("qs-print-btn-label");
+        var waLabel = document.getElementById("qs-wa-btn-label");
+
+        if (mode === "invoice") {
+          if (quoteDoc) quoteDoc.style.display = "none";
+          if (invoiceDoc) invoiceDoc.style.display = "block";
+          if (quoteModeBtn) quoteModeBtn.classList.remove("active");
+          if (invoiceModeBtn) invoiceModeBtn.classList.add("active");
+          if (presetsStrip) presetsStrip.style.display = "none";
+          if (milestoneStrip) milestoneStrip.style.display = "flex";
+          if (invoiceSettingsCard) invoiceSettingsCard.style.display = "block";
+          if (printLabel) printLabel.textContent = "🖨️ Download / Print Invoice";
+          if (waLabel) waLabel.textContent = "💬 Send Invoice on WhatsApp";
+          renderInvoiceDocument();
+        } else {
+          if (quoteDoc) quoteDoc.style.display = "block";
+          if (invoiceDoc) invoiceDoc.style.display = "none";
+          if (quoteModeBtn) quoteModeBtn.classList.add("active");
+          if (invoiceModeBtn) invoiceModeBtn.classList.remove("active");
+          if (presetsStrip) presetsStrip.style.display = "flex";
+          if (milestoneStrip) milestoneStrip.style.display = "none";
+          if (invoiceSettingsCard) invoiceSettingsCard.style.display = "none";
+          if (printLabel) printLabel.textContent = "🖨️ Download / Print Quote";
+          if (waLabel) waLabel.textContent = "💬 Send Quote on WhatsApp";
+          renderQuotationDocument();
+        }
+      }
+
       function switchCategory(catKey) {
         if (!INDUSTRY_TEMPLATES[catKey]) return;
         var tpl = INDUSTRY_TEMPLATES[catKey];
@@ -6578,6 +7273,60 @@ your real studio details:
         if (el) el.addEventListener("input", renderQuotationDocument);
       });
 
+      
+      // Mode switcher event listeners
+      var modeQuoteBtn = document.getElementById("mode-quote-btn");
+      var modeInvoiceBtn = document.getElementById("mode-invoice-btn");
+      if (modeQuoteBtn) modeQuoteBtn.addEventListener("click", function () { setStudioMode("quote"); });
+      if (modeInvoiceBtn) modeInvoiceBtn.addEventListener("click", function () { setStudioMode("invoice"); });
+
+      // Invoice milestone quick selector buttons
+      document.querySelectorAll("#qs-milestone-strip .qs-preset-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var m = btn.getAttribute("data-milestone");
+          currentInvoiceMilestone = m;
+          document.querySelectorAll("#qs-milestone-strip .qs-preset-btn").forEach(function (b) { b.classList.toggle("active", b === btn); });
+
+          var statusSelect = document.getElementById("inv-payment-status");
+          var typeSelect = document.getElementById("inv-type-select");
+          var invNumInp = document.getElementById("inv-number-input");
+
+          if (m === "receipt") {
+            if (statusSelect) statusSelect.value = "PAID";
+            if (typeSelect) typeSelect.value = "payment_receipt";
+            if (invNumInp && !invNumInp.value.startsWith("REC/")) {
+              invNumInp.value = invNumInp.value.replace("INV/", "REC/");
+            }
+          } else {
+            if (statusSelect) statusSelect.value = "DUE";
+            if (typeSelect) typeSelect.value = "tax_invoice";
+            if (invNumInp && invNumInp.value.startsWith("REC/")) {
+              invNumInp.value = invNumInp.value.replace("REC/", "INV/");
+            }
+          }
+          renderInvoiceDocument();
+        });
+      });
+
+      // Invoice editor form listeners
+      ["inv-type-select", "inv-payment-status", "inv-number-input", "inv-milestone-select", "inv-upi-input", "inv-txn-ref"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("input", function () {
+            if (id === "inv-milestone-select") {
+              currentInvoiceMilestone = el.value;
+            }
+            renderInvoiceDocument();
+          });
+          el.addEventListener("change", function () {
+            if (id === "inv-milestone-select") {
+              currentInvoiceMilestone = el.value;
+            }
+            renderInvoiceDocument();
+          });
+        }
+      });
+
       // 1-Click Print PDF
       var qsPrintBtn = document.getElementById("qs-print-btn");
       if (qsPrintBtn) {
@@ -6586,7 +7335,7 @@ your real studio details:
         });
       }
 
-      // WhatsApp Share
+      // WhatsApp Share (Handles both Quote Mode and Invoice Mode)
       var qsShareWaBtn = document.getElementById("qs-share-wa-btn");
       if (qsShareWaBtn) {
         qsShareWaBtn.addEventListener("click", function () {
@@ -6599,20 +7348,41 @@ your real studio details:
           var subtotal = 0;
           activeQuoteData.pricing.forEach(function (i) { subtotal += (parseInt(i.amount, 10) || 0); });
           var discount = parseInt(document.getElementById("qf-discount") ? document.getElementById("qf-discount").value : "0", 10) || 0;
-          var total = Math.max(0, subtotal - discount);
-          var totalFormatted = "₹" + total.toLocaleString("en-IN");
+          var projectTotal = Math.max(0, subtotal - discount);
 
-          var waText = "*WEBSITE DEVELOPMENT QUOTATION — ST DEV SOLUTIONS*\n" +
-            "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
-            "• *Client:* " + cBiz + " (" + cName + ")\n" +
-            "• *Quotation Ref:* " + qRef + "\n" +
-            "• *Total Investment:* *" + totalFormatted + "* (" + numberToIndianWords(total) + ")\n" +
-            "• *Timeline:* First working draft in 3 days · Final handover in " + timeline + "\n" +
-            "• *Zero-Risk Milestone Terms:* Pay ₹0 until you approve the Day 3 working draft (50% on draft approval, 50% on live launch)\n" +
-            "• *Included:* Domain (.com/.in), 1st yr cloud hosting, WhatsApp booking funnel, Google Maps pin & 30 days free support\n" +
-            "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
-            "Prepared by *Swadhin Panigrahi (Founder, +91 93379 22291)* & *Tusar (Co-Founder)*\n" +
-            "ST Dev Solutions Agency, Saheed Nagar, Bhubaneswar";
+          var waText = "";
+
+          if (currentStudioMode === "invoice") {
+            var invNum = document.getElementById("inv-number-input") ? document.getElementById("inv-number-input").value : "INV/STDS/2026/001";
+            var status = document.getElementById("inv-payment-status") ? document.getElementById("inv-payment-status").value : "DUE";
+            var upi = document.getElementById("inv-upi-input") ? document.getElementById("inv-upi-input").value : "9337922291@upi";
+            var invAmount = (currentInvoiceMilestone === "advance") ? Math.round(projectTotal * 0.5) : ((currentInvoiceMilestone === "final") ? (projectTotal - Math.round(projectTotal * 0.5)) : projectTotal);
+            var isReceipt = (status === "PAID" || currentInvoiceMilestone === "receipt");
+
+            waText = "*" + (isReceipt ? "PAYMENT RECEIPT" : "OFFICIAL TAX INVOICE") + " — ST DEV SOLUTIONS*\n" +
+              "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+              "• *Client:* " + cBiz + " (" + cName + ")\n" +
+              "• *Doc No:* *" + invNum + "* (Ref: " + qRef + ")\n" +
+              "• *Milestone:* " + ((currentInvoiceMilestone === "advance") ? "50% Advance (Day-3 Draft Approved)" : ((currentInvoiceMilestone === "final") ? "50% Final Handover Settlement" : "Full Project Investment")) + "\n" +
+              "• *Amount:* *₹" + invAmount.toLocaleString("en-IN") + "* (" + numberToIndianWords(invAmount) + ")\n" +
+              "• *Status:* *" + (isReceipt ? "PAID IN FULL ✓" : "PAYMENT DUE") + "*\n" +
+              (isReceipt ? "" : "• *UPI ID for payment:* *" + upi + "* (GPay / PhonePe / Paytm / BHIM)\n") +
+              "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+              "Prepared by *Swadhin Panigrahi (Founder, +91 93379 22291)* & *Tusar (Co-Founder)*\n" +
+              "ST Dev Solutions Agency, Saheed Nagar, Bhubaneswar";
+          } else {
+            waText = "*WEBSITE DEVELOPMENT QUOTATION — ST DEV SOLUTIONS*\n" +
+              "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+              "• *Client:* " + cBiz + " (" + cName + ")\n" +
+              "• *Quotation Ref:* " + qRef + "\n" +
+              "• *Total Investment:* *₹" + projectTotal.toLocaleString("en-IN") + "* (" + numberToIndianWords(projectTotal) + ")\n" +
+              "• *Timeline:* First working draft in 3 days · Final handover in " + timeline + "\n" +
+              "• *Zero-Risk Milestone Terms:* Pay ₹0 until you approve the Day 3 working draft (50% on draft approval, 50% on live launch)\n" +
+              "• *Included:* Domain (.com/.in), 1st yr cloud hosting, WhatsApp booking funnel, Google Maps pin & 30 days free support\n" +
+              "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+              "Prepared by *Swadhin Panigrahi (Founder, +91 93379 22291)* & *Tusar (Co-Founder)*\n" +
+              "ST Dev Solutions Agency, Saheed Nagar, Bhubaneswar";
+          }
 
           var targetUrl = "https://wa.me/" + (cPhone.length >= 10 ? cPhone : "919337922291") + "?text=" + encodeURIComponent(waText);
           window.open(targetUrl, "_blank", "noopener,noreferrer");
